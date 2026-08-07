@@ -7,10 +7,7 @@ import Footer from '@/components/Footer';
 import mockData from '@/data/mockData.json';
 import { 
   Flame, 
-  Github, 
-  Linkedin, 
   ArrowRight, 
-  CheckCircle2, 
   Code2, 
   Cpu, 
   Cloud, 
@@ -19,13 +16,13 @@ import {
   Moon, 
   Sparkles, 
   Zap, 
-  TrendingUp, 
   Briefcase, 
   ChevronDown, 
   Users, 
-  GraduationCap, 
   Award,
-  Play
+  Play,
+  Github,
+  Linkedin
 } from 'lucide-react';
 
 export default function LandingPage() {
@@ -170,7 +167,7 @@ export default function LandingPage() {
               </div>
               <h3 className="text-base font-bold text-white mb-2">Read Today&apos;s Task</h3>
               <p className="text-xs text-gray-400 leading-relaxed">
-                Unlock a biter-sized real-world feature prompt (e.g., Redis Rate Limiter, Auth Middleware, Vector Search).
+                Unlock a bite-sized real-world feature prompt (e.g., Redis Rate Limiter, Auth Middleware, Vector Search).
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-dark-border/60 flex items-center text-[11px] text-amber-400 font-medium">

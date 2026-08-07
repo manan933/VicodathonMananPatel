@@ -22,11 +22,9 @@ import {
   Clock, 
   Send, 
   ThumbsUp, 
-  MessageSquare, 
   ExternalLink, 
   Zap, 
-  ShieldCheck,
-  AlertCircle
+  ShieldCheck
 } from 'lucide-react';
 
 export default function ChallengeDayPage() {
@@ -47,10 +45,25 @@ export default function ChallengeDayPage() {
   });
 
   // Copy Starter Code
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(challenge.starterSnippet);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
+  const handleCopyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(challenge.starterSnippet);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch {
+      // Fallback for browsers without clipboard API permission
+      const el = document.createElement('textarea');
+      el.value = challenge.starterSnippet;
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try { document.execCommand('copy'); } catch { /* silent fail */ }
+      document.body.removeChild(el);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    }
   };
 
   // Audio Summary simulation
@@ -330,7 +343,7 @@ export default function ChallengeDayPage() {
                   onClick={handleGenerateAiPost}
                   className="px-2.5 py-1 rounded-xl bg-gradient-to-r from-amber-500/20 to-rose-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold flex items-center gap-1 hover:border-amber-400 transition-all"
                 >
-                  <Sparkles className="w-3 h-3 text-amber-400 animate-spin" />
+                  <Sparkles className="w-3 h-3 text-amber-400 animate-pulse" />
                   <span>AI Post Assistant (1-Click)</span>
                 </button>
               </div>

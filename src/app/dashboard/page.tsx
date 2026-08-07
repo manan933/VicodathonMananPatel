@@ -21,12 +21,8 @@ import {
   UserCheck, 
   TrendingUp, 
   Clock, 
-  Moon, 
   BookOpen, 
-  Share2,
-  Lock,
-  ChevronRight,
-  ExternalLink
+  Lock
 } from 'lucide-react';
 
 export default function DashboardPage() {
@@ -227,8 +223,12 @@ export default function DashboardPage() {
             <div className="mt-4 pt-3 border-t border-dark-border/60">
               <div className="flex items-center justify-between text-xs mb-1.5">
                 <span className="text-gray-400 text-[11px]">Today&apos;s Status</span>
-                <span className={`font-bold text-[11px] ${user.streakHistory.find(h => h.day === user.currentDay)?.completed ? 'text-emerald-400' : 'text-amber-400'}`}>
-                  {user.streakHistory.find(h => h.day === user.currentDay)?.completed ? 'Submitted ✓' : 'Pending Submission'}
+                <span className={`font-bold text-[11px] ${user.streakHistory?.find(h => h.day === user.currentDay)?.completed ? 'text-emerald-400' : edgeState === 'firstDay' ? 'text-gray-500' : 'text-amber-400'}`}>
+                  {user.streakHistory?.find(h => h.day === user.currentDay)?.completed 
+                    ? 'Submitted ✓' 
+                    : edgeState === 'firstDay' 
+                    ? 'Not Started Yet' 
+                    : 'Pending Submission'}
                 </span>
               </div>
               <div className="w-full h-2 rounded-full bg-dark-bg overflow-hidden border border-dark-border">

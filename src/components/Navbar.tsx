@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Flame, Sparkles, Moon, Sun, Code2, Compass, LayoutDashboard, CalendarCheck } from 'lucide-react';
@@ -12,6 +12,17 @@ interface NavbarProps {
 export default function Navbar({ streakCount = 12 }: NavbarProps) {
   const pathname = usePathname();
   const [nightMode, setNightMode] = useState(true);
+
+  // Apply or remove the eye-care night filter on the document root
+  useEffect(() => {
+    if (nightMode) {
+      document.documentElement.classList.add('night-mode');
+    } else {
+      document.documentElement.classList.remove('night-mode');
+    }
+    // Cleanup on unmount
+    return () => document.documentElement.classList.remove('night-mode');
+  }, [nightMode]);
 
   return (
     <header className="sticky top-0 z-50 w-full glass-panel border-b border-dark-border/80 px-4 py-3">
