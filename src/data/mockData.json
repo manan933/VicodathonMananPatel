@@ -1,0 +1,219 @@
+{
+  "currentUser": {
+    "name": "Manan Patel",
+    "handle": "manan_codes",
+    "college": "National Institute of Technology (NIT)",
+    "year": "3rd Year B.Tech CSE",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80",
+    "githubUser": "manan-dev",
+    "linkedinUser": "manan-patel-tech",
+    "track": "Full-Stack Web & Backend Systems",
+    "currentStreak": 12,
+    "longestStreak": 12,
+    "currentDay": 12,
+    "totalDays": 60,
+    "completedDays": 11,
+    "recruiterScore": 88,
+    "rankInCollege": 3,
+    "achievements": [
+      { "id": "ach_1", "title": "Night Owl Builder", "desc": "Submitted 5 daily tasks after 11:00 PM", "icon": "Moon", "unlocked": true },
+      { "id": "ach_2", "title": "Git Titan", "desc": "Reached 10 consecutive GitHub commits", "icon": "GitCommit", "unlocked": true },
+      { "id": "ach_3", "title": "Recruiter Magnet", "desc": "LinkedIn post viewed by 5+ hiring managers", "icon": "Briefcase", "unlocked": true },
+      { "id": "ach_4", "title": "Halfway Hero", "desc": "Reach 30 consecutive challenge days", "icon": "Award", "unlocked": false }
+    ],
+    "streakHistory": [
+      { "day": 1, "completed": true, "date": "Jul 27" },
+      { "day": 2, "completed": true, "date": "Jul 28" },
+      { "day": 3, "completed": true, "date": "Jul 29" },
+      { "day": 4, "completed": true, "date": "Jul 30" },
+      { "day": 5, "completed": true, "date": "Jul 31" },
+      { "day": 6, "completed": true, "date": "Aug 01" },
+      { "day": 7, "completed": true, "date": "Aug 02" },
+      { "day": 8, "completed": true, "date": "Aug 03" },
+      { "day": 9, "completed": true, "date": "Aug 04" },
+      { "day": 10, "completed": true, "date": "Aug 05" },
+      { "day": 11, "completed": true, "date": "Aug 06" },
+      { "day": 12, "completed": false, "date": "Today" }
+    ]
+  },
+  "edgeStates": {
+    "firstDay": {
+      "name": "Aarav Sharma",
+      "handle": "aarav_newbie",
+      "college": "DTU Delhi",
+      "year": "2nd Year B.Tech",
+      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=250&q=80",
+      "githubUser": "",
+      "linkedinUser": "",
+      "track": "Full-Stack Web & Backend Systems",
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "currentDay": 1,
+      "completedDays": 0,
+      "recruiterScore": 10,
+      "rankInCollege": 0,
+      "streakHistory": []
+    },
+    "missedDay": {
+      "name": "Priya Verma",
+      "handle": "priya_builds",
+      "college": "VIT Vellore",
+      "year": "4th Year CSE",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80",
+      "githubUser": "priya-verma-dev",
+      "linkedinUser": "priya-verma-tech",
+      "track": "AI & Machine Learning Apps",
+      "currentStreak": 0,
+      "longestStreak": 8,
+      "currentDay": 12,
+      "completedDays": 9,
+      "recruiterScore": 65,
+      "rankInCollege": 14,
+      "streakShieldAvailable": true,
+      "streakRecoveryDeadline": "11 hours 42 mins remaining"
+    },
+    "emptyProfile": {
+      "name": "New Student",
+      "handle": "student_392",
+      "college": "Not Specified",
+      "year": "1st Year",
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=250&q=80",
+      "githubUser": "",
+      "linkedinUser": "",
+      "track": "Unassigned",
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "currentDay": 1,
+      "completedDays": 0,
+      "recruiterScore": 0,
+      "rankInCollege": 0
+    }
+  },
+  "tracks": [
+    {
+      "id": "web-backend",
+      "title": "Full-Stack Web & Backend Systems",
+      "tagline": "Build scalable APIs, microservices, and reactive web apps.",
+      "level": "Beginner to Advanced",
+      "duration": "60 Days",
+      "enrolled": 5420,
+      "skills": ["TypeScript", "Next.js", "Node.js", "Redis", "PostgreSQL", "Docker"],
+      "icon": "Code2",
+      "color": "from-rose-500 to-amber-500"
+    },
+    {
+      "id": "ai-ml",
+      "title": "AI & Intelligent Agents",
+      "tagline": "Craft LLM pipelines, RAG systems, and AI-powered workflows.",
+      "level": "Intermediate",
+      "duration": "60 Days",
+      "enrolled": 3890,
+      "skills": ["Python", "PyTorch", "LangChain", "Vector DBs", "FastAPI"],
+      "icon": "Cpu",
+      "color": "from-violet-500 to-indigo-500"
+    },
+    {
+      "id": "cloud-devops",
+      "title": "DevOps & Cloud Native Systems",
+      "tagline": "Master CI/CD pipelines, Kubernetes, Terraform, and AWS.",
+      "level": "Intermediate",
+      "duration": "60 Days",
+      "enrolled": 2150,
+      "skills": ["Docker", "Kubernetes", "GitHub Actions", "Terraform", "AWS"],
+      "icon": "Cloud",
+      "color": "from-cyan-500 to-blue-500"
+    },
+    {
+      "id": "mobile-dev",
+      "title": "Mobile App Engineering",
+      "tagline": "Ship cross-platform iOS & Android apps with smooth animations.",
+      "level": "Beginner to Intermediate",
+      "duration": "60 Days",
+      "enrolled": 1820,
+      "skills": ["React Native", "Flutter", "Firebase", "Zustand"],
+      "icon": "Smartphone",
+      "color": "from-emerald-500 to-teal-500"
+    }
+  ],
+  "day12Challenge": {
+    "dayNumber": 12,
+    "title": "Distributed Rate Limiter API with Redis & Token Bucket",
+    "track": "Full-Stack Web & Backend Systems",
+    "estimatedMinutes": 45,
+    "difficulty": "Intermediate",
+    "points": 100,
+    "audioBrief": "Today's challenge focuses on protection against API abuse. You will implement an Express.js middleware using Redis to limit request rates per client IP using the token bucket strategy. This is a favorite system design question in tech interviews!",
+    "overview": "Rate limiting is an essential defense mechanism for web APIs. Today you will build a production-ready Express rate-limiter middleware using Redis as an atomic key-value store. You'll enforce a policy of maximum 10 requests per minute per client IP address.",
+    "learningObjectives": [
+      "Master Redis atomic commands (INCR, EXPIRE, EVAL scripts)",
+      "Implement the Token Bucket rate-limiting algorithm",
+      "Return standardized HTTP 429 status codes with rate-limit headers (X-RateLimit-Remaining, X-RateLimit-Reset)",
+      "Handle Redis connection failure gracefully without crashing the API"
+    ],
+    "requirements": [
+      "Create an Express endpoint GET /api/v1/data",
+      "Implement middleware rateLimiter({ maxRequests: 10, windowInSeconds: 60 })",
+      "Store client IP keys in Redis with expiration TTL",
+      "Add automated jest/supertest test cases verifying rate limiting behavior"
+    ],
+    "bonusChallenge": "Implement a sliding window log counter in Redis Lua script for precise timestamp handling.",
+    "starterSnippet": "const express = require('express');\nconst Redis = require('ioredis');\nconst redis = new Redis(process.env.REDIS_URL);\n\n// TODO: Implement rateLimiter middleware here\nfunction rateLimiter(limit, windowSec) {\n  return async (req, res, next) => {\n    const ip = req.ip || req.headers['x-forwarded-for'];\n    const key = `ratelimit:${ip}`;\n    \n    // Write Redis atomic token check logic...\n    next();\n  };\n}\n\nmodule.exports = { rateLimiter };"
+  },
+  "peerSubmissions": [
+    {
+      "id": "sub_1",
+      "studentName": "Kavya Nair",
+      "college": "IIT Bombay",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+      "githubUrl": "https://github.com/kavyanair/day12-redis-rate-limiter",
+      "linkedinPost": "🚀 Day 12/60 of #ABTalks Challenge! Built a distributed Redis rate limiter middleware in Node.js using Lua scripts for atomic token bucket refills. Handles 5k req/sec cleanly! #60DaysOfCode #BackendDev",
+      "timeAgo": "35 mins ago",
+      "upvotes": 24
+    },
+    {
+      "id": "sub_2",
+      "studentName": "Devansh Gupta",
+      "college": "IIIT Hyderabad",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+      "githubUrl": "https://github.com/devansh-g/abtalks-day12-token-bucket",
+      "linkedinPost": "Day 12 finished late at night! 🌙 Redis rate limiters are fascinating. Implemented sliding window algorithms and tested with Apache Bench. 48 days to go! #ABTalks #BuildInPublic",
+      "timeAgo": "1 hour ago",
+      "upvotes": 19
+    },
+    {
+      "id": "sub_3",
+      "studentName": "Sanjana Pillai",
+      "college": "BITS Pilani",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+      "githubUrl": "https://github.com/sanjanap/redis-limiter-express",
+      "linkedinPost": "Day 12 completed! Implemented HTTP 429 handling with custom Retry-After headers. Special thanks to ABTalks community for the late night debugging tips in Discord!",
+      "timeAgo": "2 hours ago",
+      "upvotes": 31
+    }
+  ],
+  "hiringPartners": [
+    { "name": "Razorpay", "logo": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=120&q=80" },
+    { "name": "Swiggy", "logo": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=120&q=80" },
+    { "name": "Zerodha", "logo": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=120&q=80" },
+    { "name": "Postman", "logo": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=120&q=80" },
+    { "name": "Cred", "logo": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=120&q=80" }
+  ],
+  "faqs": [
+    {
+      "q": "What if I have college exams or miss a day?",
+      "a": "We know college life gets intense! ABTalks includes a 'Streak Shield & Recovery Quest'. You can recover a missed day within 24 hours by completing a catch-up challenge without resetting your total streak count."
+    },
+    {
+      "q": "Do I need prior advanced experience to join?",
+      "a": "No! We have tracks starting from fundamentals to advanced systems. Each day provides clear instructions, starter templates, and community support."
+    },
+    {
+      "q": "How do recruiters see my proof of work?",
+      "a": "Every verified GitHub commit and LinkedIn post boosts your 'Recruiter Visibility Index'. Top consistent builders get highlighted in our weekly partner talent digest sent directly to tech leads at Razorpay, Postman, Cred, and more."
+    },
+    {
+      "q": "Is the challenge free for college students?",
+      "a": "Yes! The 60-day challenge is 100% free for college students across India."
+    }
+  ]
+}
