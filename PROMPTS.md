@@ -411,6 +411,25 @@ either remove this or make something better because that thing looks very ai slo
 2. **Verification**:
    - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
 
+### Prompt 20 — AI App Icon Prompt & Mobile PWA Installation Setup
+> **Timestamp**: 2026-08-07 22:23 IST
+
+```
+give me a prompt for making a icon for it ,(favicon) and add settings for installable PWA app for installing in mobile phones.
+```
+
+**Actions Taken**:
+1. **AI Favicon & App Icon Generation Prompt**:
+   - Designed a high-resolution prompt for Midjourney / DALL-E 3 / Imagen 3:  
+     `"A modern, sleek, minimal app icon logo for ABTalks coding challenge platform. Features a stylized 3D glowing flame with smooth gradient from electric coral-rose to warm amber-gold, inside a dark squircle tile with rounded corners, subtle glass reflection, dark background #0A0A0E, high resolution, minimalist tech vector icon style, 8k render"`
+   - Generated initial app icon assets (`icon.png`, `apple-icon.png`, `icon-192.png`, `icon-512.png`) in the `public/` directory.
+2. **PWA Mobile Installation Suite**:
+   - Created [`public/manifest.json`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/public/manifest.json) configuring standalone display mode, maskable icons, `portrait-primary` orientation, and theme color `#000000`.
+   - Built lightweight offline caching service worker [`public/sw.js`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/public/sw.js) enabling Chrome/Brave/Safari "Add to Home Screen" installation.
+   - Updated metadata and inline registration script in [`layout.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/layout.tsx) with iOS web app tags (`apple-mobile-web-app-capable`).
+3. **Verification**:
+   - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
+
 ---
 
 ## Required Routes & Route Map
