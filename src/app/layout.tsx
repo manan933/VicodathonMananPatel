@@ -7,13 +7,24 @@ export const metadata: Metadata = {
   title: 'ABTalks | 60-Day College Coding Challenge',
   description: 'Reimagined platform for Indian college students to build 1 project daily, maintain public GitHub & LinkedIn proof-of-work streaks, and get hired by top tech companies.',
   keywords: ['ABTalks', '60 Day Coding Challenge', 'College Coders', 'GitHub Streak', 'LinkedIn Proof of Work', 'Indian Developers'],
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'ABTalks',
+  },
+  icons: {
+    icon: '/icon-192.png',
+    shortcut: '/icon-192.png',
+    apple: '/apple-icon.png',
+  },
 };
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#0A0A0E',
+  themeColor: '#000000',
 };
 
 export default function RootLayout({
@@ -24,6 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -44,6 +59,14 @@ export default function RootLayout({
                   document.documentElement.classList.add('dark');
                 }
               } catch (e) {}
+
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').catch(function(err) {
+                    console.log('SW registration failed: ', err);
+                  });
+                });
+              }
             `,
           }}
         />
