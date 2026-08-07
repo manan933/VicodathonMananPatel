@@ -1,1 +1,59 @@
-node_modules
+# Dependencies
+node_modules/
+.pnpm-store/
+.yarn/
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Diagnostic data & caches
+.swc/
+.turbo/
+.vercel
+.cache/
+
+# Environment files
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+
+# IDE & OS heavy/temp files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary / Agent logs if stored locally
+.gemini/
+tmp/
+temp/
