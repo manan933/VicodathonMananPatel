@@ -358,6 +358,26 @@ can we add something more unique to students colorful along with dark and light 
 3. **Verification**:
    - Executed `npm run build` — verified **0 errors, 0 warnings** across all 6 static and dynamic routes.
 
+### Prompt 17 — Cyber Synthwave Visual Transformation & Tailwind Variant Binding
+> **Timestamp**: 2026-08-07 22:00 IST
+
+```
+nothing changed in cyber ,make it totally look difff from night and day.
+```
+
+**Root Cause**:
+Tailwind's `darkMode: 'class'` configuration requires `html` to contain the `dark` class for `dark:` utility branches to match. Previously, setting `html` class to `cyber` alone caused Tailwind to ignore all `dark:...` utilities and fall back to Light Mode CSS classes (`bg-slate-50`, `text-slate-900`), making Cyber Mode fail to display.
+
+**Actions Taken**:
+1. **Tailwind Class Binding (`layout.tsx` & `Navbar.tsx`)**:
+   - Updated theme activation to assign `class="dark cyber"` when Cyber mode is selected.
+   - This ensures Tailwind's `dark:` classes are evaluated properly, while CSS custom variables (`--color-bg`, `--color-card`, `--color-border`) are overridden by `html.cyber`.
+2. **Vibrant Synthwave Aesthetics (`globals.css`)**:
+   - Palette: Deep Synthwave Purple (`#0F0720`), Neon Violet Card (`#1C0D36`), Glowing Purple Border (`#9333EA`), Electric Cyan & Hot Pink text/accents (`#F4F0FF`, `#E879F9`, `#EC4899`).
+   - Added dual fixed ambient radial background glows (`radial-gradient` hot pink & cyan) and glowing neon card shadows (`box-shadow: 0 0 30px rgba(147, 51, 234, 0.35)`).
+3. **Verification**:
+   - Ran `npm run build` — passed with **0 errors, 0 warnings**.
+
 ---
 
 ## Required Routes & Route Map

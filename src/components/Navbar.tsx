@@ -18,7 +18,13 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
 
   const applyTheme = (mode: ThemeMode) => {
     document.documentElement.classList.remove('dark', 'light', 'cyber');
-    document.documentElement.classList.add(mode);
+    if (mode === 'light') {
+      document.documentElement.classList.add('light');
+    } else if (mode === 'cyber') {
+      document.documentElement.classList.add('dark', 'cyber');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
   };
 
   useEffect(() => {

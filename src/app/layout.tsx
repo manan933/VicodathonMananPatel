@@ -37,7 +37,7 @@ export default function RootLayout({
                 if (theme === 'light') {
                   document.documentElement.classList.add('light');
                 } else if (theme === 'cyber') {
-                  document.documentElement.classList.add('cyber');
+                  document.documentElement.classList.add('dark', 'cyber');
                 } else {
                   document.documentElement.classList.add('dark');
                 }
