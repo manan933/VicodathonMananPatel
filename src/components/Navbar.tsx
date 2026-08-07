@@ -46,15 +46,15 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-1 sm:gap-2">
         
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-1.5 sm:gap-2 group shrink-0">
+        <Link href="/" className="flex items-center gap-2 group shrink-0">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 flex items-center justify-center shadow-md shadow-rose-500/20 group-hover:scale-105 transition-transform shrink-0">
             <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-white fill-white animate-pulse" />
           </div>
           <div className="flex flex-col">
-            <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white flex items-center gap-1 font-['Outfit'] leading-tight">
-              ABTalks <span className="text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 font-bold border border-rose-200 dark:border-rose-500/30">60D</span>
+            <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white font-['Outfit'] leading-none">
+              ABTalks
             </span>
-            <span className="text-[9px] text-slate-500 dark:text-gray-400 font-medium hidden md:block">Build Daily. Get Noticed.</span>
+            <span className="text-[10px] text-slate-500 dark:text-gray-400 font-medium hidden md:block mt-0.5">Build Daily. Get Noticed.</span>
           </div>
         </Link>
 

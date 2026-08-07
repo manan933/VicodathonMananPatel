@@ -397,6 +397,20 @@ can we make the dark and light mode , add one more things a full back theme on d
 4. **Verification**:
    - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
 
+### Prompt 19 — Navbar Logo Branding Cleanup
+> **Timestamp**: 2026-08-07 22:20 IST
+
+```
+either remove this or make something better because that thing looks very ai slop
+```
+
+**Actions Taken**:
+1. **Branding Cleanup ([`Navbar.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/Navbar.tsx))**:
+   - Removed the tacky circular dark-red `60D` bubble badge from the primary logo title.
+   - Restored ultra-clean, sharp, modern `ABTalks` branding paired with the flame tile and subtle sublabel (`"Build Daily. Get Noticed."`).
+2. **Verification**:
+   - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
+
 ---
 
 ## Required Routes & Route Map
