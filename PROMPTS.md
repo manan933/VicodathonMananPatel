@@ -430,6 +430,21 @@ give me a prompt for making a icon for it ,(favicon) and add settings for instal
 3. **Verification**:
    - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
 
+### Prompt 21 — Android PWA Footer Visibility & Sticky Mobile CTA Padding Fix
+> **Timestamp**: 2026-08-07 22:30 IST
+
+```
+footer not properly visible in android app.
+```
+
+**Actions Taken**:
+1. **Footer Mobile Padding & Contrast ([`Footer.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/Footer.tsx))**:
+   - Fixed mobile overlap issue where the fixed bottom CTA bar (`fixed bottom-0 z-40`) covered the bottom half of the footer on Android screens.
+   - Added responsive bottom padding (`pb-24 sm:pb-10`) to ensure all footer links and proof-of-work badges sit cleanly above the mobile CTA bar when scrolled.
+   - Updated background to `bg-slate-100 dark:bg-dark-card` with crisp `text-slate-700 dark:text-gray-300` typography.
+2. **Verification**:
+   - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
+
 ---
 
 ## Required Routes & Route Map
