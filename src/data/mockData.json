@@ -49,9 +49,11 @@
       "currentStreak": 0,
       "longestStreak": 0,
       "currentDay": 1,
+      "totalDays": 60,
       "completedDays": 0,
       "recruiterScore": 10,
       "rankInCollege": 0,
+      "achievements": [],
       "streakHistory": []
     },
     "missedDay": {
@@ -66,11 +68,12 @@
       "currentStreak": 0,
       "longestStreak": 8,
       "currentDay": 12,
+      "totalDays": 60,
       "completedDays": 9,
       "recruiterScore": 65,
       "rankInCollege": 14,
-      "streakShieldAvailable": true,
-      "streakRecoveryDeadline": "11 hours 42 mins remaining"
+      "achievements": [],
+      "streakHistory": []
     },
     "emptyProfile": {
       "name": "New Student",
@@ -84,9 +87,12 @@
       "currentStreak": 0,
       "longestStreak": 0,
       "currentDay": 1,
+      "totalDays": 60,
       "completedDays": 0,
       "recruiterScore": 0,
-      "rankInCollege": 0
+      "rankInCollege": 0,
+      "achievements": [],
+      "streakHistory": []
     }
   },
   "tracks": [

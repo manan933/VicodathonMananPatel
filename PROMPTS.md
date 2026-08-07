@@ -16,30 +16,34 @@ This document tracks the requirements, prompts, architectural decisions, and pro
 ---
 
 ## Required Routes & Route Map
-- `/` - Landing Page (Trust, clarity, 60-day challenge overview, track explorer, social proof)
-- `/dashboard` - Student Dashboard (Streak, today's task, progress, achievements, edge-case state toggles)
-- `/day/12` - Challenge Day 12 (Task details, proof-of-work submission: GitHub + LinkedIn, AI post helper, submission status)
+```
+/
+/dashboard
+/day/12
+```
 
 ---
 
 ## Edge Case Matrix & Innovations
-1. **0-Day Streak / First Day**: Warm onboarding, checklist for connecting GitHub/LinkedIn.
-2. **Missed Day / Broken Streak**: "Streak Shield / Catch-Up Quest" to recover streak without demotivation.
+1. **0-Day Streak / First Day**: Warm onboarding, setup checklist for connecting GitHub/LinkedIn.
+2. **Missed Day / Broken Streak**: "Streak Shield / Recovery Quest" to recover streak without demotivation.
 3. **Empty Profile**: Prompts for setup with quick fill defaults.
 4. **Thoughtful Features**:
    - **Midnight OLED Theme**: Tailored for late-night mobile usage after college hours.
    - **1-Click Proof-of-Work Assistant**: Generates smart LinkedIn post captions from git commits.
    - **Recruiter Spotlight Index**: Visual score of recruiter visibility gained through streak consistency.
+   - **Late-Night Audio Brief**: Text-to-speech task summary player for mobile coders.
 
 ---
 
 ## Execution Log & Audit Checklist
 - [x] Workspace Initialization & Environment Audit
-- [x] Creation of `PROMPTS.md`
-- [ ] Next.js + React + Tailwind CSS Setup
-- [ ] Mock Data Schema Creation (`src/data/mockData.json`)
-- [ ] Screen 1: Landing Page (`/`)
-- [ ] Screen 2: Dashboard (`/dashboard`) with Edge-case state switcher
-- [ ] Screen 3: Challenge Day (`/day/12`) with Proof-of-Work workflow
-- [ ] Mobile 390px Viewport Audit & Responsive Polish
-- [ ] Verification & Build Validation
+- [x] Creation & Updates of `PROMPTS.md`
+- [x] Next.js 14 + React 18 + Tailwind CSS + Lucide Icons Setup
+- [x] Mock Data Schema Creation (`src/data/mockData.json`)
+- [x] Screen 1: Landing Page (`/`)
+- [x] Screen 2: Dashboard (`/dashboard`) with Interactive Edge-Case State Switcher
+- [x] Screen 3: Challenge Day (`/day/12`) with Proof-of-Work workflow & AI LinkedIn Assistant
+- [x] Mobile 390px Viewport Audit & Responsive Polish
+- [x] Verification & Production Build Validation (`npm run build` passed cleanly)
+- [x] Local Dev Server Active (`http://localhost:3000`)
