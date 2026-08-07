@@ -173,6 +173,38 @@ update prompts.md with the newer prompts
 - Extracted all user prompts from conversation transcript.
 - Rewrote this file with the complete, chronological prompt history and corresponding action logs.
 
+### Prompt 8 — Re-run Project
+> **Timestamp**: 2026-08-07 20:59 IST
+
+```
+re-run the project again
+```
+
+**Actions Taken**:
+- Restarted the Next.js development server daemon (`npm run dev`) at `http://localhost:3000`.
+
+---
+
+### Prompt 9 — Light Mode Support Fix
+> **Timestamp**: 2026-08-07 21:07 IST
+
+```
+light mode not working fix that
+```
+
+**Actions Taken**:
+- **Tailwind Configuration (`tailwind.config.js`)**: Updated `dark` color palette mapping to dynamic CSS variables (`--color-bg`, `--color-card`, `--color-border`, `--color-text-muted`, `--color-card-hover`).
+- **Global Theme Tokens (`src/app/globals.css`)**:
+  - Defined `:root` light mode variables (crisp `#F8FAFC` background, pure `#FFFFFF` cards, `#E2E8F0` borders, deep slate `#0F172A` typography, subtle ambient shadows).
+  - Defined `html.dark` midnight OLED mode variables (`#0A0A0E` background, `#12131A` cards, `#232533` borders, white `#FFFFFF` typography).
+  - Added semantic typography overrides for light mode ensuring buttons/pills retain crisp white text while headings/body transition seamlessly.
+- **Navbar Theme Switcher (`src/components/Navbar.tsx`)**:
+  - Implemented interactive Sun / Moon toggle button with state persistence in `localStorage` (`abtalks-theme`).
+  - Added micro-interaction animations (`hover:rotate-45`, `hover:-rotate-12`) and responsive text label.
+- **Root Layout (`src/app/layout.tsx`)**:
+  - Injected anti-FOUC inline hydration script to eliminate theme flicker upon page refresh.
+- **Verification**: `npm run build` completed with code 0 and zero lint/type errors.
+
 ---
 
 ## Required Routes & Route Map
@@ -195,12 +227,12 @@ update prompts.md with the newer prompts
 | **Standard** | Active student | Full dashboard with streak, progress, heatmap, achievements |
 
 **Thoughtful Innovations**:
-- 🌙 **Midnight OLED Theme** — True-black `#0A0A0E` background with toggleable warm amber eye-care overlay
-- ✨ **1-Click AI LinkedIn Post Assistant** — Generates recruiter-facing post copy from git commit context
-- 📊 **Recruiter Index Score** — Gamified visibility metric that rises with streak consistency
-- 🎙️ **Late-Night Audio Brief** — Web Speech API TTS task summary for mobile coders in bed
-- 🎉 **Confetti on Submission** — `canvas-confetti` celebration when daily proof of work is locked in
-- 🔥 **60-Day Heatmap Matrix** — Visual grid of all challenge days with completion state
+- ☀️/🌙 **Full Light & Dark Theme Support** — Seamless toggle between crisp light mode and midnight OLED dark mode with `localStorage` persistence.
+- ✨ **1-Click AI LinkedIn Post Assistant** — Generates recruiter-facing post copy from git commit context.
+- 📊 **Recruiter Index Score** — Gamified visibility metric that rises with streak consistency.
+- 🎙️ **Late-Night Audio Brief** — Web Speech API TTS task summary for mobile coders in bed.
+- 🎉 **Confetti on Submission** — `canvas-confetti` celebration when daily proof of work is locked in.
+- 🔥 **60-Day Heatmap Matrix** — Visual grid of all challenge days with completion state.
 
 ---
 
@@ -220,4 +252,5 @@ update prompts.md with the newer prompts
 - [x] Large file (>100MB) purged from git history
 - [x] `README.md` — highly detailed documentation created
 - [x] Bug audit pass — 10 bugs/improvements fixed, clean build verified
+- [x] Full Light Mode / Dark Mode system with instant theme switching & persistence
 - [x] `PROMPTS.md` updated with full session prompt history
