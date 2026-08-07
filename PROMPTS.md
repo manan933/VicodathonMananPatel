@@ -318,6 +318,29 @@ Error: No Output Directory named "build" found after the Build completed. Config
 - This informs Vercel's build system to automatically use Next.js default build outputs (`.next`) rather than looking for a standard static `build/` directory.
 - Updated project documentation in [`PROMPTS.md`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/PROMPTS.md).
 
+### Prompt 15 — Mobile Viewport Navbar & Dark Mode CSS Opacity Fix
+> **Timestamp**: 2026-08-07 21:46 IST
+
+```
+see not properly optimized , the navbar and dark mode issues in some part look up in the photo.
+```
+
+**Root Causes Identified from Screenshots**:
+1. **Navbar Horizontal Overflow on Mobile**: On 360px-390px mobile screens, placing all 6 navbar elements (`ABTalks 60D` logo, `Explore`, `Dashboard`, `Day 12`, `Theme Toggle`, `12d` pill) inline exceeded the viewport width (~410px), causing horizontal scrolling and cut-off text.
+2. **White Background Cards in Dark Mode**: CSS classes using opacity slashes on custom CSS variables (e.g. `dark:bg-dark-bg/80`, `dark:bg-dark-card/40`, `dark:border-dark-border/60`) produced invalid CSS syntax `background-color: rgb(#0A0A0E / 0.8)` because CSS variable definitions were in hex format (`#0A0A0E`). Browsers rejected the invalid dark style property, falling back to light mode utilities (`bg-slate-50`, `bg-slate-100/90`), which rendered as bright white boxes on the roadmap cards and footer.
+
+**Actions Taken**:
+1. **RGB Custom Property Engine (`globals.css` & `tailwind.config.js`)**:
+   - Added space-separated RGB channel variables (`--color-bg-rgb`, `--color-card-rgb`, `--color-border-rgb`, `--color-text-muted-rgb`, `--color-card-hover-rgb`) in `:root` and `html.dark`.
+   - Updated `tailwind.config.js` to map `dark.bg`, `dark.card`, `dark.border` via `'rgb(var(--color-bg-rgb) / <alpha-value>)'`.
+   - All opacity modifiers (`dark:bg-dark-bg/80`, `dark:bg-dark-card/40`, `dark:border-dark-border/60`) now evaluate to 100% valid CSS across all modern browsers.
+2. **Mobile-First Navbar Refactor (`src/components/Navbar.tsx`)**:
+   - Made navigation links display icon-only pills on mobile screens (`< md`) and reveal full text labels on `md:` breakpoints.
+   - Made theme toggle button text hidden on mobile and visible on `md:`.
+   - Reduced padding and gap offsets (`px-2.5 sm:px-4`, `gap-1.5 sm:gap-2`) so the top header fits 360px-390px viewports without horizontal scrolling or element clipping.
+3. **Verification**:
+   - Ran `npm run build` — compiled with **0 errors, 0 warnings**.
+
 ---
 
 ## Required Routes & Route Map

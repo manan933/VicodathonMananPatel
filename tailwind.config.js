@@ -27,11 +27,11 @@ module.exports = {
           violet: '#8B5CF6',
         },
         dark: {
-          bg: 'var(--color-bg)',      // Deep midnight OLED in dark, crisp slate-50 in light
-          card: 'var(--color-card)',    // Elevated card background
-          border: 'var(--color-border)',  // Border color
-          muted: 'var(--color-text-muted)',   // Muted text
-          hover: 'var(--color-card-hover)',
+          bg: 'rgb(var(--color-bg-rgb) / <alpha-value>)',      // Deep midnight OLED in dark, crisp slate-50 in light
+          card: 'rgb(var(--color-card-rgb) / <alpha-value>)',    // Elevated card background
+          border: 'rgb(var(--color-border-rgb) / <alpha-value>)',  // Border color
+          muted: 'rgb(var(--color-text-muted-rgb) / <alpha-value>)',   // Muted text
+          hover: 'rgb(var(--color-card-hover-rgb) / <alpha-value>)',
         }
       },
       fontFamily: {

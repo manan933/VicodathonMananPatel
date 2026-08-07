@@ -4,6 +4,12 @@
 
 /* Light mode defaults */
 :root {
+  --color-bg-rgb: 248 250 252;
+  --color-card-rgb: 255 255 255;
+  --color-card-hover-rgb: 241 245 249;
+  --color-border-rgb: 226 232 240;
+  --color-text-muted-rgb: 100 116 139;
+
   --color-bg: #F8FAFC;
   --color-card: #FFFFFF;
   --color-card-hover: #F1F5F9;
@@ -22,6 +28,12 @@
 
 /* Dark mode (Midnight OLED) */
 html.dark, :root.dark {
+  --color-bg-rgb: 10 10 14;
+  --color-card-rgb: 18 19 26;
+  --color-card-hover-rgb: 25 27 38;
+  --color-border-rgb: 35 37 51;
+  --color-text-muted-rgb: 138 143 173;
+
   --color-bg: #0A0A0E;
   --color-card: #12131A;
   --color-card-hover: #191B26;
