@@ -207,6 +207,40 @@ light mode not working fix that
 
 ---
 
+### Prompt 10 — Permanent Fix for Unstyled HTML / Dev Cache Corruption
+> **Timestamp**: 2026-08-07 21:11 IST
+
+```
+this happened several times , find an permanent solution
+```
+
+**Root Cause**:
+- When `npm run build` ran while `next dev` was running, Next.js overwritten the `.next/` directory with production hashes, causing the active dev server to return `404 Not Found` for dev chunks and `_next/static/css/app/layout.css`.
+- PostCSS `@import url(...)` in `globals.css` caused additional network dependency stalls in the dev compiler.
+
+**Permanent Fix Applied**:
+1. **Automated Cache Purge Hook (`package.json`)**: Added `"predev"` lifecycle script (`node -e "fs.rmSync('.next', {recursive:true, force:true})"`) ensuring `next dev` always starts with a clean, uncorrupted compilation manifest across Windows, macOS, and Linux.
+2. **Local CSS Independence (`src/app/globals.css` & `src/app/layout.tsx`)**:
+   - Removed `@import url(...)` from `globals.css`.
+   - Moved Google Fonts `<link rel="stylesheet">` tags directly into `<head>` in `layout.tsx`.
+3. **Cache Reset & Validation**: Purged stale `.next/` directory and restarted dev server. Verified all routes (`/`, `/dashboard`, `/day/12`) compile with HTTP 200 and zero CSS/chunk 404s.
+
+### Prompt 11 — Animated Loop for Hiring Partners
+> **Timestamp**: 2026-08-07 21:13 IST
+
+```
+can these part be animated or in a loop?
+```
+
+**Actions Taken**:
+- **Expanded Partner Roster (`src/data/mockData.json`)**: Added top tech employers (Razorpay, Swiggy, Zerodha, Postman, Cred, Flipkart, Zomato, PhonePe, BrowserStack, Groww, Atlassian) with distinctive brand accent palettes and active hiring role tags.
+- **Infinite Marquee Engine (`src/app/globals.css`)**: Implemented smooth 60fps CSS `@keyframes marquee` running in an endless loop with hover-pause functionality (`hover:[animation-play-state:paused]`).
+- **Visual Polish (`src/app/page.tsx`)**:
+  - Added gradient edge masks (`[mask-image:linear-gradient(...)]`) for soft cinematic entry/exit fading.
+  - Enhanced company badges with live pulsing hiring indicators, glassmorphism cards, and interactive hover glow effects.
+
+---
+
 ## Required Routes & Route Map
 
 ```

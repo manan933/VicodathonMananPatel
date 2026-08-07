@@ -126,19 +126,66 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Recruiter Hiring Partner Logos */}
-      <section className="py-6 border-b border-dark-border/60 bg-dark-card/40 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4">
-          <p className="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-            Recruiters hiring directly from ABTalks streak leaderboards
-          </p>
-          <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap opacity-75">
+      {/* Recruiter Hiring Partner Logos - Infinite Animated Loop */}
+      <section className="py-7 border-b border-dark-border/60 bg-dark-card/40 overflow-hidden relative">
+        <div className="max-w-5xl mx-auto px-4 mb-4">
+          <div className="flex items-center justify-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest font-['Outfit']">
+              Recruiters hiring directly from ABTalks streak leaderboards
+            </p>
+          </div>
+        </div>
+
+        {/* Infinite Looping Ticker Track */}
+        <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="flex animate-marquee hover:[animation-play-state:paused] gap-4 sm:gap-6 py-2 w-max">
+            {/* First list */}
             {mockData.hiringPartners.map((partner, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-dark-bg/60 border border-dark-border">
-                <div className="w-5 h-5 rounded-full bg-rose-500/20 flex items-center justify-center text-[10px] font-bold text-rose-400">
+              <div
+                key={`partner-1-${idx}`}
+                className="group flex items-center gap-3 px-4 py-2.5 rounded-2xl glass-card border border-dark-border hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/10 transition-all duration-200 cursor-pointer shrink-0"
+              >
+                <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-extrabold text-xs border ${partner.color || 'bg-rose-500/20 text-rose-400 border-rose-500/30'}`}>
                   {partner.name[0]}
                 </div>
-                <span className="text-xs font-bold text-gray-300">{partner.name}</span>
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-white group-hover:text-rose-400 transition-colors">
+                      {partner.name}
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" title="Active Hiring Partner" />
+                  </div>
+                  <span className="text-[10px] text-gray-400 font-medium">
+                    {partner.role || 'Active Hiring Partner'}
+                  </span>
+                </div>
+              </div>
+            ))}
+
+            {/* Duplicate list for seamless infinite loop */}
+            {mockData.hiringPartners.map((partner, idx) => (
+              <div
+                key={`partner-2-${idx}`}
+                className="group flex items-center gap-3 px-4 py-2.5 rounded-2xl glass-card border border-dark-border hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/10 transition-all duration-200 cursor-pointer shrink-0"
+              >
+                <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-extrabold text-xs border ${partner.color || 'bg-rose-500/20 text-rose-400 border-rose-500/30'}`}>
+                  {partner.name[0]}
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-white group-hover:text-rose-400 transition-colors">
+                      {partner.name}
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" title="Active Hiring Partner" />
+                  </div>
+                  <span className="text-[10px] text-gray-400 font-medium">
+                    {partner.role || 'Active Hiring Partner'}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
