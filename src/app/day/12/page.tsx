@@ -121,7 +121,7 @@ export default function ChallengeDayPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-bg text-gray-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-gray-100 flex flex-col font-sans">
       <Navbar streakCount={isSubmitted ? 13 : 12} />
 
       <main className="max-w-4xl mx-auto w-full px-4 py-6 flex-1">
@@ -130,7 +130,7 @@ export default function ChallengeDayPage() {
         <div className="flex items-center justify-between mb-4">
           <Link
             href="/dashboard"
-            className="text-xs text-gray-400 hover:text-white flex items-center gap-1 transition-colors"
+            className="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition-colors font-medium"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Dashboard</span>
@@ -139,17 +139,17 @@ export default function ChallengeDayPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/day/11"
-              className="p-1.5 rounded-lg bg-dark-card border border-dark-border text-xs text-gray-400 hover:text-white transition-colors"
+              className="p-1.5 px-3 rounded-lg bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-xs text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm font-medium"
               title="Previous Day"
             >
               Day 11
             </Link>
-            <span className="text-xs font-bold px-3 py-1 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30">
+            <span className="text-xs font-bold px-3 py-1 rounded-xl bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30">
               Day 12 of 60
             </span>
             <Link
               href="/day/13"
-              className="p-1.5 rounded-lg bg-dark-card border border-dark-border text-xs text-gray-400 hover:text-white transition-colors"
+              className="p-1.5 px-3 rounded-lg bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-xs text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm font-medium"
               title="Next Day"
             >
               Day 13
@@ -159,21 +159,21 @@ export default function ChallengeDayPage() {
 
         {/* Success Banner if Submitted */}
         {isSubmitted && (
-          <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-emerald-900/40 to-dark-card border border-emerald-500/50 text-white flex items-center justify-between gap-3 animate-fade-in">
+          <div className="mb-6 p-4 rounded-2xl bg-emerald-50 dark:bg-gradient-to-r dark:from-emerald-950/80 dark:via-emerald-900/40 dark:to-dark-card border border-emerald-300 dark:border-emerald-500/50 text-slate-900 dark:text-white flex items-center justify-between gap-3 shadow-sm animate-fade-in">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 flex items-center justify-center border border-emerald-500/40 shrink-0">
-                <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+              <div className="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center border border-emerald-300 dark:border-emerald-500/40 shrink-0">
+                <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-sm font-extrabold text-emerald-400 font-['Outfit']">Day 12 Proof of Work Verified! 🎉</h3>
-                <p className="text-xs text-gray-300 mt-0.5">
-                  Your streak incremented to <strong className="text-amber-400">13 Days</strong>! Your proof is visible to recruiters.
+                <h3 className="text-sm font-extrabold text-emerald-800 dark:text-emerald-400 font-['Outfit']">Day 12 Proof of Work Verified! 🎉</h3>
+                <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
+                  Your streak incremented to <strong className="text-amber-700 dark:text-amber-400 font-bold">13 Days</strong>! Your proof is visible to recruiters.
                 </p>
               </div>
             </div>
             <Link
               href="/dashboard"
-              className="px-3.5 py-2 rounded-xl bg-emerald-500 text-dark-bg font-bold text-xs shrink-0 hover:bg-emerald-400 transition-colors"
+              className="px-3.5 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs shrink-0 hover:bg-emerald-700 transition-colors shadow-sm"
             >
               Dashboard
             </Link>
@@ -181,42 +181,42 @@ export default function ChallengeDayPage() {
         )}
 
         {/* Challenge Header Card */}
-        <div className="p-6 rounded-3xl glass-panel border border-dark-border mb-6 relative overflow-hidden">
+        <div className="p-6 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border mb-6 relative overflow-hidden shadow-sm">
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-2.5 py-0.5 rounded-md bg-rose-500/20 text-rose-400 text-[10px] font-bold border border-rose-500/30">
+            <span className="px-2.5 py-0.5 rounded-md bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 text-[10px] font-bold border border-rose-200 dark:border-rose-500/30">
               {challenge.track}
             </span>
-            <span className="px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-400 text-[10px] font-bold border border-amber-500/30 flex items-center gap-1">
-              <Clock className="w-3 h-3" />
+            <span className="px-2.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 text-[10px] font-bold border border-amber-200 dark:border-amber-500/30 flex items-center gap-1">
+              <Clock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
               <span>{challenge.estimatedMinutes} Mins</span>
             </span>
-            <span className="px-2.5 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 text-[10px] font-bold border border-indigo-500/30">
+            <span className="px-2.5 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold border border-indigo-200 dark:border-indigo-500/30">
               {challenge.difficulty}
             </span>
-            <span className="text-xs text-amber-400 font-bold ml-auto">+{challenge.points} XP</span>
+            <span className="text-xs text-amber-700 dark:text-amber-400 font-bold ml-auto">+{challenge.points} XP</span>
           </div>
 
-          <h1 className="text-xl sm:text-2xl font-extrabold text-white font-['Outfit'] mb-3">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white font-['Outfit'] mb-3">
             {challenge.title}
           </h1>
 
-          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-4 font-normal">
             {challenge.overview}
           </p>
 
           {/* Late-Night Audio Brief Button */}
-          <div className="p-3 rounded-2xl bg-dark-bg/80 border border-dark-border flex items-center justify-between gap-3">
+          <div className="p-3 rounded-2xl bg-slate-50 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-xs">
-              <Volume2 className={`w-4 h-4 text-amber-400 ${isPlayingAudio ? 'animate-bounce' : ''}`} />
-              <span className="text-gray-300 font-medium">Late-Night Audio Brief (Listen on mobile):</span>
+              <Volume2 className={`w-4 h-4 text-amber-600 dark:text-amber-400 ${isPlayingAudio ? 'animate-bounce' : ''}`} />
+              <span className="text-slate-700 dark:text-gray-300 font-medium">Late-Night Audio Brief (Listen on mobile):</span>
             </div>
 
             <button
               onClick={handleToggleAudio}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm ${
                 isPlayingAudio 
-                  ? 'bg-rose-500 text-white' 
-                  : 'bg-dark-card border border-dark-border text-amber-400 hover:border-amber-400'
+                  ? 'bg-rose-600 text-white' 
+                  : 'bg-white dark:bg-dark-card border border-slate-300 dark:border-dark-border text-amber-700 dark:text-amber-400 hover:border-amber-400'
               }`}
             >
               {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
@@ -229,84 +229,84 @@ export default function ChallengeDayPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           
           {/* Objectives & Requirements */}
-          <div className="p-5 rounded-3xl glass-card border border-dark-border flex flex-col justify-between">
+          <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border flex flex-col justify-between shadow-sm">
             <div>
-              <h3 className="text-sm font-extrabold text-white font-['Outfit'] mb-3 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-rose-400" />
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit'] mb-3 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-rose-600 dark:text-rose-400" />
                 <span>Learning Objectives & Specs</span>
               </h3>
 
               <ul className="space-y-2 mb-4">
                 {challenge.learningObjectives.map((obj, i) => (
-                  <li key={i} className="text-xs text-gray-300 flex items-start gap-2">
+                  <li key={i} className="text-xs text-slate-600 dark:text-gray-300 flex items-start gap-2 font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
                     <span>{obj}</span>
                   </li>
                 ))}
               </ul>
 
-              <h4 className="text-xs font-bold text-amber-400 mb-2">Technical Requirements:</h4>
-              <ul className="space-y-1.5 text-xs text-gray-400 mb-4">
+              <h4 className="text-xs font-bold text-amber-700 dark:text-amber-400 mb-2">Technical Requirements:</h4>
+              <ul className="space-y-1.5 text-xs text-slate-600 dark:text-gray-400 mb-4 font-medium">
                 {challenge.requirements.map((req, i) => (
                   <li key={i} className="flex items-center gap-1.5">
-                    <Zap className="w-3 h-3 text-amber-400 shrink-0" />
+                    <Zap className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
                     <span>{req}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs">
-              <span className="font-bold text-amber-300">🔥 Stretch Goal: </span>
-              <span className="text-gray-300">{challenge.bonusChallenge}</span>
+            <div className="p-3 rounded-2xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-xs">
+              <span className="font-bold text-amber-800 dark:text-amber-300">🔥 Stretch Goal: </span>
+              <span className="text-slate-600 dark:text-gray-300 font-medium">{challenge.bonusChallenge}</span>
             </div>
           </div>
 
           {/* Starter Code Block */}
-          <div className="p-5 rounded-3xl glass-card border border-dark-border flex flex-col justify-between">
+          <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border flex flex-col justify-between shadow-sm">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <Code2 className="w-4 h-4 text-amber-400" />
-                  <h3 className="text-sm font-extrabold text-white font-['Outfit']">Starter Template</h3>
+                  <Code2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                  <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">Starter Template</h3>
                 </div>
                 <button
                   onClick={handleCopyCode}
-                  className="px-2.5 py-1 rounded-lg bg-dark-bg border border-dark-border text-xs text-gray-300 hover:text-white flex items-center gap-1 transition-colors"
+                  className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white flex items-center gap-1 transition-colors font-medium shadow-sm"
                 >
-                  {isCopied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                  {isCopied ? <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3 h-3" />}
                   <span>{isCopied ? 'Copied!' : 'Copy Code'}</span>
                 </button>
               </div>
 
-              <pre className="p-3.5 rounded-2xl bg-dark-bg text-amber-200 font-mono text-[11px] leading-relaxed overflow-x-auto border border-dark-border max-h-64">
+              <pre className="p-3.5 rounded-2xl bg-slate-900 text-amber-300 font-mono text-[11px] leading-relaxed overflow-x-auto border border-slate-800 max-h-64 shadow-inner">
                 <code>{challenge.starterSnippet}</code>
               </pre>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-dark-border/60 text-[11px] text-gray-400 flex items-center justify-between">
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60 text-[11px] text-slate-500 dark:text-gray-400 flex items-center justify-between font-medium">
               <span>Environment: Node 18+ / Redis 7</span>
-              <span className="text-rose-400 font-semibold">Ready to test</span>
+              <span className="text-rose-600 dark:text-rose-400 font-bold">Ready to test</span>
             </div>
           </div>
 
         </div>
 
         {/* Proof of Work Submission Form */}
-        <div className="p-6 rounded-3xl glass-panel border border-rose-500/40 mb-8 shadow-2xl relative overflow-hidden">
+        <div className="p-6 rounded-3xl bg-white dark:bg-dark-card border border-rose-300 dark:border-rose-500/40 mb-8 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-48 h-48 bg-rose-500/10 blur-3xl pointer-events-none" />
 
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h2 className="text-lg font-extrabold text-white font-['Outfit'] flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-rose-500" />
+              <h2 className="text-lg font-extrabold text-slate-900 dark:text-white font-['Outfit'] flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-rose-600 dark:text-rose-500" />
                 <span>Submit Daily Proof of Work</span>
               </h2>
-              <p className="text-xs text-gray-300 mt-0.5">
+              <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
                 Submit your public GitHub commit & LinkedIn post to lock in your daily streak.
               </p>
             </div>
-            <span className="text-xs font-bold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/30">
+            <span className="text-xs font-bold text-amber-800 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-500/30 self-start sm:self-auto">
               Required for Recruiters
             </span>
           </div>
@@ -315,8 +315,8 @@ export default function ChallengeDayPage() {
             
             {/* GitHub URL Input */}
             <div>
-              <label className="block text-xs font-bold text-gray-300 mb-1.5 flex items-center gap-1.5">
-                <Github className="w-4 h-4 text-white" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-gray-300 mb-1.5 flex items-center gap-1.5">
+                <Github className="w-4 h-4 text-slate-900 dark:text-white" />
                 <span>1. GitHub Repository / Commit URL *</span>
               </label>
               <input
@@ -325,15 +325,15 @@ export default function ChallengeDayPage() {
                 value={githubUrl}
                 onChange={(e) => setGithubUrl(e.target.value)}
                 placeholder="https://github.com/username/repo-name/commit/..."
-                className="w-full px-4 py-3 rounded-2xl bg-dark-bg border border-dark-border text-xs text-white placeholder-gray-500 focus:outline-none focus:border-rose-500 transition-colors"
+                className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-colors shadow-sm"
               />
             </div>
 
             {/* LinkedIn Post Input & AI Draft Helper */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-bold text-gray-300 flex items-center gap-1.5">
-                  <Linkedin className="w-4 h-4 text-blue-400" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-gray-300 flex items-center gap-1.5">
+                  <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   <span>2. LinkedIn Proof Post *</span>
                 </label>
 
@@ -341,16 +341,16 @@ export default function ChallengeDayPage() {
                 <button
                   type="button"
                   onClick={handleGenerateAiPost}
-                  className="px-2.5 py-1 rounded-xl bg-gradient-to-r from-amber-500/20 to-rose-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold flex items-center gap-1 hover:border-amber-400 transition-all"
+                  className="px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-gradient-to-r dark:from-amber-500/20 dark:to-rose-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40 text-[11px] font-bold flex items-center gap-1 hover:border-amber-400 transition-all shadow-sm"
                 >
-                  <Sparkles className="w-3 h-3 text-amber-400 animate-pulse" />
+                  <Sparkles className="w-3 h-3 text-amber-600 dark:text-amber-400 animate-pulse" />
                   <span>AI Post Assistant (1-Click)</span>
                 </button>
               </div>
 
               {linkedinText && (
-                <div className="mb-2 p-3 rounded-xl bg-dark-bg/90 border border-amber-500/30 text-xs text-gray-300 whitespace-pre-wrap">
-                  <p className="text-[10px] font-bold text-amber-400 mb-1">Generated Draft Post:</p>
+                <div className="mb-2 p-3 rounded-xl bg-slate-100 dark:bg-dark-bg/90 border border-amber-300 dark:border-amber-500/30 text-xs text-slate-800 dark:text-gray-300 whitespace-pre-wrap shadow-inner">
+                  <p className="text-[10px] font-bold text-amber-800 dark:text-amber-400 mb-1">Generated Draft Post:</p>
                   {linkedinText}
                 </div>
               )}
@@ -361,7 +361,7 @@ export default function ChallengeDayPage() {
                 value={linkedinUrl}
                 onChange={(e) => setLinkedinUrl(e.target.value)}
                 placeholder="https://linkedin.com/posts/username_abtalks-day12-..."
-                className="w-full px-4 py-3 rounded-2xl bg-dark-bg border border-dark-border text-xs text-white placeholder-gray-500 focus:outline-none focus:border-rose-500 transition-colors"
+                className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-colors shadow-sm"
               />
             </div>
 
@@ -371,15 +371,15 @@ export default function ChallengeDayPage() {
               disabled={submitting || isSubmitted}
               className={`w-full py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 shadow-xl transition-all ${
                 isSubmitted
-                  ? 'bg-emerald-500 text-dark-bg cursor-default'
-                  : 'bg-gradient-to-r from-rose-600 via-brand-500 to-amber-500 text-white hover:scale-[1.01] active:scale-[0.99] shadow-rose-600/30'
+                  ? 'bg-emerald-600 text-white cursor-default'
+                  : 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white hover:scale-[1.01] active:scale-[0.99] shadow-rose-600/30'
               }`}
             >
               {submitting ? (
                 <span>Validating Proof of Work...</span>
               ) : isSubmitted ? (
                 <>
-                  <CheckCircle2 className="w-5 h-5 text-dark-bg" />
+                  <CheckCircle2 className="w-5 h-5 text-white" />
                   <span>Submitted & Verified for Day 12!</span>
                 </>
               ) : (
@@ -393,38 +393,38 @@ export default function ChallengeDayPage() {
         </div>
 
         {/* Peer Submissions Feed */}
-        <div className="p-6 rounded-3xl glass-card border border-dark-border">
+        <div className="p-6 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm font-extrabold text-white font-['Outfit']">Batchmate Submissions (Day 12)</h3>
-              <p className="text-xs text-gray-400">See how fellow Indian college coders built this today.</p>
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">Batchmate Submissions (Day 12)</h3>
+              <p className="text-xs text-slate-500 dark:text-gray-400">See how fellow Indian college coders built this today.</p>
             </div>
-            <span className="text-xs text-rose-400 font-bold">142 Submitted Today</span>
+            <span className="text-xs text-rose-600 dark:text-rose-400 font-bold">142 Submitted Today</span>
           </div>
 
           <div className="space-y-3">
             {mockData.peerSubmissions.map((sub) => (
-              <div key={sub.id} className="p-4 rounded-2xl bg-dark-bg/80 border border-dark-border">
+              <div key={sub.id} className="p-4 rounded-2xl bg-slate-50 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border shadow-sm">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2.5">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={sub.avatar} alt={sub.studentName} className="w-8 h-8 rounded-xl object-cover border border-rose-500/30" />
+                    <img src={sub.avatar} alt={sub.studentName} className="w-8 h-8 rounded-xl object-cover border border-rose-300 dark:border-rose-500/30" />
                     <div>
-                      <h4 className="text-xs font-bold text-white">{sub.studentName}</h4>
-                      <p className="text-[10px] text-gray-400">{sub.college} • {sub.timeAgo}</p>
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">{sub.studentName}</h4>
+                      <p className="text-[10px] text-slate-500 dark:text-gray-400">{sub.college} • {sub.timeAgo}</p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => handleUpvote(sub.id)}
-                    className="px-2.5 py-1 rounded-xl bg-dark-card border border-dark-border text-xs text-gray-300 hover:text-amber-400 flex items-center gap-1 transition-colors"
+                    className="px-2.5 py-1 rounded-xl bg-white dark:bg-dark-card border border-slate-300 dark:border-dark-border text-xs text-slate-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-1 transition-colors shadow-sm font-medium"
                   >
-                    <ThumbsUp className="w-3 h-3 text-amber-400" />
+                    <ThumbsUp className="w-3 h-3 text-amber-500" />
                     <span className="font-bold">{upvoteCounts[sub.id]}</span>
                   </button>
                 </div>
 
-                <p className="text-xs text-gray-300 leading-relaxed mb-2">
+                <p className="text-xs text-slate-700 dark:text-gray-300 leading-relaxed mb-2">
                   {sub.linkedinPost}
                 </p>
 
@@ -433,7 +433,7 @@ export default function ChallengeDayPage() {
                     href={sub.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-rose-400 font-semibold flex items-center gap-1 hover:underline"
+                    className="text-rose-600 dark:text-rose-400 font-semibold flex items-center gap-1 hover:underline"
                   >
                     <Github className="w-3 h-3" />
                     <span>View GitHub Commit</span>

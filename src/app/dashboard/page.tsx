@@ -50,7 +50,7 @@ export default function DashboardPage() {
   const progressPercent = Math.round((user.completedDays / user.totalDays) * 100) || 0;
 
   return (
-    <div className="min-h-screen bg-dark-bg text-gray-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-gray-100 flex flex-col font-sans">
       <Navbar streakCount={user.currentStreak} />
 
       <main className="max-w-4xl mx-auto w-full px-4 py-6 flex-1">
@@ -60,20 +60,20 @@ export default function DashboardPage() {
 
         {/* Dynamic Edge Case Alert Banners */}
         {isFirstDay && (
-          <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-amber-500/15 border border-amber-500/40 text-white relative overflow-hidden">
+          <div className="mb-6 p-4 rounded-2xl bg-amber-50 dark:bg-gradient-to-r dark:from-amber-500/15 dark:via-rose-500/10 dark:to-amber-500/15 border border-amber-300 dark:border-amber-500/40 text-slate-900 dark:text-white relative overflow-hidden shadow-sm">
             <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-xl bg-amber-500/20 flex items-center justify-center shrink-0 border border-amber-500/30">
-                <Sparkles className="w-5 h-5 text-amber-400" />
+              <div className="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center shrink-0 border border-amber-300 dark:border-amber-500/30">
+                <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-extrabold text-amber-300 font-['Outfit']">Welcome to Day 1 of ABTalks!</h3>
-                <p className="text-xs text-gray-300 mt-0.5">
+                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Welcome to Day 1 of ABTalks!</h3>
+                <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
                   You have a fresh 0-day streak. Complete today&apos;s 45-minute coding task to trigger your flame!
                 </p>
                 <div className="mt-3 flex items-center gap-3">
                   <Link
                     href="/day/12"
-                    className="px-3.5 py-1.5 rounded-xl bg-amber-500 text-black font-bold text-xs flex items-center gap-1 hover:bg-amber-400 transition-colors"
+                    className="px-3.5 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center gap-1 hover:bg-amber-400 transition-colors shadow-sm"
                   >
                     <span>Start Day 1 Challenge</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -85,25 +85,25 @@ export default function DashboardPage() {
         )}
 
         {isMissedDay && (
-          <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-rose-950/80 via-rose-900/40 to-dark-card border border-rose-500/50 text-white">
+          <div className="mb-6 p-4 rounded-2xl bg-rose-50 dark:bg-gradient-to-r dark:from-rose-950/80 dark:via-rose-900/40 dark:to-dark-card border border-rose-300 dark:border-rose-500/50 text-slate-900 dark:text-white shadow-sm">
             <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-xl bg-rose-500/20 flex items-center justify-center shrink-0 border border-rose-500/40">
-                <ShieldAlert className="w-5 h-5 text-rose-400 animate-pulse" />
+              <div className="w-9 h-9 rounded-xl bg-rose-100 dark:bg-rose-500/20 flex items-center justify-center shrink-0 border border-rose-300 dark:border-rose-500/40">
+                <ShieldAlert className="w-5 h-5 text-rose-600 dark:text-rose-400 animate-pulse" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-sm font-extrabold text-rose-400 font-['Outfit']">Streak Protection Activated!</h3>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                  <h3 className="text-sm font-extrabold text-rose-700 dark:text-rose-400 font-['Outfit']">Streak Protection Activated!</h3>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-500/30">
                     11h 42m Left
                   </span>
                 </div>
-                <p className="text-xs text-gray-300 mt-1">
+                <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
                   You missed yesterday&apos;s commit. Don&apos;t worry! Complete today&apos;s Catch-Up Quest before midnight to restore your 8-day streak shield.
                 </p>
                 <div className="mt-3 flex items-center gap-2">
                   <Link
                     href="/day/12"
-                    className="px-3.5 py-1.5 rounded-xl bg-rose-500 text-white font-bold text-xs flex items-center gap-1 shadow-md shadow-rose-500/40 hover:bg-rose-600 transition-colors"
+                    className="px-3.5 py-1.5 rounded-xl bg-rose-600 text-white font-bold text-xs flex items-center gap-1 shadow-md shadow-rose-600/40 hover:bg-rose-700 transition-colors"
                   >
                     <span>Execute Catch-Up Quest</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -115,23 +115,23 @@ export default function DashboardPage() {
         )}
 
         {isEmptyProfile && (
-          <div className="mb-6 p-4 rounded-2xl bg-dark-card border border-amber-500/40 text-white">
+          <div className="mb-6 p-4 rounded-2xl bg-amber-50 dark:bg-dark-card border border-amber-300 dark:border-amber-500/40 text-slate-900 dark:text-white shadow-sm">
             <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-xl bg-amber-500/20 flex items-center justify-center shrink-0 border border-amber-500/30">
-                <AlertCircle className="w-5 h-5 text-amber-400" />
+              <div className="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center shrink-0 border border-amber-300 dark:border-amber-500/30">
+                <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-extrabold text-amber-300 font-['Outfit']">Connect Your Public Accounts</h3>
-                <p className="text-xs text-gray-300 mt-0.5">
+                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Connect Your Public Accounts</h3>
+                <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
                   Recruiters cannot verify your daily proof of work until you link your GitHub and LinkedIn profiles.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <button className="px-3 py-1.5 rounded-xl bg-dark-bg border border-dark-border text-xs font-semibold text-gray-200 flex items-center gap-1.5 hover:border-rose-500/50">
-                    <Github className="w-3.5 h-3.5 text-white" />
+                  <button className="px-3 py-1.5 rounded-xl bg-white dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs font-semibold text-slate-800 dark:text-gray-200 flex items-center gap-1.5 hover:border-rose-500 shadow-sm">
+                    <Github className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
                     <span>Link GitHub</span>
                   </button>
-                  <button className="px-3 py-1.5 rounded-xl bg-dark-bg border border-dark-border text-xs font-semibold text-gray-200 flex items-center gap-1.5 hover:border-rose-500/50">
-                    <Linkedin className="w-3.5 h-3.5 text-blue-400" />
+                  <button className="px-3 py-1.5 rounded-xl bg-white dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs font-semibold text-slate-800 dark:text-gray-200 flex items-center gap-1.5 hover:border-rose-500 shadow-sm">
+                    <Linkedin className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                     <span>Link LinkedIn</span>
                   </button>
                 </div>
@@ -141,7 +141,7 @@ export default function DashboardPage() {
         )}
 
         {/* Student Profile Header Header */}
-        <div className="p-5 rounded-3xl glass-panel border border-dark-border mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-5 rounded-3xl bg-white dark:bg-dark-card/90 border border-slate-200 dark:border-dark-border mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
           <div className="flex items-center gap-3.5">
             <div className="relative">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -150,43 +150,43 @@ export default function DashboardPage() {
                 alt={user.name}
                 className="w-14 h-14 rounded-2xl object-cover border-2 border-rose-500/40 shadow-lg shadow-rose-950/30"
               />
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-dark-bg flex items-center justify-center">
-                <CheckCircle2 className="w-3 h-3 text-dark-bg fill-dark-bg" />
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white dark:border-dark-bg flex items-center justify-center">
+                <CheckCircle2 className="w-3 h-3 text-white fill-white" />
               </div>
             </div>
 
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-lg font-extrabold text-white font-['Outfit']">{user.name}</h1>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                <h1 className="text-lg font-extrabold text-slate-900 dark:text-white font-['Outfit']">{user.name}</h1>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30">
                   @{user.handle}
                 </span>
               </div>
-              <p className="text-xs text-gray-300 mt-0.5 flex items-center gap-1">
+              <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5 flex items-center gap-1">
                 <span>{user.college}</span>
                 <span>•</span>
-                <span className="text-amber-400 font-medium">{user.year}</span>
+                <span className="text-amber-700 dark:text-amber-400 font-semibold">{user.year}</span>
               </p>
-              <p className="text-[11px] text-gray-400 mt-1 flex items-center gap-1">
-                <BookOpen className="w-3 h-3 text-rose-400" />
+              <p className="text-[11px] text-slate-500 dark:text-gray-400 mt-1 flex items-center gap-1 font-medium">
+                <BookOpen className="w-3 h-3 text-rose-600 dark:text-rose-400" />
                 <span>Track: {user.track}</span>
               </p>
             </div>
           </div>
 
           {/* Quick Recruiter Index Pill */}
-          <div className="w-full sm:w-auto p-3 rounded-2xl bg-dark-bg/80 border border-dark-border flex items-center justify-between sm:justify-start gap-4">
+          <div className="w-full sm:w-auto p-3 rounded-2xl bg-slate-100 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border flex items-center justify-between sm:justify-start gap-4">
             <div>
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Recruiter Index</p>
+              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">Recruiter Index</p>
               <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="text-lg font-extrabold text-emerald-400 font-['Outfit']">{user.recruiterScore}/100</span>
-                <TrendingUp className="w-4 h-4 text-emerald-400" />
+                <span className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400 font-['Outfit']">{user.recruiterScore}/100</span>
+                <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               </div>
             </div>
-            <div className="h-8 w-px bg-dark-border" />
+            <div className="h-8 w-px bg-slate-200 dark:bg-dark-border" />
             <div>
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">College Rank</p>
-              <p className="text-lg font-extrabold text-amber-400 font-['Outfit']">
+              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">College Rank</p>
+              <p className="text-lg font-extrabold text-amber-600 dark:text-amber-400 font-['Outfit']">
                 {user.rankInCollege > 0 ? `#${user.rankInCollege}` : 'Unranked'}
               </p>
             </div>
@@ -197,33 +197,33 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           
           {/* Main Streak Counter Card */}
-          <div className="p-5 rounded-3xl glass-card border border-amber-500/30 relative overflow-hidden flex flex-col justify-between">
+          <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-amber-300 dark:border-amber-500/30 relative overflow-hidden flex flex-col justify-between shadow-sm">
             <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
               <Flame className="w-32 h-32 text-amber-500 fill-amber-500" />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1">
-                  <Flame className="w-4 h-4 text-amber-400 fill-amber-400 animate-bounce" />
+                <span className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider flex items-center gap-1">
+                  <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400 animate-bounce" />
                   <span>Current Streak</span>
                 </span>
-                <span className="text-[10px] text-gray-400 bg-dark-bg px-2 py-0.5 rounded-full border border-dark-border">
+                <span className="text-[10px] text-slate-600 dark:text-gray-400 bg-slate-100 dark:bg-dark-bg px-2 py-0.5 rounded-full border border-slate-200 dark:border-dark-border font-medium">
                   Best: {user.longestStreak} Days
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-4xl font-extrabold text-white font-['Outfit']">{user.currentStreak}</span>
-                <span className="text-sm font-bold text-amber-400">Days Active</span>
+                <span className="text-4xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">{user.currentStreak}</span>
+                <span className="text-sm font-bold text-amber-700 dark:text-amber-400">Days Active</span>
               </div>
             </div>
 
             {/* Streak Status Bar */}
-            <div className="mt-4 pt-3 border-t border-dark-border/60">
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60">
               <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className="text-gray-400 text-[11px]">Today&apos;s Status</span>
-                <span className={`font-bold text-[11px] ${user.streakHistory?.find(h => h.day === user.currentDay)?.completed ? 'text-emerald-400' : edgeState === 'firstDay' ? 'text-gray-500' : 'text-amber-400'}`}>
+                <span className="text-slate-500 dark:text-gray-400 text-[11px] font-medium">Today&apos;s Status</span>
+                <span className={`font-bold text-[11px] ${user.streakHistory?.find(h => h.day === user.currentDay)?.completed ? 'text-emerald-600 dark:text-emerald-400' : edgeState === 'firstDay' ? 'text-slate-400 dark:text-gray-500' : 'text-amber-700 dark:text-amber-400'}`}>
                   {user.streakHistory?.find(h => h.day === user.currentDay)?.completed 
                     ? 'Submitted ✓' 
                     : edgeState === 'firstDay' 
@@ -231,7 +231,7 @@ export default function DashboardPage() {
                     : 'Pending Submission'}
                 </span>
               </div>
-              <div className="w-full h-2 rounded-full bg-dark-bg overflow-hidden border border-dark-border">
+              <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-dark-bg overflow-hidden border border-slate-300 dark:border-dark-border">
                 <div 
                   className="h-full bg-gradient-to-r from-amber-500 to-rose-500 rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(100, (user.currentStreak / 60) * 100)}%` }}
@@ -241,30 +241,30 @@ export default function DashboardPage() {
           </div>
 
           {/* Overall 60-Day Progress Card */}
-          <div className="p-5 rounded-3xl glass-card border border-dark-border flex flex-col justify-between">
+          <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border flex flex-col justify-between shadow-sm">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-rose-400 uppercase tracking-wider flex items-center gap-1">
-                  <CalendarCheck className="w-4 h-4 text-rose-400" />
+                <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider flex items-center gap-1">
+                  <CalendarCheck className="w-4 h-4 text-rose-600 dark:text-rose-400" />
                   <span>Challenge Progress</span>
                 </span>
-                <span className="text-xs font-extrabold text-white font-['Outfit']">{progressPercent}%</span>
+                <span className="text-xs font-extrabold text-slate-900 dark:text-white font-['Outfit']">{progressPercent}%</span>
               </div>
 
               <div className="flex items-baseline gap-1 mt-2">
-                <span className="text-3xl font-extrabold text-white font-['Outfit']">Day {user.currentDay}</span>
-                <span className="text-xs font-semibold text-gray-400">/ 60 Days</span>
+                <span className="text-3xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">Day {user.currentDay}</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-gray-400">/ 60 Days</span>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-dark-border/60">
-              <div className="flex justify-between text-[11px] text-gray-400 mb-1">
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60">
+              <div className="flex justify-between text-[11px] text-slate-500 dark:text-gray-400 mb-1 font-medium">
                 <span>Completed: {user.completedDays} days</span>
                 <span>Remaining: {user.totalDays - user.completedDays} days</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-dark-bg overflow-hidden border border-dark-border">
+              <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-dark-bg overflow-hidden border border-slate-300 dark:border-dark-border">
                 <div 
-                  className="h-full bg-gradient-to-r from-rose-500 to-brand-500 rounded-full transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-rose-500 to-amber-500 rounded-full transition-all duration-500"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -272,27 +272,27 @@ export default function DashboardPage() {
           </div>
 
           {/* Recruiter Spotlight Score Card */}
-          <div className="p-5 rounded-3xl glass-card border border-dark-border flex flex-col justify-between">
+          <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border flex flex-col justify-between shadow-sm">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1">
-                  <Trophy className="w-4 h-4 text-emerald-400" />
+                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1">
+                  <Trophy className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   <span>Recruiter Score</span>
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
                   {user.recruiterScore > 75 ? 'Top 10% Talent' : 'Building Status'}
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-3xl font-extrabold text-white font-['Outfit']">{user.recruiterScore}</span>
-                <span className="text-xs font-semibold text-gray-400">/ 100 Points</span>
+                <span className="text-3xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">{user.recruiterScore}</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-gray-400">/ 100 Points</span>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-dark-border/60 text-[11px] text-gray-300 flex items-center justify-between">
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60 text-[11px] text-slate-600 dark:text-gray-300 flex items-center justify-between font-medium">
               <span>Recruiter Digest Status:</span>
-              <span className="font-bold text-emerald-400 flex items-center gap-1">
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                 <UserCheck className="w-3.5 h-3.5" />
                 <span>Featured Next Mon</span>
               </span>
@@ -302,20 +302,20 @@ export default function DashboardPage() {
         </div>
 
         {/* Featured Today's Task Banner -> Link to /day/12 */}
-        <div className="p-6 rounded-3xl bg-gradient-to-r from-rose-950/60 via-dark-card to-dark-card border border-rose-500/40 mb-6 relative overflow-hidden shadow-2xl">
+        <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-rose-950 to-slate-900 text-white border border-rose-500/40 mb-6 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-64 h-64 bg-rose-500/10 blur-3xl pointer-events-none" />
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative z-10">
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-400 font-bold text-[10px] border border-rose-500/30">
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/30 text-rose-300 font-bold text-[10px] border border-rose-500/40">
                   DAY 12 TASK
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 font-bold text-[10px] border border-amber-500/30 flex items-center gap-1">
+                <span className="px-2.5 py-0.5 rounded-full bg-amber-500/30 text-amber-300 font-bold text-[10px] border border-amber-500/40 flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   <span>45 Mins</span>
                 </span>
-                <span className="text-xs text-gray-400 font-medium">+100 XP</span>
+                <span className="text-xs text-gray-300 font-medium">+100 XP</span>
               </div>
 
               <h2 className="text-xl font-extrabold text-white font-['Outfit'] leading-snug">
@@ -329,7 +329,7 @@ export default function DashboardPage() {
 
             <Link
               href="/day/12"
-              className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 via-brand-500 to-amber-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-rose-600/30 hover:scale-[1.02] transition-all shrink-0 w-full md:w-auto"
+              className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-rose-600/30 hover:scale-[1.02] transition-all shrink-0 w-full md:w-auto"
             >
               <span>{isMissedDay ? 'Solve Catch-Up Quest' : 'Open Day 12 Workspace'}</span>
               <ArrowRight className="w-4 h-4" />
@@ -338,13 +338,13 @@ export default function DashboardPage() {
         </div>
 
         {/* Daily Streak Heatmap Matrix (Days 1 to 60) */}
-        <div className="p-5 rounded-3xl glass-card border border-dark-border mb-6">
+        <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border mb-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <Flame className="w-4 h-4 text-amber-400 fill-amber-400" />
-              <h3 className="text-sm font-extrabold text-white font-['Outfit']">60-Day Challenge Matrix</h3>
+              <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400" />
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">60-Day Challenge Matrix</h3>
             </div>
-            <span className="text-xs text-gray-400">Day 12 of 60</span>
+            <span className="text-xs text-slate-500 dark:text-gray-400 font-medium">Day 12 of 60</span>
           </div>
 
           {/* 60 Grid Blocks */}
@@ -359,18 +359,18 @@ export default function DashboardPage() {
                 <Link
                   key={dayNum}
                   href={`/day/${dayNum}`}
-                  className={`h-9 rounded-xl flex flex-col items-center justify-center text-[10px] font-bold transition-all relative group ${
+                  className={`h-9 rounded-xl flex flex-col items-center justify-center text-[10px] font-bold transition-all relative group shadow-sm ${
                     isCurrent
                       ? 'bg-gradient-to-tr from-amber-500 to-rose-500 text-white ring-2 ring-amber-400 shadow-md shadow-rose-500/40 animate-pulse'
                       : isCompleted
-                      ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 hover:bg-rose-500/30'
-                      : 'bg-dark-bg text-gray-600 border border-dark-border hover:text-gray-400'
+                      ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-500/40 hover:bg-rose-200 dark:hover:bg-rose-500/30'
+                      : 'bg-slate-100 dark:bg-dark-bg text-slate-400 dark:text-gray-600 border border-slate-200 dark:border-dark-border hover:text-slate-700 dark:hover:text-gray-400'
                   }`}
                 >
                   <span>{dayNum}</span>
-                  {isCompleted && <CheckCircle2 className="w-2.5 h-2.5 text-emerald-400 mt-0.5" />}
+                  {isCompleted && <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400 mt-0.5" />}
                   {isCurrent && <Flame className="w-2.5 h-2.5 text-white fill-white mt-0.5" />}
-                  {isFuture && <Lock className="w-2.5 h-2.5 text-gray-600 mt-0.5" />}
+                  {isFuture && <Lock className="w-2.5 h-2.5 text-slate-400 dark:text-gray-600 mt-0.5" />}
                 </Link>
               );
             })}
@@ -378,13 +378,13 @@ export default function DashboardPage() {
         </div>
 
         {/* Achievements & Unlocked Badges */}
-        <div className="p-5 rounded-3xl glass-card border border-dark-border">
+        <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-rose-400" />
-              <h3 className="text-sm font-extrabold text-white font-['Outfit']">Student Standing & Badges</h3>
+              <Award className="w-4 h-4 text-rose-600 dark:text-rose-400" />
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">Student Standing & Badges</h3>
             </div>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-slate-500 dark:text-gray-400 font-medium">
               {user.achievements?.filter(a => a.unlocked).length || 0} Unlocked
             </span>
           </div>
@@ -395,18 +395,18 @@ export default function DashboardPage() {
                 key={ach.id}
                 className={`p-3 rounded-2xl border flex items-center gap-3 transition-all ${
                   ach.unlocked
-                    ? 'bg-dark-bg border-rose-500/30 text-white'
-                    : 'bg-dark-bg/40 border-dark-border/40 text-gray-600 opacity-60'
+                    ? 'bg-slate-50 dark:bg-dark-bg border-rose-200 dark:border-rose-500/30 text-slate-900 dark:text-white shadow-sm'
+                    : 'bg-slate-100/60 dark:bg-dark-bg/40 border-slate-200 dark:border-dark-border/40 text-slate-400 dark:text-gray-600 opacity-60'
                 }`}
               >
                 <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
-                  ach.unlocked ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' : 'bg-dark-card text-gray-600'
+                  ach.unlocked ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30' : 'bg-slate-200 dark:bg-dark-card text-slate-400 dark:text-gray-600'
                 }`}>
                   <Award className="w-4 h-4" />
                 </div>
                 <div>
                   <h4 className="text-xs font-bold leading-snug">{ach.title}</h4>
-                  <p className="text-[10px] text-gray-400 line-clamp-1 mt-0.5">{ach.desc}</p>
+                  <p className="text-[10px] text-slate-500 dark:text-gray-400 line-clamp-1 mt-0.5 font-medium">{ach.desc}</p>
                 </div>
               </div>
             ))}

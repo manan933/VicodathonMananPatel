@@ -157,69 +157,18 @@ body {
   display: none;
 }
 
-/* Specific Light-mode typography & UI rules */
+/* Specific Light-mode baseline rules */
 html:not(.dark) {
   color-scheme: light;
 }
 
-html:not(.dark) .text-white {
-  color: #0F172A;
-}
-
-/* Preserve bright white text for solid buttons and gradients */
-html:not(.dark) button[class*="bg-rose"],
-html:not(.dark) button[class*="bg-gradient"],
-html:not(.dark) button[class*="bg-emerald"],
-html:not(.dark) button[class*="bg-amber"],
-html:not(.dark) a[class*="bg-rose"],
-html:not(.dark) a[class*="bg-gradient"],
-html:not(.dark) a[class*="bg-emerald"],
-html:not(.dark) a[class*="bg-amber"],
-html:not(.dark) [class*="from-rose"] span,
-html:not(.dark) [class*="from-rose"] svg,
-html:not(.dark) [class*="bg-rose-500"] span,
-html:not(.dark) [class*="bg-rose-500"] svg,
-html:not(.dark) [class*="bg-emerald-500"] span,
-html:not(.dark) [class*="bg-emerald-500"] svg,
-html:not(.dark) [class*="bg-amber-500"] span,
-html:not(.dark) [class*="bg-amber-500"] svg {
-  color: #FFFFFF !important;
-}
-
-html:not(.dark) .text-gray-100 {
-  color: #0F172A;
-}
-html:not(.dark) .text-gray-200 {
-  color: #1E293B;
-}
-html:not(.dark) .text-gray-300 {
-  color: #334155;
-}
-html:not(.dark) .text-gray-400 {
-  color: #64748B;
-}
-html:not(.dark) .text-gray-500 {
-  color: #94A3B8;
-}
-
-/* Pre / Code snippets in light mode - sleek dark developer terminal look */
-html:not(.dark) pre {
+/* Ensure code blocks stay sleek dark IDE look in both themes */
+pre {
   background-color: #0F172A !important;
   color: #F8FAFC !important;
   border-color: #334155 !important;
 }
-html:not(.dark) pre code {
-  color: #FDE68A !important;
-}
 
-/* Light mode inputs */
-html:not(.dark) input,
-html:not(.dark) textarea {
-  background-color: #FFFFFF !important;
-  border-color: #CBD5E1 !important;
-  color: #0F172A !important;
-}
-html:not(.dark) input::placeholder,
-html:not(.dark) textarea::placeholder {
-  color: #94A3B8 !important;
+pre code {
+  color: #FDE68A !important;
 }

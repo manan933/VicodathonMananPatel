@@ -45,7 +45,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-dark-bg text-gray-100 min-h-screen selection:bg-rose-500 selection:text-white">
+      <body className="bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-gray-100 min-h-screen selection:bg-rose-500 selection:text-white antialiased transition-colors duration-200">
         {children}
       </body>
     </html>

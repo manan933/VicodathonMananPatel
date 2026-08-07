@@ -239,6 +239,49 @@ can these part be animated or in a loop?
   - Added gradient edge masks (`[mask-image:linear-gradient(...)]`) for soft cinematic entry/exit fading.
   - Enhanced company badges with live pulsing hiring indicators, glassmorphism cards, and interactive hover glow effects.
 
+### Prompt 12 — Comprehensive Light Mode Overhaul & Contrast Remediation
+> **Timestamp**: 2026-08-07 21:16 IST
+
+```
+The light mode currently has several major UI issues that significantly affect usability. Many interface elements disappear or become invisible due to poor color contrast, making the application difficult to navigate.
+
+Some text, icons, buttons, input fields, and other UI components either blend into the background or are not rendered correctly. In several sections, content becomes unreadable because the text color does not adapt properly to the light theme. Certain borders, shadows, and backgrounds are also inconsistent, resulting in an unfinished and broken appearance.
+
+Overall, the light mode requires a complete review to ensure:
+* All text remains readable with proper contrast.
+* Buttons, icons, and input fields are always visible.
+* Backgrounds, cards, and containers use consistent colors.
+* Hover, active, and focus states work correctly.
+* Every page and component is tested for theme compatibility so that no elements disappear when switching from dark mode to light mode.
+```
+
+**Actions Taken**:
+- **Comprehensive Theme Architecture (`src/app/globals.css`)**:
+  - Refined root CSS design tokens for high-contrast accessibility (`#F8FAFC` background, `#FFFFFF` crisp card surfaces, slate borders `#E2E8F0`, deep slate text `#0F172A`).
+  - Defined explicit styling rules for code blocks to preserve dark IDE aesthetics (`#0F172A`) across both light and dark themes.
+  - Enforced button and badge text clarity so that primary gradient and saturated action buttons always render crisp white typography.
+- **Navbar & Navigation (`src/components/Navbar.tsx`)**:
+  - Replaced hardcoded dark background and border utilities with theme-responsive `bg-white/80 dark:bg-dark-bg/80`, `border-slate-200 dark:border-dark-border`, and `text-slate-700 dark:text-gray-300`.
+  - Upgraded theme toggle button with distinct light/dark background and border states.
+- **Footer (`src/components/Footer.tsx`)**:
+  - Replaced dark card backgrounds with `bg-slate-100 dark:bg-dark-card` and `border-slate-200 dark:border-dark-border`.
+  - Converted secondary link typography to `text-slate-600 dark:text-gray-400` with high-contrast hover states.
+- **Edge State Simulator (`src/components/EdgeStateToggle.tsx`)**:
+  - Updated toggle pill container to `bg-slate-100 dark:bg-dark-bg/80` and `border-slate-200 dark:border-dark-border`.
+  - Added dedicated active/inactive states (`bg-white text-slate-900 shadow-sm border-slate-300` vs `text-slate-600`) ensuring all 4 simulation buttons remain clear and legible in light mode.
+- **Landing Page (`src/app/page.tsx`)**:
+  - Remediated all section headings, subheadings, feature cards, and statistics counters (`text-slate-900 dark:text-white`, `text-slate-600 dark:text-gray-300`).
+  - Updated Track Explorer cards, curriculum badges, and FAQ accordion items with high-contrast borders and backgrounds.
+- **Student Dashboard (`src/app/dashboard/page.tsx`)**:
+  - Updated dynamic edge-case alert banners (`isFirstDay`, `isMissedDay`, `isEmptyProfile`) with rich amber/rose light mode styles.
+  - Converted user profile header, 60-day heatmap matrix, recruiter score card, and student badges to `bg-white dark:bg-dark-card` with sharp slate borders.
+- **Challenge Workspace (`src/app/day/12/page.tsx`)**:
+  - Refactored submission form input fields (`githubUrl`, `linkedinUrl`) with `bg-slate-50 dark:bg-dark-bg`, `border-slate-300 dark:border-dark-border`, and `text-slate-900 dark:text-white` with focus rings.
+  - Remediated AI Post Assistant card, late-night audio brief toggle, and peer submissions feed for light mode readability.
+- **Root Layout (`src/app/layout.tsx`)**:
+  - Updated `<body>` element to `bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-gray-100` to prevent any background flashing during scrolling.
+- **Verification**: `npm run build` executed and passed with 0 errors across all 6 static and dynamic routes.
+
 ---
 
 ## Required Routes & Route Map
@@ -287,4 +330,6 @@ can these part be animated or in a loop?
 - [x] `README.md` — highly detailed documentation created
 - [x] Bug audit pass — 10 bugs/improvements fixed, clean build verified
 - [x] Full Light Mode / Dark Mode system with instant theme switching & persistence
+- [x] Complete Light Mode contrast overhaul across all pages, forms, cards, and interactive controls
 - [x] `PROMPTS.md` updated with full session prompt history
+
