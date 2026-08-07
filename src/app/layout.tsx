@@ -33,12 +33,13 @@ export default function RootLayout({
             __html: `
               try {
                 var theme = localStorage.getItem('abtalks-theme');
+                document.documentElement.classList.remove('dark', 'light', 'cyber');
                 if (theme === 'light') {
-                  document.documentElement.classList.remove('dark');
                   document.documentElement.classList.add('light');
+                } else if (theme === 'cyber') {
+                  document.documentElement.classList.add('cyber');
                 } else {
                   document.documentElement.classList.add('dark');
-                  document.documentElement.classList.remove('light');
                 }
               } catch (e) {}
             `,

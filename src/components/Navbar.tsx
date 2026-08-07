@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, Moon, Sun, Compass, LayoutDashboard, CalendarCheck } from 'lucide-react';
+import { Flame, Moon, Sun, Zap, Compass, LayoutDashboard, CalendarCheck } from 'lucide-react';
+
+export type ThemeMode = 'dark' | 'light' | 'cyber';
 
 interface NavbarProps {
   streakCount?: number;
@@ -11,35 +13,26 @@ interface NavbarProps {
 
 export default function Navbar({ streakCount = 12 }: NavbarProps) {
   const pathname = usePathname();
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [theme, setTheme] = useState<ThemeMode>('dark');
   const [mounted, setMounted] = useState(false);
+
+  const applyTheme = (mode: ThemeMode) => {
+    document.documentElement.classList.remove('dark', 'light', 'cyber');
+    document.documentElement.classList.add(mode);
+  };
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('abtalks-theme');
-    if (savedTheme === 'light') {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-    } else {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    }
+    const savedTheme = (localStorage.getItem('abtalks-theme') as ThemeMode) || 'dark';
+    setTheme(savedTheme);
+    applyTheme(savedTheme);
   }, []);
 
   const toggleTheme = () => {
-    const nextMode = !isDarkMode;
-    setIsDarkMode(nextMode);
-    if (nextMode) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-      localStorage.setItem('abtalks-theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-      localStorage.setItem('abtalks-theme', 'light');
-    }
+    const nextTheme: ThemeMode = theme === 'dark' ? 'light' : theme === 'light' ? 'cyber' : 'dark';
+    setTheme(nextTheme);
+    applyTheme(nextTheme);
+    localStorage.setItem('abtalks-theme', nextTheme);
   };
 
   return (
@@ -103,24 +96,32 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
 
         {/* Theme Toggle & Streak Pill */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Light / Dark Mode Toggle */}
+          {/* 3-Way Theme Switcher (Dark OLED, Light, Cyber Neon) */}
           <button
             onClick={toggleTheme}
-            aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-slate-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-400/60 transition-all flex items-center gap-1.5 shadow-sm"
-            title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            aria-label={`Current Theme: ${theme}. Click to switch theme.`}
+            className={`p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl border transition-all flex items-center gap-1.5 shadow-sm ${
+              theme === 'cyber'
+                ? 'bg-purple-950/80 border-purple-500/50 text-purple-300 hover:border-pink-400'
+                : theme === 'light'
+                ? 'bg-white border-slate-200 text-slate-800 hover:border-amber-400'
+                : 'bg-dark-card border-dark-border text-gray-300 hover:border-amber-400/60'
+            }`}
+            title={`Current Theme: ${theme.toUpperCase()}. Click to cycle theme.`}
           >
             {mounted ? (
-              isDarkMode ? (
-                <Sun className="w-4 h-4 text-amber-400 transition-transform hover:rotate-45" />
+              theme === 'cyber' ? (
+                <Zap className="w-4 h-4 text-pink-400 fill-pink-400 animate-pulse" />
+              ) : theme === 'light' ? (
+                <Sun className="w-4 h-4 text-amber-500 transition-transform hover:rotate-45" />
               ) : (
-                <Moon className="w-4 h-4 text-indigo-600 transition-transform hover:-rotate-12" />
+                <Moon className="w-4 h-4 text-indigo-400 transition-transform hover:-rotate-12" />
               )
             ) : (
               <Moon className="w-4 h-4 text-amber-400" />
             )}
             <span className="text-[11px] font-semibold hidden md:inline">
-              {mounted ? (isDarkMode ? 'Light' : 'Dark') : 'Theme'}
+              {mounted ? (theme === 'cyber' ? 'Cyber ⚡' : theme === 'light' ? 'Light ☀️' : 'Dark 🌙') : 'Theme'}
             </span>
           </button>
 

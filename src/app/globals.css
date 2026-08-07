@@ -50,6 +50,30 @@ html.dark, :root.dark {
   --card-shadow: none;
 }
 
+/* Cyber Neon / Creative Mode (3rd Unique Theme for Nerds & Creatives) */
+html.cyber, :root.cyber {
+  --color-bg-rgb: 13 11 24;
+  --color-card-rgb: 22 18 38;
+  --color-card-hover-rgb: 32 26 56;
+  --color-border-rgb: 58 45 94;
+  --color-text-muted-rgb: 168 152 216;
+
+  --color-bg: #0D0B18;
+  --color-card: #161226;
+  --color-card-hover: #201A38;
+  --color-border: #3A2D5E;
+  --color-text-primary: #F3F0FF;
+  --color-text-secondary: #C4B5FD;
+  --color-text-muted: #A898D8;
+  --color-brand: #EC4899;
+  --glass-panel-bg: rgba(22, 18, 38, 0.85);
+  --glass-card-bg: rgba(22, 18, 38, 0.75);
+  --glass-border: rgba(168, 85, 247, 0.3);
+  --glass-card-border: rgba(168, 85, 247, 0.25);
+  --glass-hover-border: rgba(236, 72, 153, 0.6);
+  --card-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.25);
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
