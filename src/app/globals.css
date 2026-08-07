@@ -2,51 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Light mode defaults */
+/* Light mode defaults (Pure White Day Theme) */
 :root {
-  --color-bg-rgb: 248 250 252;
-  --color-card-rgb: 255 255 255;
+  --color-bg-rgb: 255 255 255;
+  --color-card-rgb: 248 250 252;
   --color-card-hover-rgb: 241 245 249;
   --color-border-rgb: 226 232 240;
   --color-text-muted-rgb: 100 116 139;
 
-  --color-bg: #F8FAFC;
-  --color-card: #FFFFFF;
+  --color-bg: #FFFFFF;
+  --color-card: #F8FAFC;
   --color-card-hover: #F1F5F9;
   --color-border: #E2E8F0;
   --color-text-primary: #0F172A;
   --color-text-secondary: #334155;
   --color-text-muted: #64748B;
   --color-brand: #F43F5E;
-  --glass-panel-bg: rgba(255, 255, 255, 0.90);
-  --glass-card-bg: rgba(255, 255, 255, 0.95);
+  --glass-panel-bg: rgba(255, 255, 255, 0.85);
+  --glass-card-bg: rgba(248, 250, 252, 0.90);
   --glass-border: rgba(226, 232, 240, 0.9);
   --glass-card-border: rgba(226, 232, 240, 0.85);
   --glass-hover-border: rgba(244, 63, 94, 0.4);
   --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
 }
 
-/* Dark mode (Midnight OLED) */
+/* Dark mode (Pitch Black OLED Theme) */
 html.dark, :root.dark {
-  --color-bg-rgb: 10 10 14;
-  --color-card-rgb: 18 19 26;
-  --color-card-hover-rgb: 25 27 38;
+  --color-bg-rgb: 0 0 0;
+  --color-card-rgb: 10 10 14;
+  --color-card-hover-rgb: 20 20 28;
   --color-border-rgb: 35 37 51;
   --color-text-muted-rgb: 138 143 173;
 
-  --color-bg: #0A0A0E;
-  --color-card: #12131A;
-  --color-card-hover: #191B26;
+  --color-bg: #000000;
+  --color-card: #0A0A0E;
+  --color-card-hover: #14141C;
   --color-border: #232533;
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #E2E8F0;
   --color-text-muted: #8A8FAD;
   --color-brand: #F43F5E;
-  --glass-panel-bg: rgba(18, 19, 26, 0.80);
-  --glass-card-bg: rgba(22, 24, 34, 0.70);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-card-border: rgba(255, 255, 255, 0.07);
-  --glass-hover-border: rgba(244, 63, 94, 0.3);
+  --glass-panel-bg: rgba(0, 0, 0, 0.82);
+  --glass-card-bg: rgba(10, 10, 14, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-card-border: rgba(255, 255, 255, 0.08);
+  --glass-hover-border: rgba(244, 63, 94, 0.4);
   --card-shadow: none;
 }
 
@@ -217,4 +217,51 @@ pre:has(> code) {
 pre:has(> code) code {
   color: #FDE68A !important;
 }
+
+/* Stitch-style Flowing Liquid RGB Ambient Glow Animations */
+@keyframes float-blob-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(80px, -90px) scale(1.18);
+  }
+  66% {
+    transform: translate(-50px, 50px) scale(0.92);
+  }
+}
+
+@keyframes float-blob-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-90px, 70px) scale(0.88);
+  }
+  66% {
+    transform: translate(60px, -60px) scale(1.15);
+  }
+}
+
+@keyframes float-blob-3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(50px, 80px) scale(1.22);
+  }
+}
+
+.animate-blob-1 {
+  animation: float-blob-1 18s ease-in-out infinite;
+}
+
+.animate-blob-2 {
+  animation: float-blob-2 22s ease-in-out infinite;
+}
+
+.animate-blob-3 {
+  animation: float-blob-3 20s ease-in-out infinite;
+}
+
 

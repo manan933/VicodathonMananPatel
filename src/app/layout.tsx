@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
+import AmbientBackground from '@/components/AmbientBackground';
+
 export const metadata: Metadata = {
   title: 'ABTalks | 60-Day College Coding Challenge',
   description: 'Reimagined platform for Indian college students to build 1 project daily, maintain public GitHub & LinkedIn proof-of-work streaks, and get hired by top tech companies.',
@@ -46,8 +48,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-gray-100 min-h-screen selection:bg-rose-500 selection:text-white antialiased transition-colors duration-200">
-        {children}
+      <body className="bg-white dark:bg-dark-bg text-slate-900 dark:text-gray-100 min-h-screen selection:bg-rose-500 selection:text-white antialiased transition-colors duration-200 relative overflow-x-hidden">
+        <AmbientBackground />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          {children}
+        </div>
       </body>
     </html>
   );

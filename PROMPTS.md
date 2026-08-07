@@ -378,6 +378,25 @@ Tailwind's `darkMode: 'class'` configuration requires `html` to contain the `dar
 3. **Verification**:
    - Ran `npm run build` — passed with **0 errors, 0 warnings**.
 
+### Prompt 18 — Pitch Black (#000000), Pure White (#FFFFFF) & Stitch-Style Liquid Flow RGB Background
+> **Timestamp**: 2026-08-07 22:11 IST
+
+```
+can we make the dark and light mode , add one more things a full back theme on dark and white on day , and on thet background light blur rgb color theme moving in a flow just like opening website of stitch in mobile.
+```
+
+**Actions Taken**:
+1. **Pure Canvas Themes (`globals.css`)**:
+   - **Dark Mode**: Set to true pitch black (`#000000`) for OLED power savings and deep contrast.
+   - **Light Mode**: Set to pure clean white (`#FFFFFF`).
+2. **Liquid Flow RGB Ambient Background Component ([`AmbientBackground.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/AmbientBackground.tsx))**:
+   - Built a fixed background component rendering 3 floating, blurred RGB orb blobs (`blur-[100px]` - `blur-[140px]`) in rose, violet, and amber/cyan.
+   - Added 60fps CSS keyframes (`float-blob-1`, `float-blob-2`, `float-blob-3`) in [`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css) providing fluid motion behind all cards and content, inspired by modern mobile apps like Stitch.
+3. **Layout Integration ([`layout.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/layout.tsx))**:
+   - Rendered `<AmbientBackground />` at the root layout level so the liquid RGB flow animates smoothly across all screens (`/`, `/dashboard`, `/day/12`).
+4. **Verification**:
+   - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
+
 ---
 
 ## Required Routes & Route Map
