@@ -282,6 +282,30 @@ Overall, the light mode requires a complete review to ensure:
   - Updated `<body>` element to `bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-gray-100` to prevent any background flashing during scrolling.
 - **Verification**: `npm run build` executed and passed with 0 errors across all 6 static and dynamic routes.
 
+### Prompt 13 — Comprehensive Codebase Bug Audit & Fixes
+> **Timestamp**: 2026-08-07 21:30 IST
+
+```
+look for bugs or errors. and fix them along with update prompts.md
+```
+
+**Actions Taken**:
+1. **Defined Missing Animation Utility (`tailwind.config.js`)**:
+   - Added `'fade-in': 'fadeIn 0.5s ease-out forwards'` animation definition and `@keyframes fadeIn` (`opacity: 0, translateY: 8px` -> `opacity: 1, translateY: 0`) to `tailwind.config.js` to resolve undefined `animate-fade-in` utility used in `day/12/page.tsx`.
+2. **Prevented Speech Synthesis Memory Leak (`src/app/day/12/page.tsx`)**:
+   - Added `useEffect` unmount cleanup handler that calls `window.speechSynthesis.cancel()`, ensuring late-night audio brief speech stops immediately if the user navigates away mid-speech.
+3. **Cleaned Unused Dependencies (`package.json`)**:
+   - Audited dependencies and safely removed unused packages (`framer-motion`, `clsx`, `tailwind-merge`) that were listed in `package.json` but never imported across the application codebase.
+4. **Scoped Global `<pre>` Tag Overrides (`src/app/globals.css`)**:
+   - Refactored global `<pre>` CSS rules using `:has(> code)` selector (`pre:has(> code)`) to ensure code block styling only targets code snippet containers without breaking un-nested `<pre>` elements.
+5. **Accessibility Enhancements (`src/components/EdgeStateToggle.tsx`)**:
+   - Added explicit `aria-label` attributes to all 4 Edge State Simulator toggle buttons for full screen reader accessibility.
+6. **Cleaned Unused Icon Imports (`src/components/Footer.tsx`)**:
+   - Removed unused `Github` and `Linkedin` icon imports from `Footer.tsx`.
+7. **Verification**:
+   - Ran `npm install` to update `package-lock.json` cleanly after dependency pruning.
+   - Executed `npm run build` — verified **0 errors, 0 warnings** across all 6 pages.
+
 ---
 
 ## Required Routes & Route Map
@@ -331,5 +355,7 @@ Overall, the light mode requires a complete review to ensure:
 - [x] Bug audit pass — 10 bugs/improvements fixed, clean build verified
 - [x] Full Light Mode / Dark Mode system with instant theme switching & persistence
 - [x] Complete Light Mode contrast overhaul across all pages, forms, cards, and interactive controls
+- [x] Comprehensive codebase bug audit, memory leak cleanup, dependency pruning & accessibility enhancements
 - [x] `PROMPTS.md` updated with full session prompt history
+
 

@@ -26,6 +26,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
         <button
           onClick={() => onStateChange('standard')}
+          aria-label="Simulate 12-day active streak state"
           className={`px-2.5 py-2 rounded-xl text-xs font-medium flex items-center justify-center gap-1.5 transition-all ${
             currentState === 'standard'
               ? 'bg-rose-600 dark:bg-rose-500 text-white font-bold shadow-md shadow-rose-600/30'
@@ -38,6 +39,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
 
         <button
           onClick={() => onStateChange('firstDay')}
+          aria-label="Simulate first day with zero streak state"
           className={`px-2.5 py-2 rounded-xl text-xs font-medium flex items-center justify-center gap-1.5 transition-all ${
             currentState === 'firstDay'
               ? 'bg-rose-600 dark:bg-rose-500 text-white font-bold shadow-md shadow-rose-600/30'
@@ -50,6 +52,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
 
         <button
           onClick={() => onStateChange('missedDay')}
+          aria-label="Simulate missed day streak recovery state"
           className={`px-2.5 py-2 rounded-xl text-xs font-medium flex items-center justify-center gap-1.5 transition-all ${
             currentState === 'missedDay'
               ? 'bg-rose-600 dark:bg-rose-500 text-white font-bold shadow-md shadow-rose-600/30'
@@ -62,6 +65,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
 
         <button
           onClick={() => onStateChange('emptyProfile')}
+          aria-label="Simulate unlinked profile state"
           className={`px-2.5 py-2 rounded-xl text-xs font-medium flex items-center justify-center gap-1.5 transition-all ${
             currentState === 'emptyProfile'
               ? 'bg-rose-600 dark:bg-rose-500 text-white font-bold shadow-md shadow-rose-600/30'

@@ -163,12 +163,14 @@ html:not(.dark) {
 }
 
 /* Ensure code blocks stay sleek dark IDE look in both themes */
-pre {
+/* Scoped to pre tags with a code child to avoid overriding non-code pre elements */
+pre:has(> code) {
   background-color: #0F172A !important;
   color: #F8FAFC !important;
   border-color: #334155 !important;
 }
 
-pre code {
+pre:has(> code) code {
   color: #FDE68A !important;
 }
+

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -65,6 +65,15 @@ export default function ChallengeDayPage() {
       setTimeout(() => setIsCopied(false), 2000);
     }
   };
+
+  // Cleanup speech synthesis on unmount to prevent memory leak
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   // Audio Summary simulation
   const handleToggleAudio = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Flame, Github, Linkedin, Heart, ShieldCheck } from 'lucide-react';
+import { Flame, Heart, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   return (
