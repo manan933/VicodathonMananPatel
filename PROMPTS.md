@@ -306,6 +306,18 @@ look for bugs or errors. and fix them along with update prompts.md
    - Ran `npm install` to update `package-lock.json` cleanly after dependency pruning.
    - Executed `npm run build` — verified **0 errors, 0 warnings** across all 6 pages.
 
+### Prompt 14 — Vercel Output Directory Configuration Fix
+> **Timestamp**: 2026-08-07 21:35 IST
+
+```
+Error: No Output Directory named "build" found after the Build completed. Configure the Output Directory in your Project Settings. Alternatively, configure vercel.json#outputDirectory.
+```
+
+**Actions Taken**:
+- Created [`vercel.json`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/vercel.json) in the project root with `"framework": "nextjs"`.
+- This informs Vercel's build system to automatically use Next.js default build outputs (`.next`) rather than looking for a standard static `build/` directory.
+- Updated project documentation in [`PROMPTS.md`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/PROMPTS.md).
+
 ---
 
 ## Required Routes & Route Map
