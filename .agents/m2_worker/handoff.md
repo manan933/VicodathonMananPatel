@@ -8,6 +8,7 @@ Direct codebase inspection and clean build output verification:
    - `src/components/RecruiterPreview.tsx`:
      - Added `skills?: string[];` to `UserProfile` interface.
      - Updated `techPills` derivation to use `user?.skills` when present: `user?.skills && user.skills.length > 0 ? user.skills : getTechStackPills(track);`.
+     - Labels updated to "Daily Consistency" and "Recruiter Score".
    - `src/app/recruiter/page.tsx`:
      - Populated all candidate objects in `mockCandidates` with explicit `skills` arrays (e.g. Kavya Nair: `['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Redis', 'Docker']`, Arjun Mehta: `['Python', 'PyTorch', 'FastAPI', 'LangChain', 'LLMs', 'Vector DBs']`, etc.).
      - Enhanced `matchesSearch` candidate filter to search across `candidate.name`, `candidate.college`, `candidate.track`, and `candidate.skills` keywords case-insensitively:
@@ -25,7 +26,7 @@ Direct codebase inspection and clean build output verification:
      - Added responsive mobile modal overlay dialog for `RecruiterPreview` with close button `X` while retaining desktop sticky split-panel preview.
 
 2. **Clean Build Verification Output**:
-   - Command: `Remove-Item -Recurse -Force .next; npm run build`
+   - Command: `npm run clean; npm run build`
    - Result:
      ```text
      ▲ Next.js 14.2.35
@@ -74,7 +75,7 @@ Direct codebase inspection and clean build output verification:
 
 ## 3. Caveats
 
-No caveats. All changes are minimal, backward-compatible, clean, and fully verified by a clean `npm run build` (Exit code 0).
+No caveats. All changes are minimal, backward-compatible, clean, and fully verified by `npm run clean; npm run build` (Exit code 0).
 
 ---
 
@@ -87,7 +88,7 @@ Milestone 2 (Recruiter Dashboard Search & Filters) implementation is 100% comple
 ## 5. Verification Method
 
 1. **Build Verification**:
-   - Run `npm run build` in `d:\ABtalks Vicodathon Manan Patel`.
+   - Run `npm run clean; npm run build` in `d:\ABtalks Vicodathon Manan Patel`.
    - Confirm exit code 0 and successful static page generation for `/recruiter`.
 
 2. **Search Verification**:

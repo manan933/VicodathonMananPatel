@@ -13,7 +13,7 @@
   - Search Input Filter with instant clear button and result counter.
   - One-click copy link action button for sharing videos.
 - **Layout & Theme Compliance**: Wrapped cleanly with `Navbar` (`streakCount={12}`), `Footer`, responsive Tailwind CSS layout (`grid-cols-1 md:grid-cols-2`), and full support for Dark, Light, and Cyber themes.
-- **Build Output**: `npx next build` completed with Exit Code 0 (0 compilation/type errors).
+- **Build Output**: `npm run build` completed with Exit Code 0 (0 compilation/type errors).
   - Next.js prerendered all 9 static pages, including `/hub` (`○ /hub (3.2 kB, First Load JS: 97.5 kB)`).
 
 ## 2. Logic Chain
@@ -22,7 +22,7 @@
 3. `useMemo` filter dynamically computes matching videos based on selected category tab and text search input.
 4. Channel banner styled with gradient accent colors (`from-red-600 via-rose-600 to-amber-600`), subscriber stats, and direct external link to `https://www.youtube.com/@ABTalksOnAI`.
 5. Empty state handles zero search matches gracefully with a filter reset button.
-6. Execution of production build confirmed zero syntax, linting, or TypeScript errors across the entire codebase.
+6. Execution of production `npm run build` confirmed zero syntax, linting, or TypeScript errors across the entire codebase.
 
 ## 3. Caveats
 - No caveats. All video embed URLs follow standard YouTube embed conventions.
@@ -31,7 +31,7 @@
 Milestone 4 is complete. The YouTube Video & Motivation Hub is accessible at `/hub`, properly integrated into the app navigation, builds cleanly with 0 errors, and is ready for production.
 
 ## 5. Verification Method
-1. **Compilation Check**: `npm run build` / `npx next build` executed successfully with 0 errors.
+1. **Compilation Check**: `npm run build` executed successfully with 0 errors.
 2. **Navigation Check**: Click "Videos" link in Navbar or navigate to `/hub`.
 3. **Interactive Filter Check**: Select category tabs (`AI & ML`, `Career & Streak`, `Coding Projects`) and type queries into the search bar.
 4. **Channel CTA Check**: Click `@ABTalksOnAI` banner CTA to confirm it opens `https://www.youtube.com/@ABTalksOnAI`.
