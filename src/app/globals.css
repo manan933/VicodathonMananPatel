@@ -74,56 +74,56 @@ html.brutal, :root.brutal {
   --card-shadow: 4px 4px 0px 0px #000000;
 }
 
-/* Custom Neo Brutalist Overrides — Vibrant Pop Colors & High-Contrast Dark/Light Palette */
+/* Custom Neo Brutalist Overrides — Vibrant 3-Color Gradient Background (#1e90ff -> #f9c942 -> #ff1e56) */
 html.brutal body {
   background-image: none !important;
-  background: #F2994A !important;  /* fallback */
-  background: -webkit-linear-gradient(135deg, #F2C94C 0%, #FF9F43 50%, #FF5252 100%) !important;
-  background: linear-gradient(135deg, #F2C94C 0%, #FF9F43 50%, #FF5252 100%) !important;
+  background: #ff1e56 !important;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1e90ff, #f9c942, #ff1e56) !important;  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1e90ff, #f9c942, #ff1e56) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #000000 !important;
   min-height: 100vh;
 }
 
 /* Header & Navbar Pop Colors in Brutalist Mode */
 html.brutal header {
-  background-color: #FFDE4D !important;
+  background-color: #F9C942 !important;
   border-bottom: 3px solid #000000 !important;
   box-shadow: 0px 4px 0px 0px #000000 !important;
 }
 
-html.brutal header nav a:nth-child(1) { background-color: #C7F9CC !important; color: #000000 !important; }
-html.brutal header nav a:nth-child(2) { background-color: #A2D2FF !important; color: #000000 !important; }
-html.brutal header nav a:nth-child(3) { background-color: #FFC6FF !important; color: #000000 !important; }
-html.brutal header nav a:nth-child(4) { background-color: #FFD6A5 !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(1) { background-color: #1E90FF !important; color: #FFFFFF !important; }
+html.brutal header nav a:nth-child(2) { background-color: #F9C942 !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(3) { background-color: #FF1E56 !important; color: #FFFFFF !important; }
+html.brutal header nav a:nth-child(4) { background-color: #C7F9CC !important; color: #000000 !important; }
 html.brutal header nav a:nth-child(5) { background-color: #E7C6FF !important; color: #000000 !important; }
-html.brutal header nav a:nth-child(6) { background-color: #FFADAD !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(6) { background-color: #FFD6A5 !important; color: #000000 !important; }
 
 html.brutal header nav a:hover {
   background-color: #000000 !important;
-  color: #FFE600 !important;
+  color: #F9C942 !important;
   transform: translate(-1px, -1px) !important;
   box-shadow: 3px 3px 0px 0px #000000 !important;
 }
 
-/* General Brutalist Container Cards (Light Pop Base) */
+/* General Brutalist Container Cards (Pop Color Base without plain white) */
 html.brutal .rounded-3xl,
 html.brutal .rounded-2xl,
 html.brutal .rounded-xl,
 html.brutal .rounded-lg {
   border-radius: 8px !important;
   border: 3px solid #000000 !important;
-  box-shadow: 4px 4px 0px 0px #000000 !important;
-  background-color: #FFFFFF;
+  box-shadow: 5px 5px 0px 0px #000000 !important;
+  background-color: #FFFCE6;
   color: #000000;
 }
 
-/* Vibrant Dark Cards in Brutalist Mode (Deep Pitch Indigo/Black with Lime & Cyan Accents) */
+/* Vibrant Dark Cards in Brutalist Mode (Deep Pitch Indigo/Black with Gold & Electric Blue Accents) */
 html.brutal .bg-slate-900,
 html.brutal .from-slate-900,
 html.brutal .bg-slate-950,
 html.brutal .bg-dark-card,
 html.brutal [data-dark-card="true"] {
-  background: #12131C !important;
+  background: #11121D !important;
   color: #FFFFFF !important;
   border: 3px solid #000000 !important;
   box-shadow: 5px 5px 0px 0px #000000 !important;

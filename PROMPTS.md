@@ -718,6 +718,26 @@ the neo brutal theme is supposed to look very much colorful. use both light and 
 2. **Verification**:
    - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
 
+### Prompt 32 — Exact 3-Color Linear Gradient Background for Neo Brutal Theme
+> **Timestamp**: 2026-08-08 16:39 IST
+
+```
+background: #ff1e56;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #1e90ff, #f9c942, #ff1e56);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #1e90ff, #f9c942, #ff1e56); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+use this as full background of neo brutal theme remove the white from it and add this in neo brutal.
+note: dont remove white mode.
+```
+
+**Actions Taken**:
+1. **Neo Brutalist Body Background Update ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Applied the exact `linear-gradient(to right, #1e90ff, #f9c942, #ff1e56)` gradient background with `-webkit-linear-gradient` and `#ff1e56` fallback to `html.brutal body`.
+   - Replaced plain white container backgrounds in Neo Brutal mode with warm pop cream/amber fills (`#FFFCE6`) and rich dark pitch indigo (`#11121D`), while keeping White Mode (`html.light`) completely intact.
+2. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+
 
 
 
