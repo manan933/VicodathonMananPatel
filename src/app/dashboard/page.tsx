@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import EdgeStateToggle, { EdgeStateType } from '@/components/EdgeStateToggle';
+import AnalyticsPanel from '@/components/AnalyticsPanel';
 import mockData from '@/data/mockData.json';
 import { 
   Flame, 
@@ -375,6 +376,11 @@ export default function DashboardPage() {
               );
             })}
           </div>
+        </div>
+
+        {/* Analytics Dashboard Panel */}
+        <div className="mb-6">
+          <AnalyticsPanel />
         </div>
 
         {/* Achievements & Unlocked Badges */}

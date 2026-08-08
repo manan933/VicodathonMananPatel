@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 import AmbientBackground from '@/components/AmbientBackground';
+import { ToastProvider } from '@/components/ToastProvider';
+import CommandPalette from '@/components/CommandPalette';
 
 export const metadata: Metadata = {
   title: 'ABTalks | 60-Day College Coding Challenge',
@@ -72,10 +74,13 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-white dark:bg-dark-bg text-slate-900 dark:text-gray-100 min-h-screen selection:bg-rose-500 selection:text-white antialiased transition-colors duration-200 relative overflow-x-hidden">
-        <AmbientBackground />
-        <div className="relative z-10 flex flex-col min-h-screen">
-          {children}
-        </div>
+        <ToastProvider>
+          <AmbientBackground />
+          <div className="relative z-10 flex flex-col min-h-screen">
+            {children}
+          </div>
+          <CommandPalette />
+        </ToastProvider>
       </body>
     </html>
   );

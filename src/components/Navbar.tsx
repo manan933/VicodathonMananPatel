@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, Moon, Sun, Zap, Compass, LayoutDashboard, CalendarCheck } from 'lucide-react';
+import { Flame, Moon, Sun, Zap, Compass, LayoutDashboard, CalendarCheck, Youtube, Briefcase, Settings } from 'lucide-react';
 
 export type ThemeMode = 'dark' | 'light' | 'cyber';
 
@@ -59,44 +59,83 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="flex items-center gap-1 sm:gap-1.5">
+        <nav className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-1">
           <Link
             href="/"
             aria-label="Explore Tracks"
-            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 ${
               pathname === '/' 
                 ? 'bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
             }`}
           >
             <Compass className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
-            <span className="hidden md:inline">Explore</span>
+            <span>Explore</span>
           </Link>
 
           <Link
             href="/dashboard"
             aria-label="Student Dashboard"
-            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 ${
               pathname === '/dashboard' 
                 ? 'bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
             }`}
           >
             <LayoutDashboard className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
-            <span className="hidden md:inline">Dashboard</span>
+            <span>Dashboard</span>
           </Link>
 
           <Link
             href="/day/12"
             aria-label="Day 12 Workspace"
-            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 ${
               pathname.startsWith('/day') 
                 ? 'bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
             }`}
           >
             <CalendarCheck className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-amber-600 dark:text-amber-400" />
-            <span className="hidden md:inline">Day 12</span>
+            <span>Day 12</span>
+          </Link>
+
+          <Link
+            href="/hub"
+            aria-label="Motivation and info YouTube Hub"
+            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 ${
+              pathname === '/hub' 
+                ? 'bg-red-100 dark:bg-red-500/15 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-500/30 font-bold' 
+                : 'text-slate-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
+            }`}
+          >
+            <Youtube className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-red-500" />
+            <span>Videos</span>
+          </Link>
+
+          <Link
+            href="/recruiter"
+            aria-label="Recruiter Dashboard View"
+            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 ${
+              pathname === '/recruiter' 
+                ? 'bg-violet-100 dark:bg-violet-500/15 text-violet-700 dark:text-violet-400 border border-violet-200 dark:border-violet-500/30 font-bold' 
+                : 'text-slate-600 dark:text-gray-400 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
+            }`}
+          >
+            <Briefcase className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-violet-500" />
+            <span>Recruiter</span>
+          </Link>
+
+          <Link
+            href="/admin"
+            aria-label="System Admin View"
+            className={`px-2 py-1.5 sm:px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 ${
+              pathname === '/admin' 
+                ? 'bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30 font-bold' 
+                : 'text-slate-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
+            }`}
+          >
+            <Settings className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-indigo-500" />
+            <span>Admin</span>
           </Link>
         </nav>
 

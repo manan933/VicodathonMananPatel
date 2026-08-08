@@ -1,0 +1,295 @@
+'use client';
+
+import React, { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import RecruiterPreview, { UserProfile } from '@/components/RecruiterPreview';
+import { Search, Filter, Briefcase, Award, GraduationCap, Flame, ArrowRight, Eye, Sparkles } from 'lucide-react';
+
+const mockCandidates: UserProfile[] = [
+  {
+    name: 'Kavya Nair',
+    handle: 'kavya_nair',
+    college: 'Indian Institute of Technology (IIT) Bombay',
+    year: '4th Year B.Tech CSE',
+    track: 'Full-Stack Web & Backend Systems',
+    currentStreak: 47,
+    longestStreak: 50,
+    completedDays: 45,
+    totalDays: 60,
+    recruiterScore: 96,
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
+    achievements: [
+      { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' },
+      { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' },
+      { id: 'ach_3', title: 'Recruiter Magnet', unlocked: true, icon: 'Briefcase', desc: 'Post seen by 5+ hiring managers' }
+    ]
+  },
+  {
+    name: 'Arjun Mehta',
+    handle: 'arjun_codes',
+    college: 'International Institute of Information Technology (IIIT) Hyderabad',
+    year: '3rd Year B.Tech ECE',
+    track: 'AI & Intelligent Agents',
+    currentStreak: 45,
+    longestStreak: 45,
+    completedDays: 43,
+    totalDays: 60,
+    recruiterScore: 94,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
+    achievements: [
+      { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' },
+      { id: 'ach_3', title: 'Recruiter Magnet', unlocked: true, icon: 'Briefcase', desc: 'Post seen by 5+ hiring managers' }
+    ]
+  },
+  {
+    name: 'Sanjana Pillai',
+    handle: 'sanjana_p',
+    college: 'BITS Pilani',
+    year: '3rd Year B.Tech CSE',
+    track: 'Full-Stack Web & Backend Systems',
+    currentStreak: 42,
+    longestStreak: 44,
+    completedDays: 41,
+    totalDays: 60,
+    recruiterScore: 91,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+    achievements: [
+      { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' },
+      { id: 'ach_3', title: 'Recruiter Magnet', unlocked: true, icon: 'Briefcase', desc: 'Post seen by 5+ hiring managers' }
+    ]
+  },
+  {
+    name: 'Devansh Gupta',
+    handle: 'devansh_g',
+    college: 'National Institute of Technology (NIT) Trichy',
+    year: '4th Year B.Tech Prod',
+    track: 'DevOps & Cloud Native Systems',
+    currentStreak: 40,
+    longestStreak: 41,
+    completedDays: 39,
+    totalDays: 60,
+    recruiterScore: 89,
+    avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80',
+    achievements: [
+      { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' }
+    ]
+  },
+  {
+    name: 'Priya Verma',
+    handle: 'priya_builds',
+    college: 'VIT Vellore',
+    year: '4th Year B.Tech CSE',
+    track: 'AI & Intelligent Agents',
+    currentStreak: 38,
+    longestStreak: 38,
+    completedDays: 36,
+    totalDays: 60,
+    recruiterScore: 87,
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
+    achievements: [
+      { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' }
+    ]
+  },
+  {
+    name: 'Manan Patel',
+    handle: 'manan_codes',
+    college: 'National Institute of Technology (NIT) Surat',
+    year: '3rd Year B.Tech CSE',
+    track: 'Full-Stack Web & Backend Systems',
+    currentStreak: 12,
+    longestStreak: 12,
+    completedDays: 11,
+    totalDays: 60,
+    recruiterScore: 88,
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
+    achievements: [
+      { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' },
+      { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' },
+      { id: 'ach_3', title: 'Recruiter Magnet', unlocked: true, icon: 'Briefcase', desc: 'Post seen by 5+ hiring managers' }
+    ]
+  }
+];
+
+export default function RecruiterDashboard() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTrack, setSelectedTrack] = useState('All');
+  const [minStreak, setMinStreak] = useState(0);
+  const [selectedCandidate, setSelectedCandidate] = useState<UserProfile | null>(mockCandidates[0]);
+
+  // Filters candidates based on inputs
+  const filteredCandidates = mockCandidates.filter((candidate) => {
+    const matchesSearch =
+      candidate.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      candidate.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      candidate.track.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesTrack = selectedTrack === 'All' || candidate.track.toLowerCase().includes(selectedTrack.toLowerCase());
+    const matchesStreak = candidate.currentStreak >= minStreak;
+
+    return matchesSearch && matchesTrack && matchesStreak;
+  });
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-gray-100 flex flex-col font-sans">
+      <Navbar streakCount={12} />
+
+      <main className="max-w-5xl mx-auto w-full px-4 py-8 flex-1 flex flex-col">
+        {/* Page Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-2">
+            <Briefcase className="w-5 h-5 text-violet-500" />
+            <span className="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">
+              Recruiter Dashboard
+            </span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-['Outfit'] tracking-tight">
+            Scout Top College Developers
+          </h1>
+          <p className="text-sm text-slate-600 dark:text-gray-400 mt-1 max-w-2xl">
+            Filter, inspect, and directly hire students based on verifiable daily commits and streak data. No resume spam, just pure proof of work.
+          </p>
+        </div>
+
+        {/* Filters and Main Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
+          
+          {/* Left Panel: Search & Candidate List (8 cols) */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
+            
+            {/* Search and Filters Bar */}
+            <div className="p-4 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm flex flex-col gap-3">
+              <div className="relative">
+                <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400 dark:text-gray-500" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search candidates by name, college, or skills..."
+                  className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors shadow-sm"
+                />
+              </div>
+
+              <div className="flex flex-wrap gap-2 items-center justify-between">
+                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                  {['All', 'Web', 'AI', 'DevOps'].map((track) => (
+                    <button
+                      key={track}
+                      onClick={() => setSelectedTrack(track)}
+                      className={`px-3 py-1 rounded-xl text-xs font-semibold border transition-all ${
+                        (track === 'All' && selectedTrack === 'All') ||
+                        (track !== 'All' && selectedTrack === track)
+                          ? 'bg-violet-600 text-white border-violet-600 shadow-sm shadow-violet-500/20'
+                          : 'bg-slate-50 dark:bg-dark-bg text-slate-600 dark:text-gray-400 border-slate-200 dark:border-dark-border hover:bg-slate-100 dark:hover:bg-white/5'
+                      }`}
+                    >
+                      {track}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Minimum Streak Slider */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1">
+                    <Flame className="w-3.5 h-3.5 text-amber-500" />
+                    <span>Streak &ge; {minStreak}</span>
+                  </span>
+                  <input
+                    type="range"
+                    min="0"
+                    max="45"
+                    value={minStreak}
+                    onChange={(e) => setMinStreak(parseInt(e.target.value))}
+                    className="w-20 accent-violet-500 bg-slate-200 dark:bg-dark-bg rounded-lg cursor-pointer h-1.5"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Candidates List */}
+            <div className="space-y-3 flex-1 overflow-y-auto max-h-[550px] pr-2">
+              {filteredCandidates.length > 0 ? (
+                filteredCandidates.map((candidate) => {
+                  const isSelected = selectedCandidate?.name === candidate.name;
+                  return (
+                    <div
+                      key={candidate.name}
+                      onClick={() => setSelectedCandidate(candidate)}
+                      className={`p-4 rounded-3xl border cursor-pointer transition-all flex items-center justify-between gap-4 bg-white dark:bg-dark-card ${
+                        isSelected
+                          ? 'border-violet-500 ring-2 ring-violet-500/10 shadow-md'
+                          : 'border-slate-200 dark:border-dark-border hover:border-slate-300 dark:hover:border-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3.5 min-w-0">
+                        <img
+                          src={candidate.avatar}
+                          alt={candidate.name}
+                          className="w-12 h-12 rounded-2xl object-cover shrink-0 border border-slate-200 dark:border-slate-700"
+                        />
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="font-bold text-sm text-slate-900 dark:text-white tracking-tight truncate">
+                              {candidate.name}
+                            </h3>
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-400 border border-violet-200 dark:border-violet-500/30">
+                              {candidate.recruiterScore}/100
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-500 dark:text-gray-400 flex items-center gap-1 mt-0.5 truncate">
+                            <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                            <span className="truncate">{candidate.college}</span>
+                          </p>
+                          <p className="text-[10px] text-slate-400 dark:text-gray-500 mt-1 truncate">
+                            {candidate.track}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 shrink-0">
+                        <div className="text-right">
+                          <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Active Streak</p>
+                          <div className="flex items-center gap-1 justify-end mt-0.5">
+                            <Flame className="w-4 h-4 text-amber-500 fill-amber-500" />
+                            <span className="font-bold text-sm text-slate-900 dark:text-white">
+                              {candidate.currentStreak}d
+                            </span>
+                          </div>
+                        </div>
+                        <ArrowRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-violet-500' : 'text-slate-400'}`} />
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="p-8 text-center bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-3xl text-slate-500 dark:text-gray-400 italic">
+                  No candidates match the search filters.
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Right Panel: High-fidelity Candidate Detail Card (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-start">
+            {selectedCandidate ? (
+              <div className="sticky top-24">
+                <div className="mb-2 flex items-center gap-1 px-1">
+                  <Sparkles className="w-4 h-4 text-violet-500 animate-pulse" />
+                  <span className="text-xs font-bold text-violet-600 dark:text-violet-400">Candidate Dossier</span>
+                </div>
+                <RecruiterPreview user={selectedCandidate} />
+              </div>
+            ) : (
+              <div className="p-8 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border flex flex-col items-center justify-center text-center text-slate-400 dark:text-gray-500 shadow-sm min-h-[300px]">
+                <Eye className="w-8 h-8 text-slate-300 dark:text-gray-600 mb-2" />
+                <p className="text-xs font-semibold">Select a candidate on the left to inspect their dossier.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
