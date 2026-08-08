@@ -76,16 +76,23 @@ html.brutal, :root.brutal {
 
 /* Custom Neo Brutalist Overrides — Vibrant 3-Color Gradient Background (#1e90ff -> #f9c942 -> #ff1e56) */
 html.brutal,
-html.brutal body,
-html.brutal main,
-html.brutal .min-h-screen,
-html.brutal .bg-slate-50 {
+html.brutal body {
   background-image: none !important;
   background: #ff1e56 !important;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #1e90ff, #f9c942, #ff1e56) !important;  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #1e90ff, #f9c942, #ff1e56) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-attachment: fixed !important;
   color: #000000 !important;
   min-height: 100vh;
+}
+
+/* Page containers & wrappers transparent so full body background shows through */
+html.brutal main,
+html.brutal .min-h-screen,
+html.brutal .bg-slate-50,
+html.brutal .dark\:bg-dark-bg {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 /* Header & Navbar Pop Colors in Brutalist Mode */
