@@ -826,6 +826,24 @@ this images are not well optimized , fix
 4. **Verification**:
    - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
 
+### Prompt 38 — CountdownTimer High-Contrast Visibility & Hinglish Translation Fix
+> **Timestamp**: 2026-08-08 17:05 IST
+
+```
+Next challenge drops in 6h 55m 44s 
+
+ths line not visible 
+```
+
+**Actions Taken**:
+1. **CountdownTimer Text Contrast & Language Support ([`CountdownTimer.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/CountdownTimer.tsx) & [`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Replaced low-contrast text classes with `text-slate-900 dark:text-amber-300 font-extrabold` in `CountdownTimer.tsx`.
+   - Integrated `useLanguage()` hook to support dynamic Hinglish translation (`"Agla challenge aayega 6h 55m 44s me"`).
+   - Added `html.brutal .bg-amber-100` rules in `globals.css` to enforce bold black text (`#000000 !important; font-weight: 800`) and 2px solid black outline for badges in Neo-Brutalist mode.
+2. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+
 
 
 
