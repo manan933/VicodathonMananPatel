@@ -636,5 +636,46 @@ AB Talks
 2. **Verification**:
    - ran `npm run build` successfully with **0 compiler, compilation, linting, or type errors**.
 
+### Prompt 28 — Exact @ABTalksOnAI Video Uploads Integration
+> **Timestamp**: 2026-08-08 16:14 IST
+
+```
+add videos in video hub from this channel only [Image of @ABTalksOnAI YouTube Channel]
+```
+
+**Actions Taken**:
+1. **Exact Screenshot Video Titles & Metadata Sync ([`page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/hub/page.tsx))**:
+   - Replaced general video items in `VIDEOS` array with exact uploaded video titles, accurate durations, and custom tags directly matching the `@ABTalksOnAI` channel screenshot:
+     - 1. *"The Biggest AI Trends of 2026 | Claude AI, AI Agents & Physical AI"* (31:31)
+     - 2. *"Day 60/60: Build Your Portfolio & Release v1.0 | Claude AI Coding Challenge"* (0:45)
+     - 3. *"Best AI Tools for Productivity in 2026 | ChatGPT vs Claude vs NotebookLM vs Gamma"* (15:36)
+     - 4. *"90% of AI Projects FAIL! | ChatGPT, Claude, LLMs & AI Startups"* (18:45)
+2. **Verification**:
+   - Ran `npm run build` successfully with **0 compiler, compilation, linting, or type errors**.
+
+### Prompt 29 — Neo Brutalist Background Gradient & Web/Android Mobile Polish
+> **Timestamp**: 2026-08-08 16:21 IST
+
+```
+background: #F2994A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+use this background color for neo brutal theme and fix some things as they are not optimized properly for the web and android too like videos , recruiter and admin and recently added things
+```
+
+**Actions Taken**:
+1. **Neo Brutalist Theme Gradient Customization ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Applied the exact `linear-gradient(to right, #F2C94C, #F2994A)` amber-orange background styling with `-webkit-linear-gradient` and `#F2994A` fallback to `html.brutal body`.
+   - Maintained 3px thick black borders and flat black offset shadows (`box-shadow: 4px 4px 0px 0px #000`) for high-contrast Neo-Brutalist design.
+2. **Web & Android Mobile Responsiveness Optimizations**:
+   - **Videos Hub ([`hub/page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/hub/page.tsx))**: Enforced 16:9 aspect ratio containers (`aspect-video`) with `w-full h-full` responsive iframe bounds for small mobile screens.
+   - **Recruiter Dashboard ([`recruiter/page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/recruiter/page.tsx))**: Hidden candidate dossier side panel on mobile screens (`hidden lg:flex`) to avoid layout duplication and cleanly display the popup mobile modal on Android tap.
+   - **Dashboard Consistency Matrix ([`dashboard/page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/dashboard/page.tsx))**: Added `touch-pan-x` and horizontal scroll wrappers to allow smooth swipe gestures across the 9-week matrix on Android mobile devices.
+3. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+
+
 
 

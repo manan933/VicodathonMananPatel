@@ -37,67 +37,67 @@ const VIDEOS: VideoItem[] = [
   {
     id: '1',
     title: {
-      english: 'How AI is Changing Software Engineering — ABTalks Masterclass',
-      hinglish: 'AI Software Engineering Kaise Badal Raha Hai — ABTalks Masterclass'
+      english: 'The Biggest AI Trends of 2026 | Claude AI, AI Agents & Physical AI',
+      hinglish: '2026 Ke Sabse Bade AI Trends | Claude AI, AI Agents & Physical AI'
     },
     embedUrl: 'https://www.youtube.com/embed/SqcY0GlETPk',
     youtubeId: 'SqcY0GlETPk',
     category: 'AI & ML',
-    duration: '18:45',
+    duration: '31:31',
     description: {
-      english: 'Explore how modern AI models, LLM agents, and developer tooling are transforming modern full-stack development and how you can leverage them in your daily builds.',
-      hinglish: 'Explore karein kaise modern AI models, LLMs aur developer agents coding ko change kar rahe hain aur aap ise daily projects me kaise use kar sakte hain.'
+      english: 'Explore the major shifts happening across AI — from Claude AI models and autonomous agent workflows to physical robotics and AI-driven software architecture.',
+      hinglish: 'AI me ho rahe sabse bade shifts ko samjho — Claude AI models, AI Agents, physical AI aur software development ka naya future.'
     },
-    tags: ['AI', 'LLMs', 'Future of Coding', 'Developer Tools'],
+    tags: ['AI Trends 2026', 'Claude AI', 'AI Agents', 'Physical AI'],
     featured: true,
   },
   {
     id: '2',
     title: {
-      english: 'Building a 60-Day Coding Streak — Discipline & Mindset Strategy',
-      hinglish: '60-Din Ki Coding Streak Kaise Banayein — Discipline & Mindset'
+      english: 'Day 60/60: Build Your Portfolio & Release v1.0 | Claude AI Coding Challenge',
+      hinglish: 'Din 60/60: Apna Portfolio Banao & v1.0 Release Karo | Claude AI Challenge'
     },
     embedUrl: 'https://www.youtube.com/embed/rfscVS0vtbw',
     youtubeId: 'rfscVS0vtbw',
-    category: 'Career & Streak',
-    duration: '14:20',
+    category: 'Coding Projects',
+    duration: '0:45',
     description: {
-      english: 'Practical daily strategies to stay consistent, avoid burnout, manage night-owl coding sessions, and build a high-impact GitHub proof-of-work portfolio.',
-      hinglish: 'Daily consistent rehne, burnout se bachne, aur recruiter-ready GitHub portfolio banane ki practical strategies.'
+      english: 'Final milestone of the 60-day challenge! Learn how to bundle your daily builds into a recruiter-ready portfolio site and launch your v1.0.',
+      hinglish: '60-din challenge ka grand finale! Apne saare daily projects ko recruiter-ready portfolio me package karo aur v1.0 release karo.'
     },
-    tags: ['Motivation', 'Consistency', 'Streak', 'Career Growth'],
+    tags: ['60DayChallenge', 'Claude AI', 'Portfolio', 'Release v1.0'],
   },
   {
     id: '3',
     title: {
-      english: 'Building Full Stack AI Apps from Scratch — Real World Architecture',
-      hinglish: 'Full Stack AI Apps Ekdum Shuru Se Banao — Real World Architecture'
+      english: 'Best AI Tools for Productivity in 2026 | ChatGPT vs Claude vs NotebookLM vs Gamma',
+      hinglish: '2026 Ke Best AI Tools Productivity Ke Liye | ChatGPT vs Claude vs NotebookLM vs Gamma'
     },
     embedUrl: 'https://www.youtube.com/embed/zJsQxY5spEA',
     youtubeId: 'zJsQxY5spEA',
-    category: 'Coding Projects',
-    duration: '22:10',
+    category: 'AI & ML',
+    duration: '15:36',
     description: {
-      english: 'Step-by-step tutorial on architecting scalable full-stack applications with Next.js, Redis rate-limiting, vector databases, and API integrations.',
-      hinglish: 'Step-by-step tutorial: Next.js, Redis, Vector Databases aur APIs use karke complete full-stack apps build karein.'
+      english: 'Comprehensive comparison of top developer and research tools: ChatGPT, Claude 3.5, Google NotebookLM, and Gamma for maximum workflow speed.',
+      hinglish: 'Top AI tools ka full comparison: ChatGPT, Claude 3.5, NotebookLM aur Gamma. Sikhein kaunsa tool kis kaam me sabse fast hai.'
     },
-    tags: ['Next.js', 'TypeScript', 'Full-Stack', 'System Architecture'],
+    tags: ['Productivity', 'ChatGPT', 'Claude', 'NotebookLM', 'Gamma'],
   },
   {
     id: '4',
     title: {
-      english: 'Cracking Tech Interviews & Standing Out with Public Proof of Work',
-      hinglish: 'Tech Interviews Kaise Crack Karein — Public Proof of Work Strategy'
+      english: '90% of AI Projects FAIL! | ChatGPT, Claude, LLMs & AI Startups',
+      hinglish: '90% AI Projects FAIL Ho Jaate Hain! | ChatGPT, Claude, LLMs & Startups'
     },
     embedUrl: 'https://www.youtube.com/embed/Ke90Tje7VS0',
     youtubeId: 'Ke90Tje7VS0',
     category: 'Career & Streak',
-    duration: '16:05',
+    duration: '18:45',
     description: {
-      english: 'Learn how top tech recruiters scout builders on GitHub & LinkedIn, and how turning your daily coding challenges into verifiable proof lands top interviews.',
-      hinglish: 'Sikhein recruiters GitHub & LinkedIn par coders ko kaise search karte hain, aur aapna daily work proof dikhakar top offers kaise paayein.'
+      english: 'Why 90% of enterprise AI pilots fail before production, how token economics work, and what separates successful AI builders from failed startups.',
+      hinglish: 'Janiye kyun 90% AI pilots production me fail ho jate hain, enterprise scaling pitfalls, aur ek successful AI builder kaise banein.'
     },
-    tags: ['Hiring', 'LinkedIn Proof', 'Recruiter Secrets', 'Portfolio'],
+    tags: ['AI Engineering', 'LLM Pitfalls', 'AI Startups', 'Career Advice'],
   },
 ];
 

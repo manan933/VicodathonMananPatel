@@ -293,8 +293,8 @@ export default function RecruiterDashboard() {
             </div>
           </div>
 
-          {/* Right Panel: High-fidelity Candidate Detail Card (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-start">
+          {/* Right Panel: High-fidelity Candidate Detail Card (5 cols on desktop, hidden on mobile in favor of modal) */}
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-start">
             {selectedCandidate ? (
               <div className="sticky top-24">
                 <div className="mb-2 flex items-center gap-1 px-1">

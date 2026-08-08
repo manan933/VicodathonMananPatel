@@ -406,7 +406,7 @@ export default function DashboardPage() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-2 overflow-x-auto no-scrollbar">
+          <div className="flex flex-col gap-2 overflow-x-auto no-scrollbar touch-pan-x pb-2">
             {/* Week Labels Row */}
             <div className="flex pl-8 text-[9px] font-bold text-slate-400 dark:text-gray-500 gap-[20px] sm:gap-[24px] select-none">
               <span>W1</span>
