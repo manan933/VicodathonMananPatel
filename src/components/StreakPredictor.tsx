@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Brain, TrendingUp } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageProvider';
 
 export interface StreakPredictorProps {
   currentStreak?: number;
@@ -16,6 +17,7 @@ export default function StreakPredictor({
   totalDays,
   currentDay
 }: StreakPredictorProps) {
+  const { language } = useLanguage();
   // Prevent division by zero if currentDay is 0 or unassigned
   const safeCurrentDay = currentDay > 0 ? currentDay : 1;
 
@@ -65,20 +67,22 @@ export default function StreakPredictor({
             <Brain className="w-4 h-4" />
           </div>
           <span className="text-sm font-semibold text-slate-800 dark:text-gray-200">
-            Streak Finish Probability
+            {language === 'english' ? "Streak Finish Probability" : "Streak Poori Karne Ki Umeed"}
           </span>
         </div>
       </div>
 
       {/* Percentage Display */}
-      <div className="my-1">
+      <div className="my-1 text-left">
         <div className="flex items-baseline gap-1.5">
           <span className={`text-3xl font-extrabold tracking-tight ${themeColors.text}`}>
             {probability}%
           </span>
         </div>
-        <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
-          chance of finishing the {challengeDays}-day challenge
+        <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5 font-medium">
+          {language === 'english'
+            ? `chance of finishing the ${challengeDays}-day challenge`
+            : `${challengeDays}-din challenge poora karne ka chance`}
         </p>
       </div>
 
@@ -93,7 +97,11 @@ export default function StreakPredictor({
       {/* Footer Trend Line */}
       <div className="flex items-center gap-1.5 text-[11px] text-slate-400 dark:text-gray-400 pt-1 border-t border-slate-100 dark:border-slate-800/60">
         <TrendingUp className="w-3 h-3 shrink-0 text-slate-400 dark:text-gray-400" />
-        <span>Based on your current consistency</span>
+        <span className="font-semibold">
+          {language === 'english'
+            ? "Based on your current consistency"
+            : "Aapki consistency ke aadhar par"}
+        </span>
       </div>
     </div>
   );

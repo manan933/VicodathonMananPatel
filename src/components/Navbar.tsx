@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, Moon, Sun, Zap, Compass, LayoutDashboard, CalendarCheck, Youtube, Briefcase, Settings } from 'lucide-react';
+import { Flame, Moon, Sun, Zap, Compass, LayoutDashboard, CalendarCheck, Youtube, Briefcase, Settings, Globe } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageProvider';
 
-export type ThemeMode = 'dark' | 'light' | 'cyber';
+export type ThemeMode = 'dark' | 'light' | 'brutal';
 
 interface NavbarProps {
   streakCount?: number;
@@ -15,13 +16,14 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
   const pathname = usePathname();
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [mounted, setMounted] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   const applyTheme = (mode: ThemeMode) => {
-    document.documentElement.classList.remove('dark', 'light', 'cyber');
+    document.documentElement.classList.remove('dark', 'light', 'brutal');
     if (mode === 'light') {
       document.documentElement.classList.add('light');
-    } else if (mode === 'cyber') {
-      document.documentElement.classList.add('dark', 'cyber');
+    } else if (mode === 'brutal') {
+      document.documentElement.classList.add('brutal');
     } else {
       document.documentElement.classList.add('dark');
     }
@@ -35,7 +37,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
   }, []);
 
   const toggleTheme = () => {
-    const nextTheme: ThemeMode = theme === 'dark' ? 'light' : theme === 'light' ? 'cyber' : 'dark';
+    const nextTheme: ThemeMode = theme === 'dark' ? 'light' : theme === 'light' ? 'brutal' : 'dark';
     setTheme(nextTheme);
     applyTheme(nextTheme);
     localStorage.setItem('abtalks-theme', nextTheme);
@@ -54,7 +56,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white font-['Outfit'] leading-none">
               ABTalks
             </span>
-            <span className="text-[10px] text-slate-500 dark:text-gray-400 font-medium hidden md:block mt-0.5">Build Daily. Get Noticed.</span>
+            <span className="text-[10px] text-slate-500 dark:text-gray-400 font-medium hidden md:block mt-0.5">{t("Build Daily. Get Noticed.")}</span>
           </div>
         </Link>
 
@@ -70,7 +72,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             }`}
           >
             <Compass className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
-            <span>Explore</span>
+            <span>{t("Explore")}</span>
           </Link>
 
           <Link
@@ -83,7 +85,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             }`}
           >
             <LayoutDashboard className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
-            <span>Dashboard</span>
+            <span>{t("Dashboard")}</span>
           </Link>
 
           <Link
@@ -96,7 +98,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             }`}
           >
             <CalendarCheck className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>Day 12</span>
+            <span>{t("Day 12")}</span>
           </Link>
 
           <Link
@@ -109,7 +111,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             }`}
           >
             <Youtube className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-red-500" />
-            <span>Videos</span>
+            <span>{t("Videos")}</span>
           </Link>
 
           <Link
@@ -122,7 +124,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             }`}
           >
             <Briefcase className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-violet-500" />
-            <span>Recruiter</span>
+            <span>{t("Recruiter")}</span>
           </Link>
 
           <Link
@@ -135,28 +137,39 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             }`}
           >
             <Settings className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-indigo-500" />
-            <span>Admin</span>
+            <span>{t("Admin")}</span>
           </Link>
         </nav>
 
-        {/* Theme Toggle & Streak Pill */}
+        {/* Theme Toggle, Language Toggle & Streak Pill */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* 3-Way Theme Switcher (Dark OLED, Light, Cyber Neon) */}
+          {/* Language Toggle Button */}
+          <button
+            onClick={toggleLanguage}
+            aria-label="Switch Language between English and Hinglish"
+            className="px-2 py-1.5 rounded-xl border border-slate-200 dark:border-dark-border text-[11px] font-bold flex items-center gap-1 hover:border-rose-500 shadow-sm bg-white dark:bg-dark-card text-slate-800 dark:text-gray-300"
+            title="English / Hinglish Toggle"
+          >
+            <Globe className="w-3.5 h-3.5 text-rose-500" />
+            <span>{language === 'english' ? 'EN 🇬🇧' : 'हि 🇮🇳'}</span>
+          </button>
+
+          {/* 3-Way Theme Switcher (Dark OLED, Light, Neo Brutalist) */}
           <button
             onClick={toggleTheme}
             aria-label={`Current Theme: ${theme}. Click to switch theme.`}
             className={`p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl border transition-all flex items-center gap-1.5 shadow-sm ${
-              theme === 'cyber'
-                ? 'bg-purple-950/80 border-purple-500/50 text-purple-300 hover:border-pink-400'
+              theme === 'brutal'
+                ? 'bg-yellow-300 border-black text-black hover:bg-yellow-400 font-bold'
                 : theme === 'light'
-                ? 'bg-white border-slate-200 text-slate-800 hover:border-amber-400'
-                : 'bg-dark-card border-dark-border text-gray-300 hover:border-amber-400/60'
+                ? 'bg-white border-slate-200 text-slate-800 hover:border-amber-400 font-bold'
+                : 'bg-dark-card border-dark-border text-gray-300 hover:border-amber-400/60 font-bold'
             }`}
             title={`Current Theme: ${theme.toUpperCase()}. Click to cycle theme.`}
           >
             {mounted ? (
-              theme === 'cyber' ? (
-                <Zap className="w-4 h-4 text-pink-400 fill-pink-400 animate-pulse" />
+              theme === 'brutal' ? (
+                <Zap className="w-4 h-4 text-black fill-black" />
               ) : theme === 'light' ? (
                 <Sun className="w-4 h-4 text-amber-500 transition-transform hover:rotate-45" />
               ) : (
@@ -165,8 +178,8 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             ) : (
               <Moon className="w-4 h-4 text-amber-400" />
             )}
-            <span className="text-[11px] font-semibold hidden md:inline">
-              {mounted ? (theme === 'cyber' ? 'Cyber ⚡' : theme === 'light' ? 'Light ☀️' : 'Dark 🌙') : 'Theme'}
+            <span className="text-[11px] font-bold hidden md:inline">
+              {mounted ? (theme === 'brutal' ? 'Brutal ⚡' : theme === 'light' ? 'Light ☀️' : 'Dark 🌙') : 'Theme'}
             </span>
           </button>
 

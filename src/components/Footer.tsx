@@ -1,8 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { Flame, Heart, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageProvider';
 
 export default function Footer() {
+  const { language } = useLanguage();
+
   return (
     <footer className="w-full border-t border-slate-200 dark:border-dark-border bg-slate-100 dark:bg-dark-card pt-8 pb-24 sm:pb-10 px-4 mt-12 text-slate-700 dark:text-gray-300">
       <div className="max-w-5xl mx-auto flex flex-col gap-6">
@@ -15,20 +18,29 @@ export default function Footer() {
             <span className="font-bold text-slate-900 dark:text-white tracking-tight font-['Outfit']">ABTalks</span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
-            <Link href="/" className="text-slate-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Home</Link>
-            <Link href="/dashboard" className="text-slate-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Dashboard</Link>
-            <Link href="/day/12" className="text-slate-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Today's Build</Link>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-bold">
+            <Link href="/" className="text-slate-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+              {language === 'english' ? "Home" : "Home"}
+            </Link>
+            <Link href="/dashboard" className="text-slate-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+              {language === 'english' ? "Dashboard" : "Dashboard"}
+            </Link>
+            <Link href="/day/12" className="text-slate-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+              {language === 'english' ? "Today's Build" : "Aaj Ka Build"}
+            </Link>
           </div>
         </div>
 
         <div className="pt-4 border-t border-slate-200 dark:border-dark-border/60 flex flex-col xs:flex-row items-center justify-between gap-3 text-xs text-slate-600 dark:text-gray-400">
-          <p className="flex items-center gap-1 font-medium text-center xs:text-left">
-            Made for students who code after midnight <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline-block" />
+          <p className="flex items-center gap-1 font-semibold text-center xs:text-left">
+            {language === 'english' 
+              ? "Made for students who code after midnight" 
+              : "Midnight ke baad code karne wale students ke liye"}{" "}
+            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline-block" />
           </p>
-          <div className="flex items-center gap-2 font-semibold text-emerald-700 dark:text-emerald-400">
+          <div className="flex items-center gap-2 font-bold text-emerald-700 dark:text-emerald-400">
             <ShieldCheck className="w-4 h-4" />
-            <span>Proof-of-work verified</span>
+            <span>{language === 'english' ? "Proof-of-work verified" : "Proof-of-work verified hai"}</span>
           </div>
         </div>
 

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useLanguage } from '@/components/LanguageProvider';
 import RecruiterPreview, { UserProfile } from '@/components/RecruiterPreview';
 import { Search, Filter, Briefcase, Award, GraduationCap, Flame, ArrowRight, Eye, Sparkles, X } from 'lucide-react';
 
@@ -123,6 +124,7 @@ export default function RecruiterDashboard() {
   const [minStreak, setMinStreak] = useState(0);
   const [selectedCandidate, setSelectedCandidate] = useState<UserProfile | null>(mockCandidates[0]);
   const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
+  const { language } = useLanguage();
 
   // Filters candidates based on inputs
   const filteredCandidates = mockCandidates.filter((candidate) => {
@@ -150,14 +152,16 @@ export default function RecruiterDashboard() {
           <div className="flex items-center gap-2 mb-2">
             <Briefcase className="w-5 h-5 text-violet-500" />
             <span className="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">
-              Recruiter Dashboard
+              {language === 'english' ? "Recruiter Dashboard" : "Recruiter Dashboard"}
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-['Outfit'] tracking-tight">
-            Scout Top College Developers
+            {language === 'english' ? "Scout Top College Developers" : "College Ke Top Developers Ko Scout Karo"}
           </h1>
-          <p className="text-sm text-slate-600 dark:text-gray-400 mt-1 max-w-2xl">
-            Filter, inspect, and directly hire students based on verifiable daily commits and streak data. No resume spam, just pure proof of work.
+          <p className="text-sm text-slate-600 dark:text-gray-400 mt-1 max-w-2xl font-medium">
+            {language === 'english'
+              ? "Filter, inspect, and directly hire students based on verifiable daily commits and streak data. No resume spam, just pure proof of work."
+              : "Verifiable daily commits aur streak data ke basis par directly students ko inspect aur hire karein. Faltu resumes nahi, bas asli proof of work."}
           </p>
         </div>
 
@@ -175,7 +179,7 @@ export default function RecruiterDashboard() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search candidates by name, college, or skills..."
+                  placeholder={language === 'english' ? "Search candidates by name, college, or skills..." : "Candidates search karein name, college ya skills se..."}
                   className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors shadow-sm"
                 />
               </div>
@@ -202,7 +206,7 @@ export default function RecruiterDashboard() {
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1">
                     <Flame className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Streak &ge; {minStreak}</span>
+                    <span>{language === 'english' ? `Streak >= ${minStreak}` : `Streak >= ${minStreak}`}</span>
                   </span>
                   <input
                     type="range"
@@ -249,23 +253,30 @@ export default function RecruiterDashboard() {
                               {candidate.recruiterScore}/100
                             </span>
                           </div>
-                          <p className="text-xs text-slate-500 dark:text-gray-400 flex items-center gap-1 mt-0.5 truncate">
+                          <p className="text-xs text-slate-500 dark:text-gray-400 flex items-center gap-1 mt-0.5 truncate font-medium">
                             <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                             <span className="truncate">{candidate.college}</span>
                           </p>
-                          <p className="text-[10px] text-slate-400 dark:text-gray-500 mt-1 truncate">
-                            {candidate.track}
+                          <p className="text-[10px] text-slate-400 dark:text-gray-500 mt-1 truncate font-semibold">
+                            {language === 'english' ? candidate.track : 
+                             candidate.track === 'Full-Stack Web & Backend Systems' ? 'Full-Stack Web aur Backend Systems' :
+                             candidate.track === 'AI & Intelligent Agents' ? 'AI aur Intelligent Agents' :
+                             candidate.track === 'DevOps & Cloud Native Systems' ? 'DevOps aur Cloud Native Systems' :
+                             candidate.track === 'Mobile App Dev (React Native)' ? 'Mobile App Dev (React Native)' :
+                             candidate.track}
                           </p>
                         </div>
                       </div>
 
                       <div className="flex items-center gap-3 shrink-0">
                         <div className="text-right">
-                          <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Active Streak</p>
+                          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                            {language === 'english' ? "Active Streak" : "Dhamaka Streak"}
+                          </p>
                           <div className="flex items-center gap-1 justify-end mt-0.5">
                             <Flame className="w-4 h-4 text-amber-500 fill-amber-500" />
                             <span className="font-bold text-sm text-slate-900 dark:text-white">
-                              {candidate.currentStreak}d
+                              {candidate.currentStreak}{language === 'english' ? 'd' : ' din'}
                             </span>
                           </div>
                         </div>
@@ -275,8 +286,8 @@ export default function RecruiterDashboard() {
                   );
                 })
               ) : (
-                <div className="p-8 text-center bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-3xl text-slate-500 dark:text-gray-400 italic">
-                  No candidates match the search filters.
+                <div className="p-8 text-center bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-3xl text-slate-500 dark:text-gray-400 italic font-semibold">
+                  {language === 'english' ? "No candidates match the search filters." : "Koi candidates search filters se match nahi ho rahe."}
                 </div>
               )}
             </div>
@@ -288,14 +299,20 @@ export default function RecruiterDashboard() {
               <div className="sticky top-24">
                 <div className="mb-2 flex items-center gap-1 px-1">
                   <Sparkles className="w-4 h-4 text-violet-500 animate-pulse" />
-                  <span className="text-xs font-bold text-violet-600 dark:text-violet-400">Candidate Dossier</span>
+                  <span className="text-xs font-bold text-violet-600 dark:text-violet-400">
+                    {language === 'english' ? "Candidate Dossier" : "Candidate Dossier"}
+                  </span>
                 </div>
                 <RecruiterPreview user={selectedCandidate} />
               </div>
             ) : (
               <div className="p-8 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border flex flex-col items-center justify-center text-center text-slate-400 dark:text-gray-500 shadow-sm min-h-[300px]">
                 <Eye className="w-8 h-8 text-slate-300 dark:text-gray-600 mb-2" />
-                <p className="text-xs font-semibold">Select a candidate on the left to inspect their dossier.</p>
+                <p className="text-xs font-semibold">
+                  {language === 'english'
+                    ? "Select a candidate on the left to inspect their dossier."
+                    : "Kisi candidate ko select karke unka live dossier check karein."}
+                </p>
               </div>
             )}
           </div>

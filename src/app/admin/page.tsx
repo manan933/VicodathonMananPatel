@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useToast } from '@/components/ToastProvider';
+import { useLanguage } from '@/components/LanguageProvider';
 import { Settings, Activity, Terminal, Database, Users, Calendar, Play, Server } from 'lucide-react';
 
 export default function AdminDashboard() {
   const { showToast } = useToast();
+  const { language } = useLanguage();
   
   // Challenge State Form
   const [challengeTitle, setChallengeTitle] = useState('Distributed Auth Middleware with JWT & RSA');
@@ -38,14 +40,14 @@ export default function AdminDashboard() {
     setIsDeploying(true);
     setTimeout(() => {
       setIsDeploying(false);
-      showToast(`Challenge successfully deployed: ${challengeTitle}`, 'success');
-      showToast(`Announced to ${activeUsers} online builders`, 'streak');
+      showToast(language === 'english' ? `Challenge successfully deployed: ${challengeTitle}` : `Challenge successfully deploy ho gaya: ${challengeTitle}`, 'success');
+      showToast(language === 'english' ? `Announced to ${activeUsers} online builders` : `Announced to ${activeUsers} online builders`, 'streak');
     }, 1200);
   };
 
   const handleBroadcast = () => {
     if (!announcementText.trim()) return;
-    showToast(`Broadcast sent: "${announcementText}"`, 'recruiter');
+    showToast(language === 'english' ? `Broadcast sent: "${announcementText}"` : `Alert broadcast ho gaya: "${announcementText}"`, 'recruiter');
     setAnnouncementText('');
   };
 
@@ -60,14 +62,16 @@ export default function AdminDashboard() {
           <div className="flex items-center gap-2 mb-2">
             <Settings className="w-5 h-5 text-indigo-500" />
             <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
-              Admin Control Panel
+              {language === 'english' ? "Admin Control Panel" : "Admin Control Panel"}
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-['Outfit'] tracking-tight">
-            System Administration
+            {language === 'english' ? "System Administration" : "System Administration"}
           </h1>
-          <p className="text-sm text-slate-600 dark:text-gray-400 mt-1">
-            Publish daily challenges, monitor real-time system performance telemetry, and broadcast alerts to the student community.
+          <p className="text-sm text-slate-600 dark:text-gray-400 mt-1 font-medium">
+            {language === 'english'
+              ? "Publish daily challenges, monitor real-time system performance telemetry, and broadcast alerts to the student community."
+              : "Daily challenges publish karein, real-time performance check karein, aur student community ko alert notifications send karein."}
           </p>
         </div>
 
@@ -80,7 +84,7 @@ export default function AdminDashboard() {
               <Users className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Online Builders</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Online Builders" : "Online Builders"}</p>
               <h3 className="text-xl font-extrabold text-slate-900 dark:text-white font-['Outfit'] mt-0.5">
                 {activeUsers}
               </h3>
@@ -94,7 +98,7 @@ export default function AdminDashboard() {
             </div>
             <div className="flex-1">
               <div className="flex justify-between items-baseline">
-                <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">CPU Load</p>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "CPU Load" : "CPU Load"}</p>
                 <span className="text-xs font-bold text-slate-700 dark:text-gray-200">{cpuUsage}%</span>
               </div>
               <div className="h-1.5 w-full bg-slate-100 dark:bg-dark-bg rounded-full overflow-hidden mt-1.5">
@@ -112,7 +116,7 @@ export default function AdminDashboard() {
               <Database className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Redis DB Latency</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Redis DB Latency" : "Redis DB Latency"}</p>
               <h3 className="text-xl font-extrabold text-slate-900 dark:text-white font-['Outfit'] mt-0.5">
                 {latency} ms
               </h3>
@@ -123,14 +127,13 @@ export default function AdminDashboard() {
 
         {/* Challenge Builder and Broadcasting Form Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          
           {/* Challenge Form (7 cols) */}
           <div className="md:col-span-8 p-6 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Calendar className="w-4 h-4 text-indigo-500" />
                 <h2 className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">
-                  Schedule Tomorrow's Challenge
+                  {language === 'english' ? "Schedule Tomorrow's Challenge" : "Kal Ka Challenge Setup Karo"}
                 </h2>
               </div>
 
@@ -138,7 +141,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">
-                      Challenge Title
+                      {language === 'english' ? "Challenge Title" : "Challenge Title"}
                     </label>
                     <input
                       type="text"
@@ -150,17 +153,25 @@ export default function AdminDashboard() {
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">
-                      Engineering Track
+                      {language === 'english' ? "Engineering Track" : "Engineering Track"}
                     </label>
                     <select
                       value={challengeTrack}
                       onChange={(e) => setChallengeTrack(e.target.value)}
-                      className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 font-semibold"
                     >
-                      <option>Full-Stack Web & Backend Systems</option>
-                      <option>AI & Intelligent Agents</option>
-                      <option>DevOps & Cloud Native Systems</option>
-                      <option>Mobile App Engineering</option>
+                      <option value="Full-Stack Web & Backend Systems">
+                        {language === 'english' ? "Full-Stack Web & Backend Systems" : "Full-Stack Web aur Backend Systems"}
+                      </option>
+                      <option value="AI & Intelligent Agents">
+                        {language === 'english' ? "AI & Intelligent Agents" : "AI aur Intelligent Agents"}
+                      </option>
+                      <option value="DevOps & Cloud Native Systems">
+                        {language === 'english' ? "DevOps & Cloud Native Systems" : "DevOps aur Cloud Native Systems"}
+                      </option>
+                      <option value="Mobile App Engineering">
+                        {language === 'english' ? "Mobile App Engineering" : "Mobile App Dev (React Native)"}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -168,7 +179,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">
-                      Estimated Build Duration (mins)
+                      {language === 'english' ? "Estimated Build Duration (mins)" : "Estimated Build Duration (minutes)"}
                     </label>
                     <input
                       type="number"
@@ -181,16 +192,16 @@ export default function AdminDashboard() {
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">
-                      Difficulty Level
+                      {language === 'english' ? "Difficulty Level" : "Difficulty Level"}
                     </label>
                     <select
                       value={challengeDifficulty}
                       onChange={(e) => setChallengeDifficulty(e.target.value)}
-                      className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white focus:outline-none"
+                      className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white focus:outline-none font-semibold"
                     >
-                      <option>Beginner</option>
-                      <option>Intermediate</option>
-                      <option>Advanced</option>
+                      <option>{language === 'english' ? 'Beginner' : 'Beginner'}</option>
+                      <option>{language === 'english' ? 'Intermediate' : 'Intermediate'}</option>
+                      <option>{language === 'english' ? 'Advanced' : 'Advanced'}</option>
                     </select>
                   </div>
                 </div>
@@ -201,11 +212,11 @@ export default function AdminDashboard() {
                   className="w-full mt-4 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isDeploying ? (
-                    <span>Deploying to System Queue...</span>
+                    <span>{language === 'english' ? "Deploying to System Queue..." : "System Queue Me Deploy Ho Raha..."}</span>
                   ) : (
                     <>
                       <Play className="w-3.5 h-3.5" />
-                      <span>Deploy Challenge Prompt</span>
+                      <span>{language === 'english' ? "Deploy Challenge Prompt" : "Challenge Prompt Deploy Karo"}</span>
                     </>
                   )}
                 </button>
@@ -221,14 +232,14 @@ export default function AdminDashboard() {
               <div className="flex items-center gap-2">
                 <Terminal className="w-4 h-4 text-indigo-500" />
                 <h3 className="text-xs font-extrabold text-slate-900 dark:text-white font-['Outfit'] uppercase tracking-wider">
-                  Community Alert Dispatch
+                  {language === 'english' ? "Community Alert Dispatch" : "Community Alert Dispatch"}
                 </h3>
               </div>
               <textarea
                 rows={3}
                 value={announcementText}
                 onChange={(e) => setAnnouncementText(e.target.value)}
-                placeholder="Alert text to broadcast (e.g. Server maintenance scheduled tonight at 3 AM...)"
+                placeholder={language === 'english' ? "Alert text to broadcast (e.g. Server maintenance scheduled tonight at 3 AM...)" : "Kuch alert broadcast karein (e.g. Server maintenance aaj raat 3 baje hoga...)"}
                 className="w-full p-3 rounded-xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-indigo-500"
               />
               <button
@@ -237,7 +248,7 @@ export default function AdminDashboard() {
                 disabled={!announcementText.trim()}
                 className="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-950 font-bold text-[11px] shadow-sm transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Alert
+                {language === 'english' ? "Send Alert" : "Alert Bhejo"}
               </button>
             </div>
 
@@ -246,19 +257,19 @@ export default function AdminDashboard() {
               <div className="flex items-center gap-2 mb-3">
                 <Activity className="w-4 h-4 text-emerald-500" />
                 <h3 className="text-xs font-extrabold text-slate-900 dark:text-white font-['Outfit'] uppercase tracking-wider">
-                  Live Verify Log
+                  {language === 'english' ? "Live Verify Log" : "Live Verify Log"}
                 </h3>
               </div>
               <div className="space-y-2 text-[10px] font-mono text-slate-600 dark:text-gray-400 max-h-[140px] overflow-y-auto pr-1">
-                <p className="flex items-center gap-1.5">
+                <p className="flex items-center gap-1.5 font-medium">
                   <span className="text-emerald-500">✓</span>
                   <span>Commit verified for @aarav_sharma</span>
                 </p>
-                <p className="flex items-center gap-1.5">
+                <p className="flex items-center gap-1.5 font-medium">
                   <span className="text-emerald-500">✓</span>
                   <span>LinkedIn post parsed for @priya_verma</span>
                 </p>
-                <p className="flex items-center gap-1.5 text-slate-400">
+                <p className="flex items-center gap-1.5 text-slate-400 font-medium">
                   <span className="animate-pulse">●</span>
                   <span>Incoming GitHub webhook payload...</span>
                 </p>

@@ -95,16 +95,16 @@ export default function CommandPalette({
   // Theme toggle action handler
   const handleToggleTheme = () => {
     const currentTheme = localStorage.getItem('abtalks-theme') || 'dark';
-    let nextTheme: 'dark' | 'light' | 'cyber' = 'dark';
+    let nextTheme: 'dark' | 'light' | 'brutal' = 'dark';
     if (currentTheme === 'dark') nextTheme = 'light';
-    else if (currentTheme === 'light') nextTheme = 'cyber';
+    else if (currentTheme === 'light') nextTheme = 'brutal';
     else nextTheme = 'dark';
 
-    document.documentElement.classList.remove('dark', 'light', 'cyber');
+    document.documentElement.classList.remove('dark', 'light', 'brutal');
     if (nextTheme === 'light') {
       document.documentElement.classList.add('light');
-    } else if (nextTheme === 'cyber') {
-      document.documentElement.classList.add('dark', 'cyber');
+    } else if (nextTheme === 'brutal') {
+      document.documentElement.classList.add('brutal');
     } else {
       document.documentElement.classList.add('dark');
     }

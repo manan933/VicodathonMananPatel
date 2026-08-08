@@ -3,6 +3,7 @@ import './globals.css';
 
 import AmbientBackground from '@/components/AmbientBackground';
 import { ToastProvider } from '@/components/ToastProvider';
+import { LanguageProvider } from '@/components/LanguageProvider';
 import CommandPalette from '@/components/CommandPalette';
 
 export const metadata: Metadata = {
@@ -52,11 +53,11 @@ export default function RootLayout({
             __html: `
               try {
                 var theme = localStorage.getItem('abtalks-theme');
-                document.documentElement.classList.remove('dark', 'light', 'cyber');
+                document.documentElement.classList.remove('dark', 'light', 'brutal');
                 if (theme === 'light') {
                   document.documentElement.classList.add('light');
-                } else if (theme === 'cyber') {
-                  document.documentElement.classList.add('dark', 'cyber');
+                } else if (theme === 'brutal') {
+                  document.documentElement.classList.add('brutal');
                 } else {
                   document.documentElement.classList.add('dark');
                 }
@@ -75,11 +76,13 @@ export default function RootLayout({
       </head>
       <body className="bg-white dark:bg-dark-bg text-slate-900 dark:text-gray-100 min-h-screen selection:bg-rose-500 selection:text-white antialiased transition-colors duration-200 relative overflow-x-hidden">
         <ToastProvider>
-          <AmbientBackground />
-          <div className="relative z-10 flex flex-col min-h-screen">
-            {children}
-          </div>
-          <CommandPalette />
+          <LanguageProvider>
+            <AmbientBackground />
+            <div className="relative z-10 flex flex-col min-h-screen">
+              {children}
+            </div>
+            <CommandPalette />
+          </LanguageProvider>
         </ToastProvider>
       </body>
     </html>

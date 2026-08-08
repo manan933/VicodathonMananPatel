@@ -8,6 +8,7 @@ import mockData from '@/data/mockData.json';
 import confetti from 'canvas-confetti';
 import GitHubVerifier, { isValidGithubUrl } from '@/components/GitHubVerifier';
 import { useToast } from '@/components/ToastProvider';
+import { useLanguage } from '@/components/LanguageProvider';
 import { 
   Flame, 
   Github, 
@@ -32,6 +33,7 @@ import {
 export default function ChallengeDayPage() {
   const challenge = mockData.day12Challenge;
   const { showToast } = useToast();
+  const { language } = useLanguage();
 
   // Form State
   const [githubUrl, setGithubUrl] = useState('https://github.com/manan-dev/abtalks-day12-redis-limiter');
@@ -99,7 +101,9 @@ export default function ChallengeDayPage() {
 
   // AI LinkedIn Draft Helper
   const handleGenerateAiPost = () => {
-    const aiDraft = `🚀 Day 12/60 of the ABTalks Challenge finished tonight! 🌙\n\nToday I built an API Rate Limiter in Node.js & Redis to protect servers from traffic overload. Implemented HTTP 429 status code handling and automatic reset timers.\n\nCode Proof: ${githubUrl || 'https://github.com/manan-dev/abtalks-day12-redis-limiter'}\n\n#60DaysOfCode #ABTalks #NodeJS #BackendEngineering`;
+    const aiDraft = language === 'english'
+      ? `🚀 Day 12/60 of the ABTalks Challenge finished tonight! 🌙\n\nToday I built an API Rate Limiter in Node.js & Redis to protect servers from traffic overload. Implemented HTTP 429 status code handling and automatic reset timers.\n\nCode Proof: ${githubUrl || 'https://github.com/manan-dev/abtalks-day12-redis-limiter'}\n\n#60DaysOfCode #ABTalks #NodeJS #BackendEngineering`
+      : `🚀 Day 12/60 of the ABTalks Challenge aaj raat khatam ho gaya! 🌙\n\nAaj maine Node.js & Redis use karke ek API Rate Limiter banaya taaki servers crash na ho. Isme HTTP 429 status codes aur auto-reset timers integration kiya hai.\n\nCode Proof: ${githubUrl || 'https://github.com/manan-dev/abtalks-day12-redis-limiter'}\n\n#60DaysOfCode #ABTalks #NodeJS #BackendEngineering`;
     setLinkedinText(aiDraft);
     setLinkedinUrl('https://linkedin.com/posts/manan-patel-tech_abtalks-day12-redis-rate-limiter');
   };
@@ -110,7 +114,7 @@ export default function ChallengeDayPage() {
     if (!githubUrl) return;
 
     if (!isValidGithubUrl(githubUrl)) {
-      showToast('Please enter a valid GitHub URL', 'badge');
+      showToast(language === 'english' ? 'Please enter a valid GitHub URL' : 'Bhai, sahi GitHub URL daalo', 'badge');
       return;
     }
 
@@ -124,8 +128,8 @@ export default function ChallengeDayPage() {
     setIsSubmitted(true);
 
     // Show dual toast notifications
-    showToast('GitHub Commit Verified & Linked!', 'success');
-    showToast('🔥 Streak Increased! 12 → 13 Days', 'streak');
+    showToast(language === 'english' ? 'GitHub Commit Verified & Linked!' : 'GitHub Commit Verify aur Link ho gaya!', 'success');
+    showToast(language === 'english' ? '🔥 Streak Increased! 12 → 13 Days' : '🔥 Streak Badh Gayi! 12 → 13 Din', 'streak');
 
     // Trigger Celebration Confetti
     try {
@@ -156,29 +160,29 @@ export default function ChallengeDayPage() {
         <div className="flex items-center justify-between mb-4">
           <Link
             href="/dashboard"
-            className="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition-colors font-medium"
+            className="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition-colors font-semibold"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>← Dashboard</span>
+            <span>{language === 'english' ? "← Dashboard" : "← Mera Board"}</span>
           </Link>
 
           <div className="flex items-center gap-2">
             <Link
               href="/day/11"
-              className="p-1.5 px-3 rounded-lg bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-xs text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm font-medium"
+              className="p-1.5 px-3 rounded-lg bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-xs text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm font-semibold"
               title="Previous Day"
             >
-              Day 11
+              {language === 'english' ? "Day 11" : "Din 11"}
             </Link>
             <span className="text-xs font-bold px-3 py-1 rounded-xl bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30">
-              Day 12 of 60
+              {language === 'english' ? "Day 12 of 60" : "60 me se Din 12"}
             </span>
             <Link
               href="/day/13"
-              className="p-1.5 px-3 rounded-lg bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-xs text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm font-medium"
+              className="p-1.5 px-3 rounded-lg bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-xs text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm font-semibold"
               title="Next Day"
             >
-              Day 13
+              {language === 'english' ? "Day 13" : "Din 13"}
             </Link>
           </div>
         </div>
@@ -191,9 +195,13 @@ export default function ChallengeDayPage() {
                 <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-sm font-extrabold text-emerald-800 dark:text-emerald-400 font-['Outfit']">Day 12 — Shipped & Verified 🎉</h3>
-                <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
-                  Streak bumped to <strong className="text-amber-700 dark:text-amber-400 font-bold">13 days</strong>. Recruiters can now see this build.
+                <h3 className="text-sm font-extrabold text-emerald-800 dark:text-emerald-400 font-['Outfit']">
+                  {language === 'english' ? "Day 12 — Shipped & Verified 🎉" : "Din 12 — Done aur Verify Ho Gaya 🎉"}
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5 font-medium">
+                  {language === 'english'
+                    ? `Streak bumped to 13 days. Recruiters can now see this build.`
+                    : `Aapki streak 13 din ho gayi hai! Recruiters ab aapka kaam dekh sakte hain.`}
                 </p>
               </div>
             </div>
@@ -201,7 +209,7 @@ export default function ChallengeDayPage() {
               href="/dashboard"
               className="px-3.5 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs shrink-0 hover:bg-emerald-700 transition-colors shadow-sm"
             >
-              Dashboard
+              {language === 'english' ? "Dashboard" : "Mera Board"}
             </Link>
           </div>
         )}
@@ -210,31 +218,35 @@ export default function ChallengeDayPage() {
         <div className="p-6 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border mb-6 relative overflow-hidden shadow-sm">
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="px-2.5 py-0.5 rounded-md bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 text-[10px] font-bold border border-rose-200 dark:border-rose-500/30">
-              {challenge.track}
+              {language === 'english' ? challenge.track : 'Full-Stack Web aur Backend Systems'}
             </span>
             <span className="px-2.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 text-[10px] font-bold border border-amber-200 dark:border-amber-500/30 flex items-center gap-1">
               <Clock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
-              <span>{challenge.estimatedMinutes} Mins</span>
+              <span>{language === 'english' ? `${challenge.estimatedMinutes} Mins` : `${challenge.estimatedMinutes} Minutes`}</span>
             </span>
             <span className="px-2.5 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold border border-indigo-200 dark:border-indigo-500/30">
-              {challenge.difficulty}
+              {language === 'english' ? challenge.difficulty : 'Medium Level'}
             </span>
             <span className="text-xs text-amber-700 dark:text-amber-400 font-bold ml-auto">+{challenge.points} XP</span>
           </div>
 
           <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white font-['Outfit'] mb-3">
-            {challenge.title}
+            {language === 'english' ? challenge.title : "API Rate Limiter Banao — Server Overload Roko"}
           </h1>
 
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-4 font-normal">
-            {challenge.overview}
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-4 font-medium">
+            {language === 'english'
+              ? challenge.overview
+              : "Zomato/Swiggy jaise apps rate limiter use karte hain taaki spam traffic se servers crash na ho. Aaj 45 mins me Express aur Redis ke sath ise build karo."}
           </p>
 
           {/* Late-Night Audio Brief Button */}
           <div className="p-3 rounded-2xl bg-slate-50 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-xs">
               <Volume2 className={`w-4 h-4 text-amber-600 dark:text-amber-400 ${isPlayingAudio ? 'animate-bounce' : ''}`} />
-              <span className="text-slate-700 dark:text-gray-300 font-medium">Audio walkthrough — plug in your earbuds:</span>
+              <span className="text-slate-700 dark:text-gray-300 font-semibold">
+                {language === 'english' ? "Audio walkthrough — plug in your earbuds:" : "Audio walkthrough — kaan me headphones lagao:"}
+              </span>
             </div>
 
             <button
@@ -246,7 +258,7 @@ export default function ChallengeDayPage() {
               }`}
             >
               {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
-              <span>{isPlayingAudio ? 'Stop' : 'Listen'}</span>
+              <span>{isPlayingAudio ? (language === 'english' ? 'Stop' : 'Roko') : (language === 'english' ? 'Listen' : 'Suno')}</span>
             </button>
           </div>
         </div>
@@ -259,32 +271,49 @@ export default function ChallengeDayPage() {
             <div>
               <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit'] mb-3 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-rose-600 dark:text-rose-400" />
-                <span>What You'll Learn</span>
+                <span>{language === 'english' ? "What You'll Learn" : "Aap Kya Seekhoge"}</span>
               </h3>
 
               <ul className="space-y-2 mb-4">
                 {challenge.learningObjectives.map((obj, i) => (
                   <li key={i} className="text-xs text-slate-600 dark:text-gray-300 flex items-start gap-2 font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
-                    <span>{obj}</span>
+                    <span>
+                      {language === 'english' ? obj : 
+                       i === 0 ? "Redis commands use karke user requests track karna" :
+                       i === 1 ? "Simple token limit lagakar request bursts ko cap karna" :
+                       i === 2 ? "Limits cross hone par direct 'Too Many Requests' (HTTP 429) error return karna" :
+                       "Database down hone par app ko crash hone se bachana"}
+                    </span>
                   </li>
                 ))}
               </ul>
 
-              <h4 className="text-xs font-bold text-amber-700 dark:text-amber-400 mb-2">Requirements:</h4>
+              <h4 className="text-xs font-bold text-amber-700 dark:text-amber-400 mb-2">
+                {language === 'english' ? "Requirements:" : "Zaroori Cheezein:"}
+              </h4>
               <ul className="space-y-1.5 text-xs text-slate-600 dark:text-gray-400 mb-4 font-medium">
                 {challenge.requirements.map((req, i) => (
                   <li key={i} className="flex items-center gap-1.5">
                     <Zap className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
-                    <span>{req}</span>
+                    <span>
+                      {language === 'english' ? req :
+                       i === 0 ? "Ek GET /api/v1/data Express endpoint banana" :
+                       i === 1 ? "User IP addresses ko Redis me 60-second reset timer ke sath save karna" :
+                       "Extra requests block ho rahi hain ya nahi, iska automated test likhna"}
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="p-3 rounded-2xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-xs">
-              <span className="font-bold text-amber-800 dark:text-amber-300">💡 Bonus: </span>
-              <span className="text-slate-600 dark:text-gray-300 font-medium">{challenge.bonusChallenge}</span>
+              <span className="font-bold text-amber-800 dark:text-amber-300">
+                {language === 'english' ? "💡 Bonus: " : "💡 Bonus Task: "}
+              </span>
+              <span className="text-slate-600 dark:text-gray-300 font-medium">
+                {language === 'english' ? challenge.bonusChallenge : "Precise timing ke liye sliding-window rate limiting logic add karna"}
+              </span>
             </div>
           </div>
 
@@ -294,14 +323,16 @@ export default function ChallengeDayPage() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <Code2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                  <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">Starter Code</h3>
+                  <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">
+                    {language === 'english' ? "Starter Code" : "Starter Code"}
+                  </h3>
                 </div>
                 <button
                   onClick={handleCopyCode}
-                  className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white flex items-center gap-1 transition-colors font-medium shadow-sm"
+                  className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white flex items-center gap-1 transition-colors font-semibold shadow-sm"
                 >
                   {isCopied ? <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                  <span>{isCopied ? 'Copied' : 'Copy'}</span>
+                  <span>{isCopied ? (language === 'english' ? 'Copied' : 'Copy Ho Gaya') : (language === 'english' ? 'Copy' : 'Copy')}</span>
                 </button>
               </div>
 
@@ -312,7 +343,9 @@ export default function ChallengeDayPage() {
 
             <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60 text-[11px] text-slate-500 dark:text-gray-400 flex items-center justify-between font-medium">
               <span>Runs on Node 18+ / Redis 7</span>
-              <span className="text-rose-600 dark:text-rose-400 font-bold">Ready to run</span>
+              <span className="text-rose-600 dark:text-rose-400 font-bold">
+                {language === 'english' ? "Ready to run" : "Chalane ke liye ready"}
+              </span>
             </div>
           </div>
 
@@ -326,14 +359,16 @@ export default function ChallengeDayPage() {
             <div>
               <h2 className="text-lg font-extrabold text-slate-900 dark:text-white font-['Outfit'] flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-rose-600 dark:text-rose-500" />
-                <span>Submit Your Build</span>
+                <span>{language === 'english' ? "Submit Your Build" : "Mera Kaam Submit Karo"}</span>
               </h2>
-              <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
-                Drop your GitHub link and LinkedIn post to lock in today's streak.
+              <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5 font-medium">
+                {language === 'english'
+                  ? "Drop your GitHub link and LinkedIn post to lock in today's streak."
+                  : "GitHub link aur LinkedIn post dalkar apni aaj ki streak lock karein."}
               </p>
             </div>
             <span className="text-xs font-bold text-amber-800 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-500/30 self-start sm:self-auto">
-              Recruiter-visible
+              {language === 'english' ? "Recruiter-visible" : "Recruiter dekhenge"}
             </span>
           </div>
 
@@ -343,7 +378,7 @@ export default function ChallengeDayPage() {
             <div>
               <label className="block text-xs font-bold text-slate-700 dark:text-gray-300 mb-1.5 flex items-center gap-1.5">
                 <Github className="w-4 h-4 text-slate-900 dark:text-white" />
-                <span>GitHub repo or commit link *</span>
+                <span>{language === 'english' ? "GitHub repo or commit link *" : "GitHub repo ya commit link *"}</span>
               </label>
               <input
                 type="url"
@@ -361,7 +396,7 @@ export default function ChallengeDayPage() {
               <div className="flex items-center justify-between mb-1.5">
                 <label className="block text-xs font-bold text-slate-700 dark:text-gray-300 flex items-center gap-1.5">
                   <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                  <span>LinkedIn post link *</span>
+                  <span>{language === 'english' ? "LinkedIn post link *" : "LinkedIn post link *"}</span>
                 </label>
 
                 {/* Thoughtful Innovation: 1-Click AI LinkedIn Post Helper */}
@@ -372,13 +407,15 @@ export default function ChallengeDayPage() {
                   className="px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-gradient-to-r dark:from-amber-500/20 dark:to-rose-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40 text-[11px] font-bold flex items-center gap-1 hover:border-amber-400 transition-all shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   <Sparkles className="w-3 h-3 text-amber-600 dark:text-amber-400 animate-pulse" />
-                  <span>Draft with AI ✨</span>
+                  <span>{language === 'english' ? "Draft with AI ✨" : "AI se draft karo ✨"}</span>
                 </button>
               </div>
 
               {linkedinText && (
-                <div className="mb-2 p-3 rounded-xl bg-slate-100 dark:bg-dark-bg/90 border border-amber-300 dark:border-amber-500/30 text-xs text-slate-800 dark:text-gray-300 whitespace-pre-wrap shadow-inner">
-                  <p className="text-[10px] font-bold text-amber-800 dark:text-amber-400 mb-1">Your draft:</p>
+                <div className="mb-2 p-3 rounded-xl bg-slate-100 dark:bg-dark-bg/90 border border-amber-300 dark:border-amber-500/30 text-xs text-slate-800 dark:text-gray-300 whitespace-pre-wrap shadow-inner font-medium">
+                  <p className="text-[10px] font-bold text-amber-800 dark:text-amber-400 mb-1">
+                    {language === 'english' ? "Your draft:" : "Aapka draft:"}
+                  </p>
                   {linkedinText}
                 </div>
               )}
@@ -414,16 +451,16 @@ export default function ChallengeDayPage() {
               }`}
             >
               {submitting ? (
-                <span>Verifying...</span>
+                <span>{language === 'english' ? 'Verifying...' : 'Check ho raha hai...'}</span>
               ) : isSubmitted ? (
                 <>
                   <CheckCircle2 className="w-5 h-5 text-white" />
-                  <span>Day 12 — Locked In ✓</span>
+                  <span>{language === 'english' ? 'Day 12 — Locked In ✓' : 'Din 12 — Locked In ✓'}</span>
                 </>
               ) : (
                 <>
                   <Send className="w-4 h-4" />
-                  <span>Submit & Lock Today's Streak</span>
+                  <span>{language === 'english' ? "Submit & Lock Today's Streak" : "Submit aur Streak Lock Karo"}</span>
                 </>
               )}
             </button>
@@ -434,10 +471,16 @@ export default function ChallengeDayPage() {
         <div className="p-6 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">What Others Built Today</h3>
-              <p className="text-xs text-slate-500 dark:text-gray-400">Real submissions from students across the country.</p>
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">
+                {language === 'english' ? "What Others Built Today" : "Baki logo ne kya banaya"}
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">
+                {language === 'english' ? "Real submissions from students across the country." : "Desh bhar ke college students ke live updates."}
+              </p>
             </div>
-            <span className="text-xs text-rose-600 dark:text-rose-400 font-bold">142 shipped today</span>
+            <span className="text-xs text-rose-600 dark:text-rose-400 font-bold">
+              {language === 'english' ? "142 shipped today" : "Aaj 142 logo ne complete kiya"}
+            </span>
           </div>
 
           <div className="space-y-3">
@@ -462,8 +505,13 @@ export default function ChallengeDayPage() {
                   </button>
                 </div>
 
-                <p className="text-xs text-slate-700 dark:text-gray-300 leading-relaxed mb-2">
-                  {sub.linkedinPost}
+                <p className="text-xs text-slate-700 dark:text-gray-300 leading-relaxed mb-2 font-medium">
+                  {language === 'english' ? sub.linkedinPost : 
+                   sub.id === 'sub_1' 
+                     ? `🔥 Zomato/Swiggy style API Rate Limiter build complete! Express aur Redis middleware ready kiya request overloading block karne ke liye. #60DaysOfCode #ABTalks` 
+                     : sub.id === 'sub_2' 
+                     ? `API abuse rokne ke liye custom Redis Token Bucket rate limiter successfully build kiya. #BackendEngineering #ABTalks` 
+                     : `Mera Day 12 backend setup locked in! Redis cache se sub-millisecond precision check verified. #NodeJS #ABTalks`}
                 </p>
 
                 <div className="flex items-center gap-3 text-[11px]">
@@ -474,7 +522,7 @@ export default function ChallengeDayPage() {
                     className="text-rose-600 dark:text-rose-400 font-semibold flex items-center gap-1 hover:underline"
                   >
                     <Github className="w-3 h-3" />
-                    <span>View code</span>
+                    <span>{language === 'english' ? "View code" : "Code dekho"}</span>
                     <ExternalLink className="w-2.5 h-2.5" />
                   </a>
                 </div>

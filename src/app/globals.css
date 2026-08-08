@@ -50,36 +50,76 @@ html.dark, :root.dark {
   --card-shadow: none;
 }
 
-/* Cyber Synthwave / Creative Neon Mode (3rd Unique Theme for Nerds & Creatives) */
-html.cyber, :root.cyber {
-  --color-bg-rgb: 15 7 32;
-  --color-card-rgb: 28 13 54;
-  --color-card-hover-rgb: 44 20 84;
-  --color-border-rgb: 147 51 234;
-  --color-text-muted-rgb: 216 180 254;
+/* Neo Brutalist Theme (3rd Unique Theme with Flat Thick Shadows & Sharp Edges) */
+html.brutal, :root.brutal {
+  --color-bg-rgb: 250 245 235;
+  --color-card-rgb: 255 255 255;
+  --color-card-hover-rgb: 255 222 77;
+  --color-border-rgb: 0 0 0;
+  --color-text-muted-rgb: 51 51 51;
 
-  --color-bg: #0F0720;
-  --color-card: #1C0D36;
-  --color-card-hover: #2C1454;
-  --color-border: #9333EA;
-  --color-text-primary: #F4F0FF;
-  --color-text-secondary: #E879F9;
-  --color-text-muted: #D8B4FE;
-  --color-brand: #EC4899;
-  --glass-panel-bg: rgba(28, 13, 54, 0.90);
-  --glass-card-bg: rgba(28, 13, 54, 0.85);
-  --glass-border: rgba(0, 240, 255, 0.4);
-  --glass-card-border: rgba(147, 51, 234, 0.4);
-  --glass-hover-border: rgba(236, 72, 153, 0.8);
-  --card-shadow: 0 0 30px rgba(147, 51, 234, 0.35), 0 0 10px rgba(0, 240, 255, 0.2);
+  --color-bg: #FAF5EB;
+  --color-card: #FFFFFF;
+  --color-card-hover: #FFE600;
+  --color-border: #000000;
+  --color-text-primary: #000000;
+  --color-text-secondary: #000000;
+  --color-text-muted: #1A1A1A;
+  --color-brand: #F43F5E;
+  --glass-panel-bg: #FFFFFF;
+  --glass-card-bg: #FFFFFF;
+  --glass-border: #000000;
+  --glass-card-border: #000000;
+  --glass-hover-border: #000000;
+  --card-shadow: 4px 4px 0px 0px #000000;
 }
 
-/* Custom Cyber Mode Glow & Background Accent */
-html.cyber body {
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.22) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(0, 240, 255, 0.22) 0px, transparent 50%);
-  background-attachment: fixed;
+/* Custom Neo Brutalist Overrides */
+html.brutal body {
+  background-image: none !important;
+  background-color: #FAF5EB !important;
+  color: #000000 !important;
+}
+
+html.brutal .rounded-3xl,
+html.brutal .rounded-2xl,
+html.brutal .rounded-xl,
+html.brutal .rounded-lg {
+  border-radius: 4px !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px 0px #000000 !important;
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+html.brutal button,
+html.brutal select,
+html.brutal input,
+html.brutal textarea {
+  border-radius: 4px !important;
+  border: 3px solid #000000 !important;
+  color: #000000 !important;
+  transition: all 0.15s ease !important;
+}
+
+html.brutal button:hover {
+  background-color: #FFE600 !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px 0px #000000 !important;
+}
+
+html.brutal button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+}
+
+html.brutal a {
+  transition: all 0.15s ease !important;
+}
+
+html.brutal a:hover {
+  color: #FFE600 !important;
+  text-decoration: underline !important;
 }
 
 body {

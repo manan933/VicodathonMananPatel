@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useLanguage } from '@/components/LanguageProvider';
 import { 
   Youtube, 
   ExternalLink, 
@@ -22,12 +23,12 @@ import {
 
 interface VideoItem {
   id: string;
-  title: string;
+  title: Record<'english' | 'hinglish', string>;
   embedUrl: string;
   youtubeId: string;
   category: 'AI & ML' | 'Career & Streak' | 'Coding Projects';
   duration: string;
-  description: string;
+  description: Record<'english' | 'hinglish', string>;
   tags: string[];
   featured?: boolean;
 }
@@ -35,43 +36,67 @@ interface VideoItem {
 const VIDEOS: VideoItem[] = [
   {
     id: '1',
-    title: 'How AI is Changing Software Engineering — ABTalks Masterclass',
+    title: {
+      english: 'How AI is Changing Software Engineering — ABTalks Masterclass',
+      hinglish: 'AI Software Engineering Kaise Badal Raha Hai — ABTalks Masterclass'
+    },
     embedUrl: 'https://www.youtube.com/embed/SqcY0GlETPk',
     youtubeId: 'SqcY0GlETPk',
     category: 'AI & ML',
     duration: '18:45',
-    description: 'Explore how modern AI models, LLM agents, and developer tooling are transforming modern full-stack development and how you can leverage them in your daily builds.',
+    description: {
+      english: 'Explore how modern AI models, LLM agents, and developer tooling are transforming modern full-stack development and how you can leverage them in your daily builds.',
+      hinglish: 'Explore karein kaise modern AI models, LLMs aur developer agents coding ko change kar rahe hain aur aap ise daily projects me kaise use kar sakte hain.'
+    },
     tags: ['AI', 'LLMs', 'Future of Coding', 'Developer Tools'],
     featured: true,
   },
   {
     id: '2',
-    title: 'Building a 60-Day Coding Streak — Discipline & Mindset Strategy',
+    title: {
+      english: 'Building a 60-Day Coding Streak — Discipline & Mindset Strategy',
+      hinglish: '60-Din Ki Coding Streak Kaise Banayein — Discipline & Mindset'
+    },
     embedUrl: 'https://www.youtube.com/embed/rfscVS0vtbw',
     youtubeId: 'rfscVS0vtbw',
     category: 'Career & Streak',
     duration: '14:20',
-    description: 'Practical daily strategies to stay consistent, avoid burnout, manage night-owl coding sessions, and build a high-impact GitHub proof-of-work portfolio.',
+    description: {
+      english: 'Practical daily strategies to stay consistent, avoid burnout, manage night-owl coding sessions, and build a high-impact GitHub proof-of-work portfolio.',
+      hinglish: 'Daily consistent rehne, burnout se bachne, aur recruiter-ready GitHub portfolio banane ki practical strategies.'
+    },
     tags: ['Motivation', 'Consistency', 'Streak', 'Career Growth'],
   },
   {
     id: '3',
-    title: 'Building Full Stack AI Apps from Scratch — Real World Architecture',
+    title: {
+      english: 'Building Full Stack AI Apps from Scratch — Real World Architecture',
+      hinglish: 'Full Stack AI Apps Ekdum Shuru Se Banao — Real World Architecture'
+    },
     embedUrl: 'https://www.youtube.com/embed/zJsQxY5spEA',
     youtubeId: 'zJsQxY5spEA',
     category: 'Coding Projects',
     duration: '22:10',
-    description: 'Step-by-step tutorial on architecting scalable full-stack applications with Next.js, Redis rate-limiting, vector databases, and API integrations.',
+    description: {
+      english: 'Step-by-step tutorial on architecting scalable full-stack applications with Next.js, Redis rate-limiting, vector databases, and API integrations.',
+      hinglish: 'Step-by-step tutorial: Next.js, Redis, Vector Databases aur APIs use karke complete full-stack apps build karein.'
+    },
     tags: ['Next.js', 'TypeScript', 'Full-Stack', 'System Architecture'],
   },
   {
     id: '4',
-    title: 'Cracking Tech Interviews & Standing Out with Public Proof of Work',
+    title: {
+      english: 'Cracking Tech Interviews & Standing Out with Public Proof of Work',
+      hinglish: 'Tech Interviews Kaise Crack Karein — Public Proof of Work Strategy'
+    },
     embedUrl: 'https://www.youtube.com/embed/Ke90Tje7VS0',
     youtubeId: 'Ke90Tje7VS0',
     category: 'Career & Streak',
     duration: '16:05',
-    description: 'Learn how top tech recruiters scout builders on GitHub & LinkedIn, and how turning your daily coding challenges into verifiable proof lands top interviews.',
+    description: {
+      english: 'Learn how top tech recruiters scout builders on GitHub & LinkedIn, and how turning your daily coding challenges into verifiable proof lands top interviews.',
+      hinglish: 'Sikhein recruiters GitHub & LinkedIn par coders ko kaise search karte hain, aur aapna daily work proof dikhakar top offers kaise paayein.'
+    },
     tags: ['Hiring', 'LinkedIn Proof', 'Recruiter Secrets', 'Portfolio'],
   },
 ];
@@ -82,23 +107,27 @@ export default function HubPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const { language } = useLanguage();
 
   const filteredVideos = useMemo(() => {
     return VIDEOS.filter((video) => {
       const matchesCategory =
         selectedCategory === 'All' || video.category === selectedCategory;
 
+      const titleText = video.title[language];
+      const descText = video.description[language];
+
       const matchesSearch =
         searchQuery.trim() === '' ||
-        video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        video.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        titleText.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        descText.toLowerCase().includes(searchQuery.toLowerCase()) ||
         video.tags.some((tag) =>
           tag.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, language]);
 
   const handleShare = (videoId: string, youtubeId: string) => {
     const videoUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
@@ -125,26 +154,28 @@ export default function HubPage() {
             <div className="space-y-3 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold text-white shadow-sm">
                 <Youtube className="w-4 h-4 text-red-300 fill-red-400" />
-                <span>Official ABTalks YouTube Hub</span>
+                <span>{language === 'english' ? "Official ABTalks YouTube Hub" : "Official ABTalks YouTube Hub"}</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-['Outfit'] text-white leading-tight">
-                ABTalks Video & Motivation Hub
+                {language === 'english' ? "ABTalks Video & Motivation Hub" : "ABTalks Video aur Motivation Hub"}
               </h1>
 
-              <p className="text-sm sm:text-base text-rose-100 dark:text-gray-300 leading-relaxed">
-                Watch curated masterclasses, daily streak mindset guides, and full-stack AI engineering builds. Fuel your 60-day journey with insights directly from tech leaders.
+              <p className="text-sm sm:text-base text-rose-100 dark:text-gray-300 leading-relaxed font-medium">
+                {language === 'english'
+                  ? "Watch curated masterclasses, daily streak mindset guides, and full-stack AI engineering builds. Fuel your 60-day journey with insights directly from tech leaders."
+                  : "AB Talks ke curated masterclasses, daily coding mindset guides aur AI projects dekho. Apne 60-din ke career safar ko boost karo."}
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-rose-100 pt-1">
+              <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-rose-100 pt-1">
                 <span className="flex items-center gap-1.5 bg-black/20 px-3 py-1 rounded-xl border border-white/10">
                   <Tv className="w-3.5 h-3.5 text-amber-300" />
-                  <span>Channel handle: <strong>@ABTalksOnAI</strong></span>
+                  <span>Channel: <strong>@ABTalksOnAI</strong></span>
                 </span>
                 <span className="flex items-center gap-1.5 bg-black/20 px-3 py-1 rounded-xl border border-white/10">
                   <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                  <span>50,000+ Active Builders</span>
+                  <span>{language === 'english' ? "50,000+ Active Builders" : "50,000+ Active Builders"}</span>
                 </span>
               </div>
             </div>
@@ -161,7 +192,7 @@ export default function HubPage() {
                   <Youtube className="w-5 h-5 fill-white" />
                 </div>
                 <div className="flex flex-col items-start text-left">
-                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Subscribe & Watch</span>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{language === 'english' ? "Subscribe & Watch" : "Subscribe & Watch"}</span>
                   <span className="text-sm font-extrabold text-slate-900 group-hover:text-red-600 transition-colors flex items-center gap-1">
                     @ABTalksOnAI
                     <ExternalLink className="w-4 h-4" />
@@ -179,8 +210,8 @@ export default function HubPage() {
               <Play className="w-5 h-5 fill-red-500" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">Curated Videos</p>
-              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">4 Masterclasses</p>
+              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">{language === 'english' ? "Curated Videos" : "Curated Videos"}</p>
+              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">{language === 'english' ? "4 Masterclasses" : "4 Masterclasses"}</p>
             </div>
           </div>
 
@@ -189,8 +220,8 @@ export default function HubPage() {
               <Flame className="w-5 h-5 fill-amber-500" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">Streak Motivation</p>
-              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">Daily Mindset</p>
+              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">{language === 'english' ? "Streak Motivation" : "Streak Motivation"}</p>
+              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">{language === 'english' ? "Daily Mindset" : "Daily Mindset"}</p>
             </div>
           </div>
 
@@ -199,8 +230,8 @@ export default function HubPage() {
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">Topic Focus</p>
-              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">AI, Code & Hiring</p>
+              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">{language === 'english' ? "Topic Focus" : "Topic Focus"}</p>
+              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">{language === 'english' ? "AI, Code & Hiring" : "AI, Code & Hiring"}</p>
             </div>
           </div>
 
@@ -209,8 +240,8 @@ export default function HubPage() {
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">Access</p>
-              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">100% Free</p>
+              <p className="text-xs text-slate-500 dark:text-gray-400 font-medium">{language === 'english' ? "Access" : "Access"}</p>
+              <p className="text-base font-extrabold text-slate-900 dark:text-white font-['Outfit']">{language === 'english' ? "100% Free" : "100% Free"}</p>
             </div>
           </div>
         </div>
@@ -224,7 +255,7 @@ export default function HubPage() {
               <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search videos by title, description, or tag (e.g. AI, Next.js, Hiring)..."
+                placeholder={language === 'english' ? "Search videos by title, description, or tag..." : "Videos search karein title, description ya tag se..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-red-500 text-slate-900 dark:text-white placeholder-slate-400"
@@ -234,7 +265,7 @@ export default function HubPage() {
                   onClick={() => setSearchQuery('')}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-gray-200"
                 >
-                  Clear
+                  {language === 'english' ? 'Clear' : 'Clear'}
                 </button>
               )}
             </div>
@@ -242,13 +273,19 @@ export default function HubPage() {
             {/* Active Count Badge */}
             <div className="flex items-center gap-2 self-end md:self-auto text-xs font-semibold text-slate-500 dark:text-gray-400 shrink-0">
               <Filter className="w-4 h-4 text-red-500" />
-              <span>Showing {filteredVideos.length} of {VIDEOS.length} videos</span>
+              <span>
+                {language === 'english' 
+                  ? `Showing ${filteredVideos.length} of ${VIDEOS.length} videos`
+                  : `${VIDEOS.length} me se ${filteredVideos.length} videos dikh rahi hain`}
+              </span>
             </div>
           </div>
 
           {/* Category Filter Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-1 border-t border-slate-100 dark:border-dark-border/60">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-1 shrink-0">Categories:</span>
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-1 shrink-0">
+              {language === 'english' ? "Categories:" : "Categories:"}
+            </span>
             {CATEGORIES.map((category) => (
               <button
                 key={category}
@@ -277,7 +314,7 @@ export default function HubPage() {
                 <div className="relative w-full aspect-video bg-black">
                   <iframe
                     src={video.embedUrl}
-                    title={video.title}
+                    title={video.title[language]}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                     className="w-full h-full border-0"
@@ -298,11 +335,11 @@ export default function HubPage() {
                     </div>
 
                     <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-['Outfit'] group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors leading-snug">
-                      {video.title}
+                      {video.title[language]}
                     </h3>
 
-                    <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed line-clamp-3">
-                      {video.description}
+                    <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed line-clamp-3 font-medium">
+                      {video.description[language]}
                     </p>
                   </div>
 
@@ -320,14 +357,14 @@ export default function HubPage() {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-1">
+                    <div className="flex items-center justify-between pt-1 font-semibold">
                       <a
                         href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs font-bold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 flex items-center gap-1 transition-colors"
                       >
-                        <span>Watch on YouTube</span>
+                        <span>{language === 'english' ? "Watch on YouTube" : "YouTube Par Dekho"}</span>
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
 
@@ -339,12 +376,12 @@ export default function HubPage() {
                         {copiedId === video.id ? (
                           <>
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                            <span className="text-emerald-600 dark:text-emerald-400 font-bold">Link Copied!</span>
+                            <span className="text-emerald-600 dark:text-emerald-400 font-bold">{language === 'english' ? 'Link Copied!' : 'Link Copy Ho Gaya!'}</span>
                           </>
                         ) : (
                           <>
                             <Share2 className="w-3.5 h-3.5 text-slate-500" />
-                            <span>Share</span>
+                            <span>{language === 'english' ? 'Share' : 'Share'}</span>
                           </>
                         )}
                       </button>
@@ -361,9 +398,13 @@ export default function HubPage() {
             <div className="w-12 h-12 rounded-2xl bg-red-100 dark:bg-red-500/10 text-red-500 flex items-center justify-center mx-auto">
               <Youtube className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white font-['Outfit']">No videos match your search</h3>
-            <p className="text-xs text-slate-500 dark:text-gray-400 max-w-md mx-auto">
-              Try adjusting your search terms or category filter to discover relevant videos.
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white font-['Outfit']">
+              {language === 'english' ? "No videos match your search" : "Sarch match nahi ho raha"}
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-gray-400 max-w-md mx-auto font-medium">
+              {language === 'english' 
+                ? "Try adjusting your search terms or category filter to discover relevant videos."
+                : "Bhai, filter badlo ya search query change karke check karo."}
             </p>
             <button
               onClick={() => {
@@ -372,7 +413,7 @@ export default function HubPage() {
               }}
               className="px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold hover:bg-red-700 transition-colors shadow-sm"
             >
-              Reset Filters
+              {language === 'english' ? "Reset Filters" : "Reset Filters"}
             </button>
           </div>
         )}

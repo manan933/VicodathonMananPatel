@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Trophy, Crown, Medal, Flame } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageProvider';
 
 export interface LeaderboardItem {
   rank: number;
@@ -41,6 +42,7 @@ const filterTabs: TrackFilter[] = ['All', 'Web & Backend', 'AI & ML', 'DevOps', 
 
 export default function Leaderboard() {
   const [activeTab, setActiveTab] = useState<TrackFilter>('All');
+  const { language } = useLanguage();
 
   const filteredData = leaderboardData.filter((item) => {
     const trackKey = filterTabToTrackKey[activeTab];
@@ -87,11 +89,11 @@ export default function Leaderboard() {
               <Trophy className="w-6 h-6" />
             </div>
             <h2 className="text-xl sm:text-2xl font-extrabold font-['Outfit'] text-slate-900 dark:text-white tracking-tight">
-              Campus Leaderboard
+              {language === 'english' ? "Campus Leaderboard" : "Campus Leaderboard"}
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 mt-1 ml-1">
-            Top builders across Indian colleges
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 mt-1 ml-1 font-semibold">
+            {language === 'english' ? "Top builders across Indian colleges" : "Desh ke engineering colleges ke top builders"}
           </p>
         </div>
       </div>
@@ -104,13 +106,15 @@ export default function Leaderboard() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-xl transition-all shrink-0 ${
+              className={`px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-xl transition-all shrink-0 ${
                 isActive
                   ? 'bg-rose-600 text-white shadow-sm shadow-rose-600/20'
                   : 'bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-slate-800'
               }`}
             >
-              {tab}
+              {tab === 'All' ? (language === 'english' ? 'All' : 'Sab') : 
+               tab === 'Web & Backend' ? (language === 'english' ? 'Web & Backend' : 'Web aur Backend') :
+               tab}
             </button>
           );
         })}
@@ -141,24 +145,24 @@ export default function Leaderboard() {
                 />
 
                 <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5 font-bold">
                     <span className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white truncate">
                       {item.name}
                     </span>
                     {isCurrentUser && (
                       <span className="px-1.5 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-md shrink-0 uppercase tracking-wider">
-                        You
+                        {language === 'english' ? 'You' : 'Aap'}
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] sm:text-xs text-slate-500 dark:text-gray-400 truncate">
+                  <div className="text-[11px] sm:text-xs text-slate-500 dark:text-gray-400 truncate font-semibold">
                     {item.college} • {item.city}
                   </div>
                 </div>
               </div>
 
               {/* Right: Streak & Score */}
-              <div className="flex items-center gap-4 shrink-0 pl-2">
+              <div className="flex items-center gap-4 shrink-0 pl-2 font-bold">
                 {/* Streak */}
                 <div className="flex items-center gap-1 text-xs sm:text-sm font-semibold text-amber-600 dark:text-amber-400">
                   <Flame className="w-4 h-4 fill-amber-500 text-amber-500" />
@@ -180,8 +184,8 @@ export default function Leaderboard() {
         })}
 
         {filteredData.length === 0 && (
-          <div className="text-center py-8 text-slate-400 dark:text-gray-400 text-sm">
-            No students found in this track.
+          <div className="text-center py-8 text-slate-400 dark:text-gray-400 text-sm font-semibold">
+            {language === 'english' ? "No students found in this track." : "Is track me koi student nahi mila."}
           </div>
         )}
       </div>

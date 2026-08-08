@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useLanguage } from '@/components/LanguageProvider';
 import {
   Linkedin,
   Download,
@@ -102,6 +103,7 @@ function renderAchievementIcon(iconName?: string) {
 export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
   const [linkedinClicked, setLinkedinClicked] = useState(false);
   const [downloading, setDownloading] = useState(false);
+  const { language } = useLanguage();
 
   // Safe destructuring & fallbacks
   const name = user?.name || 'Anonymous Student';
@@ -148,7 +150,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
       {/* Top Right 'Recruiter View' Badge */}
       <div className="absolute top-6 right-6 inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-slate-800/90 text-rose-400 border border-slate-700/80 shadow-inner z-10">
         <Eye className="w-3.5 h-3.5 text-rose-400" />
-        <span>Recruiter View</span>
+        <span>{language === 'english' ? "Recruiter View" : "Recruiter View"}</span>
       </div>
 
       {/* Header: Avatar, Name, Handle, College, Year, Reliability Badge */}
@@ -165,19 +167,19 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
             {isHighReliability ? (
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                 <ShieldCheck className="w-3 h-3 text-emerald-400" />
-                High Reliability
+                {language === 'english' ? "High Reliability" : "Sahi Hai (High Trust)"}
               </span>
             ) : (
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30">
                 <TrendingUp className="w-3 h-3 text-amber-400" />
-                Building
+                {language === 'english' ? "Building" : "Seekh Raha Hai (Building)"}
               </span>
             )}
           </div>
 
           <p className="text-xs font-mono text-slate-400 mt-0.5">{handle}</p>
 
-          <div className="flex items-center gap-3 text-xs text-slate-300 mt-2 flex-wrap">
+          <div className="flex items-center gap-3 text-xs text-slate-300 mt-2 flex-wrap font-medium">
             <span className="flex items-center gap-1 text-slate-300">
               <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
               {college}
@@ -185,7 +187,10 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
             <span className="text-slate-600">•</span>
             <span className="flex items-center gap-1 text-slate-300">
               <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-              {year}
+              {language === 'english' ? year : 
+               year === '3rd Year B.Tech CSE' ? '3rd Year B.Tech CSE' :
+               year === '4th Year B.Tech CSE' ? '4th Year B.Tech CSE' :
+               year}
             </span>
           </div>
         </div>
@@ -195,13 +200,13 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
       <div className="py-5 space-y-4 border-b border-slate-800">
         {/* Consistency Score Section */}
         <div>
-          <div className="flex items-center justify-between text-xs mb-1.5">
+          <div className="flex items-center justify-between text-xs mb-1.5 font-semibold">
             <span className="font-semibold text-slate-300 uppercase tracking-wider text-[11px]">
-              Daily Consistency
+              {language === 'english' ? "Daily Consistency" : "Daily Consistency"}
             </span>
             <div className="flex items-center gap-2">
               <span className="text-slate-400">
-                {completedDays}/{totalDays} Days
+                {completedDays}/{totalDays} {language === 'english' ? "Days" : "Din"}
               </span>
               <span className="font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
                 {consistencyScore}%
@@ -224,8 +229,10 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
               <Flame className="w-5 h-5 text-amber-400" />
             </div>
             <div>
-              <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Current Streak</p>
-              <p className="text-base font-bold text-white">{currentStreak} Days</p>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Current Streak" : "Current Streak"}</p>
+              <p className="text-base font-bold text-white">
+                {currentStreak} {language === 'english' ? "Days" : "Din"}
+              </p>
             </div>
           </div>
 
@@ -234,8 +241,10 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
               <Trophy className="w-5 h-5 text-purple-400" />
             </div>
             <div>
-              <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Longest Streak</p>
-              <p className="text-base font-bold text-white">{longestStreak} Days</p>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Longest Streak" : "Sabse Bada Streak"}</p>
+              <p className="text-base font-bold text-white">
+                {longestStreak} {language === 'english' ? "Days" : "Din"}
+              </p>
             </div>
           </div>
 
@@ -244,7 +253,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
               <Sparkles className="w-5 h-5 text-rose-400" />
             </div>
             <div>
-              <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Recruiter Score</p>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Recruiter Score" : "Recruiter Score"}</p>
               <p className="text-base font-bold text-white">{recruiterScore}/100</p>
             </div>
           </div>
@@ -255,9 +264,16 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
       <div className="py-4 border-b border-slate-800">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider text-[11px]">
-            Track & Verified Tech Stack
+            {language === 'english' ? "Track & Verified Tech Stack" : "Track aur Verified Tech Stack"}
           </span>
-          <span className="text-xs text-rose-400 font-medium truncate max-w-[200px]">{track}</span>
+          <span className="text-xs text-rose-400 font-medium truncate max-w-[200px]">
+            {language === 'english' ? track : 
+             track === 'Full-Stack Web & Backend Systems' ? 'Full-Stack Web aur Backend Systems' :
+             track === 'AI & Intelligent Agents' ? 'AI aur Intelligent Agents' :
+             track === 'DevOps & Cloud Native Systems' ? 'DevOps aur Cloud Native Systems' :
+             track === 'Mobile App Dev (React Native)' ? 'Mobile App Dev (React Native)' :
+             track}
+          </span>
         </div>
         <div className="flex flex-wrap gap-2">
           {techPills.map((tech, idx) => (
@@ -273,8 +289,10 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
 
       {/* Top Achievements (Only Unlocked) */}
       <div className="py-4 border-b border-slate-800">
-        <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider text-[11px] block mb-2">
-          Top Achievements ({unlockedAchievements.length})
+        <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider text-[11px] block mb-2 font-bold">
+          {language === 'english'
+            ? `Top Achievements (${unlockedAchievements.length})`
+            : `Main Achievements (${unlockedAchievements.length})`}
         </span>
 
         {unlockedAchievements.length > 0 ? (
@@ -288,15 +306,29 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
                   {renderAchievementIcon(ach.icon)}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs font-semibold text-slate-200 truncate">{ach.title}</p>
-                  {ach.desc && <p className="text-[11px] text-slate-400 truncate">{ach.desc}</p>}
+                  <p className="text-xs font-bold text-slate-200 truncate">
+                    {language === 'english' ? ach.title : 
+                     ach.id === 'ach_1' ? 'Raaton Ke Khiladi' :
+                     ach.id === 'ach_2' ? 'Git Ke Bahubali' :
+                     ach.id === 'ach_3' ? 'Recruiter Magnet' :
+                     ach.title}
+                  </p>
+                  {ach.desc && (
+                    <p className="text-[11px] text-slate-400 truncate font-semibold">
+                      {language === 'english' ? ach.desc : 
+                       ach.id === 'ach_1' ? '11 PM ke baad 5 builds ship kiye' :
+                       ach.id === 'ach_2' ? 'Lagatar 10 din tak commit kiye' :
+                       ach.id === 'ach_3' ? '5+ recruiters ne profile check ki' :
+                       ach.desc}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800 text-slate-400 text-xs text-center italic">
-            No achievements unlocked yet.
+          <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800 text-slate-400 text-xs text-center italic font-semibold">
+            {language === 'english' ? "No achievements unlocked yet." : "Abhi tak koi achievement nahi mili."}
           </div>
         )}
       </div>
@@ -307,17 +339,17 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
         <button
           onClick={handleLinkedInClick}
           type="button"
-          className="bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 transition-all duration-200 shadow-lg shadow-blue-900/30 active:scale-[0.98] cursor-pointer text-sm"
+          className="bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 transition-all duration-200 shadow-lg shadow-blue-900/30 active:scale-[0.98] cursor-pointer text-sm"
         >
           {linkedinClicked ? (
             <>
               <Check className="w-4 h-4 text-white" />
-              <span>Link Copied!</span>
+              <span>{language === 'english' ? 'Link Copied!' : 'Link Copy Ho Gaya!'}</span>
             </>
           ) : (
             <>
               <Linkedin className="w-4 h-4 text-white shrink-0" />
-              <span>Reach out on LinkedIn</span>
+              <span>{language === 'english' ? "Reach out on LinkedIn" : "LinkedIn par message karein"}</span>
             </>
           )}
         </button>
@@ -326,17 +358,17 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
         <button
           onClick={handleDownloadClick}
           type="button"
-          className="border border-slate-600 hover:border-slate-400 bg-slate-800/60 hover:bg-slate-800 text-slate-200 hover:text-white font-semibold rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer text-sm"
+          className="border border-slate-600 hover:border-slate-400 bg-slate-800/60 hover:bg-slate-800 text-slate-200 hover:text-white font-bold rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer text-sm"
         >
           {downloading ? (
             <>
               <Check className="w-4 h-4 text-emerald-400" />
-              <span className="text-emerald-400">Downloading...</span>
+              <span className="text-emerald-400">{language === 'english' ? 'Downloading...' : 'Download ho raha...'}</span>
             </>
           ) : (
             <>
               <Download className="w-4 h-4 text-slate-300 shrink-0" />
-              <span>Download Resume</span>
+              <span>{language === 'english' ? "Download Resume" : "Resume download karein"}</span>
             </>
           )}
         </button>
