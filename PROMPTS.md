@@ -751,6 +751,22 @@ you just placed that on navbar only , i asked for adding it to the rest backgrou
 2. **Verification**:
    - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
 
+### Prompt 34 — Page Wrapper Transparency & High-Contrast Cards Visibility Fix
+> **Timestamp**: 2026-08-08 16:49 IST
+
+```
+everything mostly dissapeard in neo brutal mode
+```
+
+**Actions Taken**:
+1. **Container Transparency vs Card Solid Background Isolation ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Set `background: transparent !important` specifically for main page layout wrappers (`html.brutal main`, `html.brutal .min-h-screen`, `html.brutal .bg-slate-50`).
+   - Kept the fixed 3-color linear gradient (`linear-gradient(to right, #1e90ff, #f9c942, #ff1e56)`) bound to `html.brutal body` with `background-attachment: fixed !important`.
+   - Restored high-contrast solid backgrounds (`#FFFCE6` light pop / `#11121D` pitch obsidian) with 3px solid black borders and 5px offset black shadows for all cards (`.rounded-3xl`, `.rounded-2xl`, etc.), ensuring content, cards, text, and badges are 100% sharp and visible.
+2. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+
 
 
 
