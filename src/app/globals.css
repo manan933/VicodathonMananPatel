@@ -75,7 +75,11 @@ html.brutal, :root.brutal {
 }
 
 /* Custom Neo Brutalist Overrides — Vibrant 3-Color Gradient Background (#1e90ff -> #f9c942 -> #ff1e56) */
-html.brutal body {
+html.brutal,
+html.brutal body,
+html.brutal main,
+html.brutal .min-h-screen,
+html.brutal .bg-slate-50 {
   background-image: none !important;
   background: #ff1e56 !important;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #1e90ff, #f9c942, #ff1e56) !important;  /* Chrome 10-25, Safari 5.1-6 */

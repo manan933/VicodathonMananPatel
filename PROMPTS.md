@@ -737,6 +737,21 @@ note: dont remove white mode.
 2. **Verification**:
    - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
 
+### Prompt 33 — Full-Screen Background Gradient Apply for Neo Brutalist Theme
+> **Timestamp**: 2026-08-08 16:44 IST
+
+```
+you just placed that on navbar only , i asked for adding it to the rest background
+```
+
+**Actions Taken**:
+1. **Full-Screen Background Gradient Selector Target ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Expanded the CSS selector in `globals.css` from `html.brutal body` to target all main screen wrappers: `html.brutal, html.brutal body, html.brutal main, html.brutal .min-h-screen, html.brutal .bg-slate-50`.
+   - This ensures the exact 3-color linear gradient (`linear-gradient(to right, #1e90ff, #f9c942, #ff1e56)`) fills the full background across every page, from top to bottom behind containers and footers, instead of being blocked by container backgrounds.
+2. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+
 
 
 
