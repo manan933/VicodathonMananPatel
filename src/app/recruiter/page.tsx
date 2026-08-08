@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import RecruiterPreview, { UserProfile } from '@/components/RecruiterPreview';
-import { Search, Filter, Briefcase, Award, GraduationCap, Flame, ArrowRight, Eye, Sparkles } from 'lucide-react';
+import { Search, Filter, Briefcase, Award, GraduationCap, Flame, ArrowRight, Eye, Sparkles, X } from 'lucide-react';
 
 const mockCandidates: UserProfile[] = [
   {
@@ -19,6 +19,7 @@ const mockCandidates: UserProfile[] = [
     totalDays: 60,
     recruiterScore: 96,
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
+    skills: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Redis', 'Docker'],
     achievements: [
       { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' },
       { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' },
@@ -37,6 +38,7 @@ const mockCandidates: UserProfile[] = [
     totalDays: 60,
     recruiterScore: 94,
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
+    skills: ['Python', 'PyTorch', 'FastAPI', 'LangChain', 'LLMs', 'Vector DBs'],
     achievements: [
       { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' },
       { id: 'ach_3', title: 'Recruiter Magnet', unlocked: true, icon: 'Briefcase', desc: 'Post seen by 5+ hiring managers' }
@@ -54,6 +56,7 @@ const mockCandidates: UserProfile[] = [
     totalDays: 60,
     recruiterScore: 91,
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+    skills: ['React', 'Next.js', 'TypeScript', 'Express', 'PostgreSQL', 'Tailwind CSS'],
     achievements: [
       { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' },
       { id: 'ach_3', title: 'Recruiter Magnet', unlocked: true, icon: 'Briefcase', desc: 'Post seen by 5+ hiring managers' }
@@ -71,6 +74,7 @@ const mockCandidates: UserProfile[] = [
     totalDays: 60,
     recruiterScore: 89,
     avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80',
+    skills: ['Docker', 'Kubernetes', 'GitHub Actions', 'Terraform', 'AWS', 'Linux'],
     achievements: [
       { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' }
     ]
@@ -87,6 +91,7 @@ const mockCandidates: UserProfile[] = [
     totalDays: 60,
     recruiterScore: 87,
     avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
+    skills: ['Python', 'PyTorch', 'Scikit-Learn', 'FastAPI', 'TensorFlow'],
     achievements: [
       { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' }
     ]
@@ -103,6 +108,7 @@ const mockCandidates: UserProfile[] = [
     totalDays: 60,
     recruiterScore: 88,
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
+    skills: ['TypeScript', 'React', 'Next.js', 'Node.js', 'Tailwind CSS', 'Redis', 'Git'],
     achievements: [
       { id: 'ach_1', title: 'Night Owl Builder', unlocked: true, icon: 'Moon', desc: '5 builds shipped past 11 PM' },
       { id: 'ach_2', title: 'Git Titan', unlocked: true, icon: 'GitCommit', desc: '10 straight days of commits' },
@@ -116,13 +122,17 @@ export default function RecruiterDashboard() {
   const [selectedTrack, setSelectedTrack] = useState('All');
   const [minStreak, setMinStreak] = useState(0);
   const [selectedCandidate, setSelectedCandidate] = useState<UserProfile | null>(mockCandidates[0]);
+  const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
 
   // Filters candidates based on inputs
   const filteredCandidates = mockCandidates.filter((candidate) => {
+    const searchLower = searchQuery.toLowerCase().trim();
     const matchesSearch =
-      candidate.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      candidate.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      candidate.track.toLowerCase().includes(searchQuery.toLowerCase());
+      !searchLower ||
+      candidate.name.toLowerCase().includes(searchLower) ||
+      candidate.college.toLowerCase().includes(searchLower) ||
+      candidate.track.toLowerCase().includes(searchLower) ||
+      (candidate.skills && candidate.skills.some((skill) => skill.toLowerCase().includes(searchLower)));
 
     const matchesTrack = selectedTrack === 'All' || candidate.track.toLowerCase().includes(selectedTrack.toLowerCase());
     const matchesStreak = candidate.currentStreak >= minStreak;
@@ -172,7 +182,7 @@ export default function RecruiterDashboard() {
 
               <div className="flex flex-wrap gap-2 items-center justify-between">
                 <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-                  {['All', 'Web', 'AI', 'DevOps'].map((track) => (
+                  {['All', 'Web', 'AI', 'DevOps', 'Mobile'].map((track) => (
                     <button
                       key={track}
                       onClick={() => setSelectedTrack(track)}
@@ -197,7 +207,7 @@ export default function RecruiterDashboard() {
                   <input
                     type="range"
                     min="0"
-                    max="45"
+                    max="50"
                     value={minStreak}
                     onChange={(e) => setMinStreak(parseInt(e.target.value))}
                     className="w-20 accent-violet-500 bg-slate-200 dark:bg-dark-bg rounded-lg cursor-pointer h-1.5"
@@ -214,7 +224,10 @@ export default function RecruiterDashboard() {
                   return (
                     <div
                       key={candidate.name}
-                      onClick={() => setSelectedCandidate(candidate)}
+                      onClick={() => {
+                        setSelectedCandidate(candidate);
+                        setIsMobileModalOpen(true);
+                      }}
                       className={`p-4 rounded-3xl border cursor-pointer transition-all flex items-center justify-between gap-4 bg-white dark:bg-dark-card ${
                         isSelected
                           ? 'border-violet-500 ring-2 ring-violet-500/10 shadow-md'
@@ -288,6 +301,22 @@ export default function RecruiterDashboard() {
           </div>
         </div>
       </main>
+
+      {/* Mobile Candidate Dossier Modal */}
+      {isMobileModalOpen && selectedCandidate && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 lg:hidden">
+          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl">
+            <button
+              onClick={() => setIsMobileModalOpen(false)}
+              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-slate-800/80 text-white hover:bg-slate-700 transition-colors border border-slate-700"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <RecruiterPreview user={selectedCandidate} />
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

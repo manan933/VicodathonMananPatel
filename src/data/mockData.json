@@ -143,27 +143,27 @@
   ],
   "day12Challenge": {
     "dayNumber": 12,
-    "title": "Distributed Rate Limiter API with Redis & Token Bucket",
+    "title": "Build an API Rate Limiter — Stop Server Overload with Redis",
     "track": "Full-Stack Web & Backend Systems",
     "estimatedMinutes": 45,
     "difficulty": "Intermediate",
     "points": 100,
-    "audioBrief": "Tonight you're building a rate limiter — the kind of thing interviewers love to ask about. You'll write Express middleware backed by Redis, using the token bucket algorithm to cap requests per IP. Let's go.",
-    "overview": "Every serious API needs a rate limiter. Tonight you'll build one from scratch — an Express middleware that uses Redis to enforce a hard cap of 10 requests per minute per client IP. Production-grade, interview-ready.",
+    "audioBrief": "Tonight you're building a rate limiter — just like Swiggy and Zomato use to protect their servers. You'll write Express middleware backed by Redis in 45 minutes. Let's go.",
+    "overview": "Popular apps like Swiggy and Zomato use rate limiters to stop spammers from crashing their servers. Tonight, you'll build your own rate limiter in 45 minutes using Express and Redis. It caps users at 10 requests per minute and returns clear warnings — a classic interview topic!",
     "learningObjectives": [
-      "Master Redis atomic commands (INCR, EXPIRE, EVAL scripts)",
-      "Implement the Token Bucket rate-limiting algorithm",
-      "Return standardized HTTP 429 status codes with rate-limit headers (X-RateLimit-Remaining, X-RateLimit-Reset)",
-      "Handle Redis connection failure gracefully without crashing the API"
+      "Use Redis commands to track user requests fast",
+      "Implement a simple token limit to cap request bursts",
+      "Send clear 'Too Many Requests' (HTTP 429) warnings when limits are reached",
+      "Handle database connection drops gracefully without crashing"
     ],
     "requirements": [
       "Create an Express endpoint GET /api/v1/data",
       "Implement middleware rateLimiter({ maxRequests: 10, windowInSeconds: 60 })",
-      "Store client IP keys in Redis with expiration TTL",
-      "Add automated jest/supertest test cases verifying rate limiting behavior"
+      "Save user IP addresses in Redis and set an automatic 60-second reset timer",
+      "Add tests to verify that excess requests get blocked correctly"
     ],
-    "bonusChallenge": "Write a sliding-window counter in Redis Lua for sub-second precision.",
-    "starterSnippet": "const express = require('express');\nconst Redis = require('ioredis');\nconst redis = new Redis(process.env.REDIS_URL);\n\n// TODO: Implement rateLimiter middleware here\nfunction rateLimiter(limit, windowSec) {\n  return async (req, res, next) => {\n    const ip = req.ip || req.headers['x-forwarded-for'];\n    const key = `ratelimit:${ip}`;\n    \n    // Write Redis atomic token check logic...\n    next();\n  };\n}\n\nmodule.exports = { rateLimiter };"
+    "bonusChallenge": "Add sliding-window rate limiting in Redis for precise per-second control.",
+    "starterSnippet": "const express = require('express');\nconst Redis = require('ioredis');\nconst redis = new Redis(process.env.REDIS_URL);\n\n// TODO: Implement rateLimiter middleware here\nfunction rateLimiter(limit, windowSec) {\n  return async (req, res, next) => {\n    const ip = req.ip || req.headers['x-forwarded-for'];\n    const key = `ratelimit:${ip}`;\n    \n    // Write Redis token check logic...\n    next();\n  };\n}\n\nmodule.exports = { rateLimiter };"
   },
   "peerSubmissions": [
     {

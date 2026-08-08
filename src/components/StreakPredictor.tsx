@@ -65,7 +65,7 @@ export default function StreakPredictor({
             <Brain className="w-4 h-4" />
           </div>
           <span className="text-sm font-semibold text-slate-800 dark:text-gray-200">
-            Completion Forecast
+            Streak Finish Probability
           </span>
         </div>
       </div>

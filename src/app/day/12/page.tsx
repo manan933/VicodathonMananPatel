@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import mockData from '@/data/mockData.json';
 import confetti from 'canvas-confetti';
+import GitHubVerifier, { isValidGithubUrl } from '@/components/GitHubVerifier';
+import { useToast } from '@/components/ToastProvider';
 import { 
   Flame, 
   Github, 
@@ -29,6 +31,7 @@ import {
 
 export default function ChallengeDayPage() {
   const challenge = mockData.day12Challenge;
+  const { showToast } = useToast();
 
   // Form State
   const [githubUrl, setGithubUrl] = useState('https://github.com/manan-dev/abtalks-day12-redis-limiter');
@@ -38,6 +41,8 @@ export default function ChallengeDayPage() {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [verifyingUrl, setVerifyingUrl] = useState('');
+  const [verifyKey, setVerifyKey] = useState(0);
   const [upvoteCounts, setUpvoteCounts] = useState<{ [key: string]: number }>({
     sub_1: mockData.peerSubmissions[0].upvotes,
     sub_2: mockData.peerSubmissions[1].upvotes,
@@ -94,7 +99,7 @@ export default function ChallengeDayPage() {
 
   // AI LinkedIn Draft Helper
   const handleGenerateAiPost = () => {
-    const aiDraft = `🚀 Day 12/60 of the ABTalks Challenge finished late tonight! 🌙\n\nToday I built a Distributed Rate Limiter API in Node.js & Redis using the Token Bucket algorithm. Implemented HTTP 429 status code handling and X-RateLimit headers to protect endpoints from API abuse.\n\nCode Proof: ${githubUrl || 'https://github.com/manan-dev/abtalks-day12-redis-limiter'}\n\n#60DaysOfCode #ABTalks #NodeJS #SystemDesign #BackendEngineering`;
+    const aiDraft = `🚀 Day 12/60 of the ABTalks Challenge finished tonight! 🌙\n\nToday I built an API Rate Limiter in Node.js & Redis to protect servers from traffic overload. Implemented HTTP 429 status code handling and automatic reset timers.\n\nCode Proof: ${githubUrl || 'https://github.com/manan-dev/abtalks-day12-redis-limiter'}\n\n#60DaysOfCode #ABTalks #NodeJS #BackendEngineering`;
     setLinkedinText(aiDraft);
     setLinkedinUrl('https://linkedin.com/posts/manan-patel-tech_abtalks-day12-redis-rate-limiter');
   };
@@ -104,22 +109,34 @@ export default function ChallengeDayPage() {
     e.preventDefault();
     if (!githubUrl) return;
 
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setIsSubmitted(true);
+    if (!isValidGithubUrl(githubUrl)) {
+      showToast('Please enter a valid GitHub URL', 'badge');
+      return;
+    }
 
-      // Trigger Celebration Confetti
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
-      } catch (err) {
-        console.log('Confetti triggered', err);
-      }
-    }, 600);
+    setSubmitting(true);
+    setVerifyKey(prev => prev + 1);
+    setVerifyingUrl(githubUrl);
+  };
+
+  const handleVerified = () => {
+    setSubmitting(false);
+    setIsSubmitted(true);
+
+    // Show dual toast notifications
+    showToast('GitHub Commit Verified & Linked!', 'success');
+    showToast('🔥 Streak Increased! 12 → 13 Days', 'streak');
+
+    // Trigger Celebration Confetti
+    try {
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    } catch (err) {
+      console.log('Confetti triggered', err);
+    }
   };
 
   const handleUpvote = (id: string) => {
@@ -331,10 +348,11 @@ export default function ChallengeDayPage() {
               <input
                 type="url"
                 required
+                disabled={submitting || isSubmitted}
                 value={githubUrl}
                 onChange={(e) => setGithubUrl(e.target.value)}
                 placeholder="https://github.com/username/repo-name/commit/..."
-                className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-colors shadow-sm"
+                className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-colors shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
               />
             </div>
 
@@ -349,8 +367,9 @@ export default function ChallengeDayPage() {
                 {/* Thoughtful Innovation: 1-Click AI LinkedIn Post Helper */}
                 <button
                   type="button"
+                  disabled={submitting || isSubmitted}
                   onClick={handleGenerateAiPost}
-                  className="px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-gradient-to-r dark:from-amber-500/20 dark:to-rose-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40 text-[11px] font-bold flex items-center gap-1 hover:border-amber-400 transition-all shadow-sm"
+                  className="px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-gradient-to-r dark:from-amber-500/20 dark:to-rose-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40 text-[11px] font-bold flex items-center gap-1 hover:border-amber-400 transition-all shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   <Sparkles className="w-3 h-3 text-amber-600 dark:text-amber-400 animate-pulse" />
                   <span>Draft with AI ✨</span>
@@ -367,12 +386,22 @@ export default function ChallengeDayPage() {
               <input
                 type="url"
                 required
+                disabled={submitting || isSubmitted}
                 value={linkedinUrl}
                 onChange={(e) => setLinkedinUrl(e.target.value)}
                 placeholder="https://linkedin.com/posts/username_abtalks-day12-..."
-                className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-colors shadow-sm"
+                className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition-colors shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
               />
             </div>
+
+            {/* GitHub Verifier Progress Animation */}
+            {verifyingUrl && (
+              <GitHubVerifier
+                key={verifyKey}
+                githubUrl={verifyingUrl}
+                onVerified={handleVerified}
+              />
+            )}
 
             {/* Submit CTA */}
             <button

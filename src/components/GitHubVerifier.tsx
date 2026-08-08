@@ -138,7 +138,7 @@ export default function GitHubVerifier({ githubUrl, onVerified }: GitHubVerifier
         {step >= 3 && (
           <div className="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-gray-300 animate-fade-in">
             <FileCode className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
-            <span>3 files changed · +87 lines · JavaScript</span>
+            <span>3 code files updated (+87 lines of JavaScript)</span>
           </div>
         )}
 
@@ -146,7 +146,7 @@ export default function GitHubVerifier({ githubUrl, onVerified }: GitHubVerifier
         {step >= 4 && (
           <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 animate-fade-in">
             <Check className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 stroke-[2.5]" />
-            <span>✓ Commit Verified</span>
+            <span>✓ Code Verified & Saved</span>
           </div>
         )}
       </div>

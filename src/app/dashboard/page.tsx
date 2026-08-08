@@ -6,6 +6,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import EdgeStateToggle, { EdgeStateType } from '@/components/EdgeStateToggle';
 import AnalyticsPanel from '@/components/AnalyticsPanel';
+import Leaderboard from '@/components/Leaderboard';
+import StreakPredictor from '@/components/StreakPredictor';
+import CountdownTimer from '@/components/CountdownTimer';
 import mockData from '@/data/mockData.json';
 import { 
   Flame, 
@@ -67,9 +70,9 @@ export default function DashboardPage() {
                 <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Welcome Aboard — Day 1 Starts Now</h3>
+                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit'] font-bold">Welcome Aboard — Day 1 Starts Now</h3>
                 <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
-                  Your streak counter is at zero. Finish tonight's challenge to light your first flame.
+                  Your streak starts today! Complete tonight's 45-minute project to earn your first flame badge.
                 </p>
                 <div className="mt-3 flex items-center gap-3">
                   <Link
@@ -99,7 +102,7 @@ export default function DashboardPage() {
                   </span>
                 </div>
                 <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
-                  Yesterday's commit didn't land. No stress — finish the catch-up challenge before midnight and your 8-day streak stays intact.
+                  Missed yesterday's code upload? No worries! Finish the quick catch-up challenge before midnight to save your 8-day streak.
                 </p>
                 <div className="mt-3 flex items-center gap-2">
                   <Link
@@ -124,7 +127,7 @@ export default function DashboardPage() {
               <div className="flex-1">
                 <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Link Your Profiles to Get Noticed</h3>
                 <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
-                  Your builds won't show up on recruiter radars until GitHub and LinkedIn are connected.
+                  Connect GitHub and LinkedIn so top tech recruiters can scout your daily code proof.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <button className="px-3 py-1.5 rounded-xl bg-white dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs font-semibold text-slate-800 dark:text-gray-200 flex items-center gap-1.5 hover:border-rose-500 shadow-sm">
@@ -178,7 +181,7 @@ export default function DashboardPage() {
           {/* Quick Recruiter Index Pill */}
           <div className="w-full sm:w-auto p-3 rounded-2xl bg-slate-100 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border flex items-center justify-between sm:justify-start gap-4">
             <div>
-              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">Hire-Ready Score</p>
+              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">Recruiter Score</p>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400 font-['Outfit']">{user.recruiterScore}/100</span>
                 <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -195,7 +198,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Grid Stats & Progress Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           
           {/* Main Streak Counter Card */}
           <div className="p-5 rounded-3xl bg-white dark:bg-dark-card border border-amber-300 dark:border-amber-500/30 relative overflow-hidden flex flex-col justify-between shadow-sm">
@@ -278,7 +281,7 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1">
                   <Trophy className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                  <span>Visibility Score</span>
+                  <span>Recruiter Score</span>
                 </span>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
                   {user.recruiterScore > 75 ? 'Top 10%' : 'Rising'}
@@ -300,6 +303,14 @@ export default function DashboardPage() {
             </div>
           </div>
 
+          {/* Completion Forecast Predictor Card */}
+          <StreakPredictor
+            currentStreak={user.currentStreak ?? 8}
+            completedDays={user.completedDays ?? 8}
+            totalDays={user.totalDays ?? 60}
+            currentDay={user.currentDay ?? 12}
+          />
+
         </div>
 
         {/* Featured Today's Task Banner -> Link to /day/12 */}
@@ -312,10 +323,7 @@ export default function DashboardPage() {
                 <span className="px-2.5 py-0.5 rounded-full bg-rose-500/30 text-rose-300 font-bold text-[10px] border border-rose-500/40">
                   DAY 12 TASK
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-amber-500/30 text-amber-300 font-bold text-[10px] border border-amber-500/40 flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  <span>45 Mins</span>
-                </span>
+                <CountdownTimer />
                 <span className="text-xs text-gray-300 font-medium">+100 XP</span>
               </div>
 
@@ -381,6 +389,11 @@ export default function DashboardPage() {
         {/* Analytics Dashboard Panel */}
         <div className="mb-6">
           <AnalyticsPanel />
+        </div>
+
+        {/* Campus Leaderboard Panel */}
+        <div className="mb-6">
+          <Leaderboard />
         </div>
 
         {/* Achievements & Unlocked Badges */}

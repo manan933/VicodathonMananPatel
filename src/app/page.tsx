@@ -47,7 +47,7 @@ export default function LandingPage() {
           {/* Mobile First Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-100 dark:bg-rose-500/10 border border-rose-300 dark:border-rose-500/30 text-rose-700 dark:text-rose-400 text-xs font-semibold mb-5 shadow-sm animate-pulse">
             <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400" />
-            <span>Ship Code Every Day for 60 Days</span>
+            <span>Code Daily for 60 Days — Build Real Proof</span>
           </div>
 
           {/* Main Headline */}
@@ -60,7 +60,7 @@ export default function LandingPage() {
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed">
-            60 days. One project a night. Every commit tracked, every build public. Your streak becomes your resume — and recruiters are watching.
+            60 days. One 45-minute challenge a night. Verify your GitHub code, share automated LinkedIn posts, and let top tech recruiters scout you directly.
           </p>
 
           {/* Call to Actions */}
@@ -210,9 +210,9 @@ export default function LandingPage() {
               <div className="w-10 h-10 rounded-xl bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 flex items-center justify-center font-bold text-lg mb-4 border border-rose-200 dark:border-rose-500/30">
                 1
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Pick Up Tonight's Brief</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Get Tonight's Challenge</h3>
               <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                A real-world engineering prompt drops at sundown — Redis, auth, search, you name it. Scoped to finish in one sitting.
+                A fun, real-world coding problem drops every evening (Auth, Databases, APIs). Designed to finish in 45 minutes.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-dark-border/60 flex items-center text-[11px] text-amber-600 dark:text-amber-400 font-semibold">
@@ -227,14 +227,14 @@ export default function LandingPage() {
               <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 flex items-center justify-center font-bold text-lg mb-4 border border-amber-200 dark:border-amber-500/30">
                 2
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Ship It to GitHub</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Push to GitHub</h3>
               <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                Push your code, paste the commit link. Our validator cross-checks the repo so your proof is airtight.
+                Upload your code to GitHub and paste your link. Our automatic check verifies your commit in 2 seconds.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-dark-border/60 flex items-center text-[11px] text-rose-600 dark:text-rose-400 font-semibold">
               <Github className="w-3.5 h-3.5 mr-1" />
-              <span>Tamper-proof verification</span>
+              <span>Instant verification</span>
             </div>
           </div>
 
@@ -244,9 +244,9 @@ export default function LandingPage() {
               <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-bold text-lg mb-4 border border-emerald-200 dark:border-emerald-500/30">
                 3
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Post Your Proof</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Share & Get Hired</h3>
               <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                One tap generates a polished LinkedIn post from your commit. Recruiters see it, your network sees it, your future employer sees it.
+                One tap turns your code into a recruiter-ready LinkedIn post. Tech recruiters scout top builders on our leaderboard daily.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-dark-border/60 flex items-center text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
@@ -337,14 +337,14 @@ export default function LandingPage() {
 
               <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-300 dark:border-rose-500/40 relative">
                 <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400">DAY 12 (TODAY)</span>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-0.5">Redis Rate Limiter</p>
-                <p className="text-[10px] text-slate-600 dark:text-gray-300 mt-1 font-medium">Token bucket middleware</p>
+                <p className="text-xs font-bold text-slate-900 dark:text-white mt-0.5">API Rate Limiter</p>
+                <p className="text-[10px] text-slate-600 dark:text-gray-300 mt-1 font-medium">Protect servers from traffic overload</p>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-50 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border">
                 <span className="text-[10px] font-bold text-rose-600 dark:text-rose-400">DAY 30</span>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-0.5">Distributed Queue</p>
-                <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">BullMQ background worker</p>
+                <p className="text-xs font-bold text-slate-900 dark:text-white mt-0.5">Background Task Worker</p>
+                <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">Run heavy background jobs automatically</p>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-50 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border">

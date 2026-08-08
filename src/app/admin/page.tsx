@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useToast } from '@/components/ToastProvider';
-import { Settings, ShieldCheck, Activity, Terminal, Database, Users, Calendar, ArrowRight, Play, Server } from 'lucide-react';
+import { Settings, Activity, Terminal, Database, Users, Calendar, Play, Server } from 'lucide-react';
 
 export default function AdminDashboard() {
   const { showToast } = useToast();
@@ -44,7 +44,7 @@ export default function AdminDashboard() {
   };
 
   const handleBroadcast = () => {
-    if (!announcementText) return;
+    if (!announcementText.trim()) return;
     showToast(`Broadcast sent: "${announcementText}"`, 'recruiter');
     setAnnouncementText('');
   };
@@ -172,9 +172,10 @@ export default function AdminDashboard() {
                     </label>
                     <input
                       type="number"
+                      min="1"
                       required
                       value={challengeMins}
-                      onChange={(e) => setChallengeMins(parseInt(e.target.value))}
+                      onChange={(e) => setChallengeMins(parseInt(e.target.value) || 1)}
                       className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs text-slate-900 dark:text-white focus:outline-none"
                     />
                   </div>
@@ -197,7 +198,7 @@ export default function AdminDashboard() {
                 <button
                   type="submit"
                   disabled={isDeploying}
-                  className="w-full mt-4 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer"
+                  className="w-full mt-4 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isDeploying ? (
                     <span>Deploying to System Queue...</span>
@@ -233,7 +234,8 @@ export default function AdminDashboard() {
               <button
                 type="button"
                 onClick={handleBroadcast}
-                className="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-950 font-bold text-[11px] shadow-sm transition-all cursor-pointer"
+                disabled={!announcementText.trim()}
+                className="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-950 font-bold text-[11px] shadow-sm transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Send Alert
               </button>

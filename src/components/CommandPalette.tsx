@@ -15,6 +15,9 @@ import {
   ArrowUp,
   ArrowDown,
   CornerDownLeft,
+  Briefcase,
+  Settings,
+  Youtube,
 } from 'lucide-react';
 
 export interface CommandItem {
@@ -128,6 +131,33 @@ export default function CommandPalette({
       icon: LayoutDashboard,
       action: () => {
         router.push('/dashboard');
+        handleClose();
+      },
+    },
+    {
+      id: 'recruiter',
+      label: 'Recruiter Dashboard',
+      icon: Briefcase,
+      action: () => {
+        router.push('/recruiter');
+        handleClose();
+      },
+    },
+    {
+      id: 'admin',
+      label: 'Admin Control Panel',
+      icon: Settings,
+      action: () => {
+        router.push('/admin');
+        handleClose();
+      },
+    },
+    {
+      id: 'hub',
+      label: 'YouTube Motivation Hub',
+      icon: Youtube,
+      action: () => {
+        router.push('/hub');
         handleClose();
       },
     },

@@ -41,6 +41,7 @@ export interface UserProfile {
   recruiterScore?: number;
   avatar: string;
   achievements?: Achievement[];
+  skills?: string[];
 }
 
 export interface RecruiterPreviewProps {
@@ -123,7 +124,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
   const isHighReliability = currentStreak > 7;
 
   // Derive tech stack pills
-  const techPills = getTechStackPills(track);
+  const techPills = user?.skills && user.skills.length > 0 ? user.skills : getTechStackPills(track);
 
   // Unlocked achievements only
   const unlockedAchievements = achievements.filter((a) => a.unlocked);
@@ -196,7 +197,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
         <div>
           <div className="flex items-center justify-between text-xs mb-1.5">
             <span className="font-semibold text-slate-300 uppercase tracking-wider text-[11px]">
-              Consistency Score
+              Daily Consistency
             </span>
             <div className="flex items-center gap-2">
               <span className="text-slate-400">
@@ -243,7 +244,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
               <Sparkles className="w-5 h-5 text-rose-400" />
             </div>
             <div>
-              <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Talent Score</p>
+              <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Recruiter Score</p>
               <p className="text-base font-bold text-white">{recruiterScore}/100</p>
             </div>
           </div>
