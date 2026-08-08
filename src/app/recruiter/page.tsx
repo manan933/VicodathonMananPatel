@@ -100,7 +100,7 @@ const mockCandidates: UserProfile[] = [
   {
     name: 'Manan Patel',
     handle: 'manan_codes',
-    college: 'National Institute of Technology (NIT) Surat',
+    college: 'GIET University',
     year: '3rd Year B.Tech CSE',
     track: 'Full-Stack Web & Backend Systems',
     currentStreak: 12,

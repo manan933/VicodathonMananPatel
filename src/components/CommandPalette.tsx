@@ -94,7 +94,7 @@ export default function CommandPalette({
 
   // Theme toggle action handler
   const handleToggleTheme = () => {
-    const currentTheme = localStorage.getItem('abtalks-theme') || 'dark';
+    const currentTheme = localStorage.getItem('abtalks-theme') || 'brutal';
     let nextTheme: 'dark' | 'light' | 'brutal' = 'dark';
     if (currentTheme === 'dark') nextTheme = 'light';
     else if (currentTheme === 'light') nextTheme = 'brutal';

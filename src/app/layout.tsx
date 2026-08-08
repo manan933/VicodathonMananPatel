@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="brutal scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,10 +56,10 @@ export default function RootLayout({
                 document.documentElement.classList.remove('dark', 'light', 'brutal');
                 if (theme === 'light') {
                   document.documentElement.classList.add('light');
-                } else if (theme === 'brutal') {
-                  document.documentElement.classList.add('brutal');
-                } else {
+                } else if (theme === 'dark') {
                   document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.add('brutal');
                 }
               } catch (e) {}
 

@@ -23,7 +23,7 @@ const leaderboardData: LeaderboardItem[] = [
   { rank: 5, name: 'Priya Verma', college: 'VIT Vellore', track: 'ai-ml', streak: 38, score: 87, avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80', city: 'Vellore' },
   { rank: 6, name: 'Rohan Joshi', college: 'DTU Delhi', track: 'web-backend', streak: 35, score: 84, avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80', city: 'Delhi' },
   { rank: 7, name: 'Ananya Rao', college: 'IIIT Bangalore', track: 'mobile-dev', streak: 33, score: 82, avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80', city: 'Bangalore' },
-  { rank: 8, name: 'Manan Patel', college: 'NIT Surat', track: 'web-backend', streak: 12, score: 88, avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80', city: 'Surat' },
+  { rank: 8, name: 'Manan Patel', college: 'GIET University', track: 'web-backend', streak: 12, score: 88, avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80', city: 'Gunupur' },
   { rank: 9, name: 'Ishaan Sharma', college: 'IIT Delhi', track: 'cloud-devops', streak: 28, score: 78, avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80', city: 'Delhi' },
   { rank: 10, name: 'Tanvi Kulkarni', college: 'COEP Pune', track: 'ai-ml', streak: 25, score: 75, avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80', city: 'Pune' }
 ];

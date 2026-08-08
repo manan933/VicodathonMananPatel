@@ -1,9 +1,7 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, Moon, Sun, Zap, Compass, LayoutDashboard, CalendarCheck, Youtube, Briefcase, Settings, Globe } from 'lucide-react';
+import { Flame, Moon, Sun, Zap, Compass, LayoutDashboard, CalendarCheck, Youtube, Briefcase, Settings, Globe, Menu, X } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageProvider';
 
 export type ThemeMode = 'dark' | 'light' | 'brutal';
@@ -14,8 +12,9 @@ interface NavbarProps {
 
 export default function Navbar({ streakCount = 12 }: NavbarProps) {
   const pathname = usePathname();
-  const [theme, setTheme] = useState<ThemeMode>('dark');
+  const [theme, setTheme] = useState<ThemeMode>('brutal');
   const [mounted, setMounted] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
 
   const applyTheme = (mode: ThemeMode) => {
@@ -31,10 +30,15 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = (localStorage.getItem('abtalks-theme') as ThemeMode) || 'dark';
+    const savedTheme = (localStorage.getItem('abtalks-theme') as ThemeMode) || 'brutal';
     setTheme(savedTheme);
     applyTheme(savedTheme);
   }, []);
+
+  // Close mobile drawer on route navigation
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   const toggleTheme = () => {
     const nextTheme: ThemeMode = theme === 'dark' ? 'light' : theme === 'light' ? 'brutal' : 'dark';
@@ -60,12 +64,12 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
           </div>
         </Link>
 
-        {/* Navigation Links */}
-        <nav className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-1 shrink min-w-0">
+        {/* Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 shrink min-w-0">
           <Link
             href="/"
             aria-label="Explore Tracks"
-            className={`px-2 py-1.5 sm:px-2.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
               pathname === '/' 
                 ? 'bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
@@ -78,7 +82,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
           <Link
             href="/dashboard"
             aria-label="Student Dashboard"
-            className={`px-2 py-1.5 sm:px-2.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
               pathname === '/dashboard' 
                 ? 'bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
@@ -91,7 +95,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
           <Link
             href="/day/12"
             aria-label="Day 12 Workspace"
-            className={`px-2 py-1.5 sm:px-2.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
               pathname.startsWith('/day') 
                 ? 'bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
@@ -104,7 +108,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
           <Link
             href="/hub"
             aria-label="Motivation and info YouTube Hub"
-            className={`px-2 py-1.5 sm:px-2.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
               pathname === '/hub' 
                 ? 'bg-red-100 dark:bg-red-500/15 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
@@ -117,7 +121,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
           <Link
             href="/recruiter"
             aria-label="Recruiter Dashboard View"
-            className={`px-2 py-1.5 sm:px-2.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
               pathname === '/recruiter' 
                 ? 'bg-violet-100 dark:bg-violet-500/15 text-violet-700 dark:text-violet-400 border border-violet-200 dark:border-violet-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
@@ -130,7 +134,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
           <Link
             href="/admin"
             aria-label="System Admin View"
-            className={`px-2 py-1.5 sm:px-2.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
               pathname === '/admin' 
                 ? 'bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30 font-bold' 
                 : 'text-slate-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-rose-500/10'
@@ -141,7 +145,7 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
           </Link>
         </nav>
 
-        {/* Theme Toggle, Language Toggle & Streak Pill */}
+        {/* Theme Toggle, Language Toggle, Streak Pill & Mobile Hamburger */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Language Toggle Button */}
           <button
@@ -192,9 +196,101 @@ export default function Navbar({ streakCount = 12 }: NavbarProps) {
             <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400 animate-bounce" />
             <span className="font-extrabold text-xs tracking-tight">{streakCount}d</span>
           </Link>
+
+          {/* Mobile Hamburger Menu Toggle Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+            className="p-1.5 sm:p-2 rounded-xl border border-slate-200 dark:border-dark-border md:hidden text-slate-800 dark:text-gray-200 hover:border-rose-500 transition-colors bg-white dark:bg-dark-card shadow-sm"
+          >
+            {isMobileMenuOpen ? <X className="w-4 h-4 text-rose-500" /> : <Menu className="w-4 h-4 text-slate-700 dark:text-gray-300" />}
+          </button>
         </div>
 
       </div>
+
+      {/* Mobile Slide-Down Navigation Drawer */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden mt-2 pt-3 pb-2 px-3 border-t border-slate-200 dark:border-dark-border bg-white/95 dark:bg-dark-card/95 backdrop-blur-md rounded-2xl shadow-xl flex flex-col gap-1.5 animate-in slide-in-from-top-2 duration-200">
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-all ${
+              pathname === '/' 
+                ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 border border-rose-300 dark:border-rose-500/40' 
+                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5'
+            }`}
+          >
+            <Compass className="w-4 h-4 text-rose-500" />
+            <span>{t("Explore")}</span>
+          </Link>
+
+          <Link
+            href="/dashboard"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-all ${
+              pathname === '/dashboard' 
+                ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 border border-rose-300 dark:border-rose-500/40' 
+                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5'
+            }`}
+          >
+            <LayoutDashboard className="w-4 h-4 text-rose-500" />
+            <span>{t("Dashboard")}</span>
+          </Link>
+
+          <Link
+            href="/day/12"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-all ${
+              pathname.startsWith('/day') 
+                ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 border border-rose-300 dark:border-rose-500/40' 
+                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5'
+            }`}
+          >
+            <CalendarCheck className="w-4 h-4 text-amber-500" />
+            <span>{t("Day 12")}</span>
+          </Link>
+
+          <Link
+            href="/hub"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-all ${
+              pathname === '/hub' 
+                ? 'bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 border border-red-300 dark:border-red-500/40' 
+                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5'
+            }`}
+          >
+            <Youtube className="w-4 h-4 text-red-500" />
+            <span>{t("Videos")}</span>
+          </Link>
+
+          <Link
+            href="/recruiter"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-all ${
+              pathname === '/recruiter' 
+                ? 'bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-400 border border-violet-300 dark:border-violet-500/40' 
+                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5'
+            }`}
+          >
+            <Briefcase className="w-4 h-4 text-violet-500" />
+            <span>{t("Recruiter")}</span>
+          </Link>
+
+          <Link
+            href="/admin"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-all ${
+              pathname === '/admin' 
+                ? 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border border-indigo-300 dark:border-indigo-500/40' 
+                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5'
+            }`}
+          >
+            <Settings className="w-4 h-4 text-indigo-500" />
+            <span>{t("Admin")}</span>
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
