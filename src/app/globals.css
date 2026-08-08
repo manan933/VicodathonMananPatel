@@ -74,56 +74,81 @@ html.brutal, :root.brutal {
   --card-shadow: 4px 4px 0px 0px #000000;
 }
 
-/* Custom Neo Brutalist Overrides */
+/* Custom Neo Brutalist Overrides — Vibrant Pop Colors & High-Contrast Dark/Light Palette */
 html.brutal body {
   background-image: none !important;
-  background: #F2994A !important;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #F2C94C, #F2994A) !important;  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #F2C94C, #F2994A) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #F2994A !important;  /* fallback */
+  background: -webkit-linear-gradient(135deg, #F2C94C 0%, #FF9F43 50%, #FF5252 100%) !important;
+  background: linear-gradient(135deg, #F2C94C 0%, #FF9F43 50%, #FF5252 100%) !important;
   color: #000000 !important;
   min-height: 100vh;
 }
 
+/* Header & Navbar Pop Colors in Brutalist Mode */
+html.brutal header {
+  background-color: #FFDE4D !important;
+  border-bottom: 3px solid #000000 !important;
+  box-shadow: 0px 4px 0px 0px #000000 !important;
+}
+
+html.brutal header nav a:nth-child(1) { background-color: #C7F9CC !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(2) { background-color: #A2D2FF !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(3) { background-color: #FFC6FF !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(4) { background-color: #FFD6A5 !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(5) { background-color: #E7C6FF !important; color: #000000 !important; }
+html.brutal header nav a:nth-child(6) { background-color: #FFADAD !important; color: #000000 !important; }
+
+html.brutal header nav a:hover {
+  background-color: #000000 !important;
+  color: #FFE600 !important;
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 3px 3px 0px 0px #000000 !important;
+}
+
+/* General Brutalist Container Cards (Light Pop Base) */
 html.brutal .rounded-3xl,
 html.brutal .rounded-2xl,
 html.brutal .rounded-xl,
 html.brutal .rounded-lg {
-  border-radius: 6px !important;
+  border-radius: 8px !important;
   border: 3px solid #000000 !important;
   box-shadow: 4px 4px 0px 0px #000000 !important;
   background-color: #FFFFFF;
   color: #000000;
 }
 
-/* Preserve dark card contrast in Brutalist mode */
+/* Vibrant Dark Cards in Brutalist Mode (Deep Pitch Indigo/Black with Lime & Cyan Accents) */
 html.brutal .bg-slate-900,
 html.brutal .from-slate-900,
 html.brutal .bg-slate-950,
 html.brutal .bg-dark-card,
 html.brutal [data-dark-card="true"] {
-  background: #0F172A !important;
+  background: #12131C !important;
   color: #FFFFFF !important;
   border: 3px solid #000000 !important;
-  box-shadow: 4px 4px 0px 0px #000000 !important;
+  box-shadow: 5px 5px 0px 0px #000000 !important;
+}
+
+html.brutal .bg-slate-900 h1,
+html.brutal .bg-slate-900 h2,
+html.brutal .bg-slate-900 h3,
+html.brutal .from-slate-900 h1,
+html.brutal .from-slate-900 h2,
+html.brutal .from-slate-900 h3,
+html.brutal [data-dark-card="true"] h1,
+html.brutal [data-dark-card="true"] h2,
+html.brutal [data-dark-card="true"] h3 {
+  color: #CCFF00 !important;
 }
 
 html.brutal .bg-slate-900 *,
 html.brutal .from-slate-900 *,
 html.brutal .bg-slate-950 *,
 html.brutal [data-dark-card="true"] * {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: #000000;
 }
 
-/* Navbar item compact styling in Brutalist mode */
-html.brutal header nav a,
-html.brutal header button {
-  box-shadow: 2px 2px 0px 0px #000000 !important;
-  border: 2px solid #000000 !important;
-  border-radius: 6px !important;
-  padding-top: 4px !important;
-  padding-bottom: 4px !important;
-}
-
+/* Vibrant Colorful Controls & Buttons */
 html.brutal button,
 html.brutal select,
 html.brutal input,
@@ -131,19 +156,37 @@ html.brutal textarea {
   border-radius: 6px !important;
   border: 3px solid #000000 !important;
   color: #000000 !important;
+  font-weight: 700 !important;
   transition: all 0.15s ease !important;
 }
 
 html.brutal button:hover {
-  background-color: #F2C94C !important;
-  transform: translate(-1px, -1px) !important;
-  box-shadow: 5px 5px 0px 0px #000000 !important;
+  background-color: #CCFF00 !important;
+  color: #000000 !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px 0px #000000 !important;
 }
 
 html.brutal button:active {
   transform: translate(1px, 1px) !important;
   box-shadow: 2px 2px 0px 0px #000000 !important;
 }
+
+/* Badges & Pills Pop Color Fill */
+html.brutal .bg-rose-100,
+html.brutal .bg-rose-500\/15 { background-color: #FF758F !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
+
+html.brutal .bg-violet-100,
+html.brutal .bg-violet-500\/15 { background-color: #D8B4FE !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
+
+html.brutal .bg-emerald-100,
+html.brutal .bg-emerald-500\/15 { background-color: #86EFAC !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
+
+html.brutal .bg-amber-100,
+html.brutal .bg-amber-500\/15 { background-color: #FDE047 !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
+
+html.brutal .bg-indigo-100,
+html.brutal .bg-indigo-500\/15 { background-color: #A5B4FC !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
 
 html.brutal a {
   transition: all 0.15s ease !important;
