@@ -100,6 +100,21 @@ html.brutal header {
   background-color: #F9C942 !important;
   border-bottom: 3px solid #000000 !important;
   box-shadow: 0px 4px 0px 0px #000000 !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+html.brutal header nav a,
+html.brutal header button {
+  height: 36px !important;
+  max-height: 36px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+  border: 2px solid #000000 !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 html.brutal header nav a:nth-child(1) { background-color: #1E90FF !important; color: #FFFFFF !important; }
@@ -116,6 +131,32 @@ html.brutal header nav a:hover {
   box-shadow: 3px 3px 0px 0px #000000 !important;
 }
 
+/* Footer Vibrant Colors in Brutalist Mode */
+html.brutal footer {
+  background-color: #FFDE4D !important;
+  border-top: 3px solid #000000 !important;
+  box-shadow: 0px -4px 0px 0px #000000 !important;
+  color: #000000 !important;
+}
+
+html.brutal footer p,
+html.brutal footer span,
+html.brutal footer h3,
+html.brutal footer h4 {
+  color: #000000 !important;
+}
+
+html.brutal footer a {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+html.brutal footer a:hover {
+  background-color: #1E90FF !important;
+  color: #FFFFFF !important;
+  border-radius: 4px !important;
+}
+
 /* General Brutalist Container Cards (Pop Color Base without plain white) */
 html.brutal .rounded-3xl,
 html.brutal .rounded-2xl,
@@ -126,6 +167,17 @@ html.brutal .rounded-lg {
   box-shadow: 5px 5px 0px 0px #000000 !important;
   background-color: #FFFCE6;
   color: #000000;
+}
+
+/* Exception for small inner icon boxes & badges */
+html.brutal [data-icon-box="true"],
+html.brutal .w-7,
+html.brutal .w-8,
+html.brutal .w-9,
+html.brutal .w-14,
+html.brutal .w-16 {
+  box-shadow: none !important;
+  border: none !important;
 }
 
 /* Vibrant Dark Cards in Brutalist Mode (Deep Pitch Indigo/Black with Gold & Electric Blue Accents) */
@@ -152,11 +204,20 @@ html.brutal [data-dark-card="true"] h3 {
   color: #CCFF00 !important;
 }
 
+html.brutal .bg-slate-900 p,
+html.brutal .bg-slate-900 span,
+html.brutal .from-slate-900 p,
+html.brutal .from-slate-900 span,
+html.brutal [data-dark-card="true"] p,
+html.brutal [data-dark-card="true"] span {
+  color: #F1F5F9 !important;
+}
+
 html.brutal .bg-slate-900 *,
 html.brutal .from-slate-900 *,
 html.brutal .bg-slate-950 *,
 html.brutal [data-dark-card="true"] * {
-  border-color: #000000;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Vibrant Colorful Controls & Buttons */

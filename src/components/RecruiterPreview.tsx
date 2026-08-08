@@ -142,7 +142,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
   };
 
   return (
-    <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white border border-slate-700 shadow-2xl relative overflow-hidden font-['Outfit',sans-serif]">
+    <div data-dark-card="true" className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white border border-slate-700 shadow-2xl relative overflow-hidden font-['Outfit',sans-serif]">
       {/* Background ambient glow accent */}
       <div className="absolute -top-24 -right-24 w-60 h-60 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -154,7 +154,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
       </div>
 
       {/* Header: Avatar, Name, Handle, College, Year, Reliability Badge */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-6 border-b border-slate-800 pr-28 sm:pr-32">
+      <div className="flex items-center gap-4 pb-6 border-b border-slate-800 pr-28 sm:pr-32">
         <img
           src={avatar}
           alt={name}
@@ -165,33 +165,26 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
             <h2 className="text-xl font-bold text-white tracking-tight truncate">{name}</h2>
             {/* Reliability Badge */}
             {isHighReliability ? (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">
                 <ShieldCheck className="w-3 h-3 text-emerald-400" />
-                {language === 'english' ? "High Reliability" : "Sahi Hai (High Trust)"}
+                <span>{language === 'english' ? "High Reliability" : "High Reliability"}</span>
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30 shrink-0">
                 <TrendingUp className="w-3 h-3 text-amber-400" />
-                {language === 'english' ? "Building" : "Seekh Raha Hai (Building)"}
+                <span>{language === 'english' ? "Building" : "Building"}</span>
               </span>
             )}
           </div>
 
           <p className="text-xs font-mono text-slate-400 mt-0.5">{handle}</p>
 
-          <div className="flex items-center gap-3 text-xs text-slate-300 mt-2 flex-wrap font-medium">
-            <span className="flex items-center gap-1 text-slate-300">
-              <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-              {college}
-            </span>
-            <span className="text-slate-600">•</span>
-            <span className="flex items-center gap-1 text-slate-300">
-              <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-              {language === 'english' ? year : 
-               year === '3rd Year B.Tech CSE' ? '3rd Year B.Tech CSE' :
-               year === '4th Year B.Tech CSE' ? '4th Year B.Tech CSE' :
-               year}
-            </span>
+          <div className="flex items-center gap-2 text-xs text-slate-300 mt-2 font-medium">
+            <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <span className="truncate">{college}</span>
+            <span className="text-slate-600 shrink-0">•</span>
+            <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <span className="shrink-0">{year}</span>
           </div>
         </div>
       </div>
@@ -206,7 +199,7 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
             </span>
             <div className="flex items-center gap-2">
               <span className="text-slate-400">
-                {completedDays}/{totalDays} {language === 'english' ? "Days" : "Din"}
+                {completedDays}/{totalDays} {language === 'english' ? "Days" : "Days"}
               </span>
               <span className="font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
                 {consistencyScore}%
@@ -223,39 +216,39 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
         </div>
 
         {/* 3 Key Stats Cards */}
-        <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
-          <div className="p-2 sm:p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-2 min-w-0">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0">
-              <Flame className="w-4 h-4 text-amber-400 fill-amber-400" />
+        <div className="grid grid-cols-3 gap-2">
+          <div className="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex flex-col justify-between min-w-0">
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <div data-icon-box="true" className="p-1 rounded-lg bg-amber-500/15 text-amber-400 shrink-0">
+                <Flame className="w-3.5 h-3.5 fill-amber-400" />
+              </div>
+              <span className="text-[10px] font-bold text-slate-300 uppercase tracking-wider truncate">Streak</span>
             </div>
-            <div className="min-w-0">
-              <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">{language === 'english' ? "Current Streak" : "Current Streak"}</p>
-              <p className="text-xs sm:text-base font-bold text-white truncate">
-                {currentStreak} {language === 'english' ? "Days" : "Din"}
-              </p>
-            </div>
+            <p className="text-sm sm:text-base font-extrabold text-white truncate">
+              {currentStreak} <span className="text-xs font-normal text-slate-400">Days</span>
+            </p>
           </div>
 
-          <div className="p-2 sm:p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-2 min-w-0">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center shrink-0">
-              <Trophy className="w-4 h-4 text-purple-400" />
+          <div className="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex flex-col justify-between min-w-0">
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <div data-icon-box="true" className="p-1 rounded-lg bg-purple-500/15 text-purple-400 shrink-0">
+                <Trophy className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-[10px] font-bold text-slate-300 uppercase tracking-wider truncate">Max Streak</span>
             </div>
-            <div className="min-w-0">
-              <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">{language === 'english' ? "Max Streak" : "Max Streak"}</p>
-              <p className="text-xs sm:text-base font-bold text-white truncate">
-                {longestStreak} {language === 'english' ? "Days" : "Din"}
-              </p>
-            </div>
+            <p className="text-sm sm:text-base font-extrabold text-white truncate">
+              {longestStreak} <span className="text-xs font-normal text-slate-400">Days</span>
+            </p>
           </div>
 
-          <div className="p-2 sm:p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-2 min-w-0">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center shrink-0">
-              <Sparkles className="w-4 h-4 text-rose-400" />
+          <div className="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex flex-col justify-between min-w-0">
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <div data-icon-box="true" className="p-1 rounded-lg bg-rose-500/15 text-rose-400 shrink-0">
+                <Sparkles className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-[10px] font-bold text-slate-300 uppercase tracking-wider truncate">Score</span>
             </div>
-            <div className="min-w-0">
-              <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">{language === 'english' ? "Recruiter Score" : "Recruiter Score"}</p>
-              <p className="text-xs sm:text-base font-bold text-white truncate">{recruiterScore}/100</p>
-            </div>
+            <p className="text-sm sm:text-base font-extrabold text-white truncate">{recruiterScore}/100</p>
           </div>
         </div>
       </div>

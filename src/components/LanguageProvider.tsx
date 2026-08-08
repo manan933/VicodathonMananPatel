@@ -29,27 +29,27 @@ const translations: Record<string, Record<LanguageType, string>> = {
   },
   "Explore": {
     english: "Explore",
-    hinglish: "Tracks Dekho"
+    hinglish: "Explore"
   },
   "Dashboard": {
     english: "Dashboard",
-    hinglish: "Mera Board"
+    hinglish: "Dashboard"
   },
   "Day 12": {
     english: "Day 12",
-    hinglish: "Din 12"
+    hinglish: "Day 12"
   },
   "Videos": {
     english: "Videos",
-    hinglish: "Learning Hub"
+    hinglish: "Videos"
   },
   "Recruiter": {
     english: "Recruiter",
-    hinglish: "Hiring Desk"
+    hinglish: "Recruiter"
   },
   "Admin": {
     english: "Admin",
-    hinglish: "System Control"
+    hinglish: "Admin"
   },
   "Active Streak": {
     english: "Active Streak",

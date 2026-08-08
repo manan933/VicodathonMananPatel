@@ -766,6 +766,32 @@ everything mostly dissapeard in neo brutal mode
 2. **Verification**:
    - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
 
+### Prompt 35 — Footer Neo-Brutalist Colors, Navbar English Lock & Dossier Profile Fix
+> **Timestamp**: 2026-08-08 16:55 IST
+
+```
+you didnt add colors to footer in neo brutal
+navbar is still streching up more than it should in neo brutal mode only . keep the same english words in navbar buttons for hinglish.
+recruiter view profile (image attached ) is still bugged and text in that are not correctly placed.
+some text also not visible in neo brutal mode
+```
+
+**Actions Taken**:
+1. **Footer Neo-Brutalist Colors ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Styled `html.brutal footer` with vibrant Electric Yellow background (`#FFDE4D`), 3px solid black top border (`border-t-3 border-black`), and 4px offset top shadow (`box-shadow: 0px -4px 0px 0px #000`).
+2. **Navbar Height Lock & Consistent English Labels ([`Navbar.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/Navbar.tsx) & [`LanguageProvider.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/LanguageProvider.tsx))**:
+   - Restricted header button height in Neo Brutalist mode (`height: 36px !important; max-height: 36px !important`) to eliminate vertical stretching.
+   - Updated Hinglish dictionary entries to keep standard concise English labels (`"Explore"`, `"Dashboard"`, `"Day 12"`, `"Videos"`, `"Recruiter"`, `"Admin"`) across both language modes.
+3. **Candidate Dossier Profile Card Fix ([`RecruiterPreview.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/RecruiterPreview.tsx) & [`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Excluded small icon boxes (`[data-icon-box="true"]`, `.w-7`, `.w-9`) from heavy brutal border/shadow overrides to prevent squishing text inside stats cards.
+   - Restructured stats cards (`Streak`, `Max Streak`, `Score`) into clean vertical stack layouts, eliminating `CUR...`, `MAX...`, `REC...` truncation.
+   - Aligned profile avatar image beside candidate name, college, and year info.
+4. **Text High Contrast Visibility ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Enforced `#F1F5F9` high-contrast text color for all paragraphs and spans inside dark containers (`[data-dark-card="true"]`) under Neo-Brutalist mode.
+5. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+
 
 
 
