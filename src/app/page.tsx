@@ -47,22 +47,20 @@ export default function LandingPage() {
           {/* Mobile First Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-100 dark:bg-rose-500/10 border border-rose-300 dark:border-rose-500/30 text-rose-700 dark:text-rose-400 text-xs font-semibold mb-5 shadow-sm animate-pulse">
             <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400" />
-            <span>60-Day Daily College Coding Challenge</span>
+            <span>Ship Code Every Day for 60 Days</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight font-['Outfit'] mb-4 max-w-3xl">
-            Build 1 Project Daily. <br />
-            Maintain Your Streak. <br />
+            Code It. Ship It. Prove It. <br />
             <span className="bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 dark:from-rose-400 dark:via-amber-400 dark:to-rose-500 bg-clip-text text-transparent">
-              Get Hired by Top Tech.
+              Land Your Dream Role.
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed">
-            Designed for Indian college students coding late at night after classes. 
-            Build consistency with daily <strong className="text-slate-900 dark:text-white font-bold">GitHub commits</strong> and <strong className="text-slate-900 dark:text-white font-bold">LinkedIn proof of work</strong>.
+            60 days. One project a night. Every commit tracked, every build public. Your streak becomes your resume — and recruiters are watching.
           </p>
 
           {/* Call to Actions */}
@@ -71,7 +69,7 @@ export default function LandingPage() {
               href="/dashboard"
               className="w-full px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-xl shadow-rose-600/30 hover:scale-[1.02] transition-transform active:scale-[0.98]"
             >
-              <span>Start 60-Day Challenge</span>
+              <span>Begin Your Streak</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
 
@@ -80,7 +78,7 @@ export default function LandingPage() {
               className="w-full px-6 py-3.5 rounded-2xl bg-white dark:bg-dark-card border border-slate-300 dark:border-dark-border text-slate-800 dark:text-gray-200 font-semibold text-sm flex items-center justify-center gap-2 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors shadow-sm"
             >
               <Play className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400" />
-              <span>Preview Day 12 Task</span>
+              <span>See Today's Challenge</span>
             </Link>
           </div>
 
@@ -89,37 +87,37 @@ export default function LandingPage() {
             <div className="p-3.5 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
               <div className="flex items-center gap-1.5 text-rose-600 dark:text-rose-400 text-xs font-semibold mb-1">
                 <Users className="w-3.5 h-3.5" />
-                <span>Active Coders</span>
+                <span>Builders Online</span>
               </div>
               <p className="text-xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">12,450+</p>
-              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">Across 400+ Indian Colleges</p>
+              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">from 400+ colleges across India</p>
             </div>
 
             <div className="p-3.5 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
               <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 text-xs font-semibold mb-1">
                 <Github className="w-3.5 h-3.5" />
-                <span>Verified Commits</span>
+                <span>Commits Shipped</span>
               </div>
               <p className="text-xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">850,000+</p>
-              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">Public GitHub Proof</p>
+              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">lines of public proof</p>
             </div>
 
             <div className="p-3.5 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
               <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-1">
                 <Briefcase className="w-3.5 h-3.5" />
-                <span>Recruiter Spotlights</span>
+                <span>Hiring Partners</span>
               </div>
               <p className="text-xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">420+</p>
-              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">Hiring Partners Active</p>
+              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">actively scouting builders</p>
             </div>
 
             <div className="p-3.5 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
               <div className="flex items-center gap-1.5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold mb-1">
                 <Award className="w-3.5 h-3.5" />
-                <span>Streak Finishers</span>
+                <span>Completion Rate</span>
               </div>
               <p className="text-xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">94%</p>
-              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">Hired within 90 Days</p>
+              <p className="text-[10px] text-slate-500 dark:text-gray-400 font-medium">placed within 90 days of finishing</p>
             </div>
           </div>
 
@@ -135,7 +133,7 @@ export default function LandingPage() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             <p className="text-center text-xs font-bold text-slate-600 dark:text-gray-400 uppercase tracking-widest font-['Outfit']">
-              Recruiters hiring directly from ABTalks streak leaderboards
+              These companies hire directly from our leaderboard
             </p>
           </div>
         </div>
@@ -195,12 +193,12 @@ export default function LandingPage() {
       {/* How It Works - The Daily Proof Loop */}
       <section className="py-12 px-4 border-b border-slate-200 dark:border-dark-border/60 max-w-4xl mx-auto w-full">
         <div className="text-center mb-10">
-          <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">The Daily 45-Min Loop</span>
+          <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Your Nightly Routine</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1 font-['Outfit']">
-            How ABTalks Turns Students Into Hirable Engineers
+            How It Works — In Three Simple Steps
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-400 mt-2 max-w-xl mx-auto">
-            Consistency beats cramming. Solve one real system requirement every night after college.
+            No courses. No lectures. Just real problems, real commits, and real proof — every single night.
           </p>
         </div>
 
@@ -212,14 +210,14 @@ export default function LandingPage() {
               <div className="w-10 h-10 rounded-xl bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 flex items-center justify-center font-bold text-lg mb-4 border border-rose-200 dark:border-rose-500/30">
                 1
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Read Today&apos;s Task</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Pick Up Tonight's Brief</h3>
               <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                Unlock a bite-sized real-world feature prompt (e.g., Redis Rate Limiter, Auth Middleware, Vector Search).
+                A real-world engineering prompt drops at sundown — Redis, auth, search, you name it. Scoped to finish in one sitting.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-dark-border/60 flex items-center text-[11px] text-amber-600 dark:text-amber-400 font-semibold">
               <Zap className="w-3.5 h-3.5 mr-1" />
-              <span>45 Mins Estimated Time</span>
+              <span>~45 min build time</span>
             </div>
           </div>
 
@@ -229,14 +227,14 @@ export default function LandingPage() {
               <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 flex items-center justify-center font-bold text-lg mb-4 border border-amber-200 dark:border-amber-500/30">
                 2
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Push GitHub Commit</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Ship It to GitHub</h3>
               <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                Submit your repository & commit hash. Our validator verifies exact implementation proof of work.
+                Push your code, paste the commit link. Our validator cross-checks the repo so your proof is airtight.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-dark-border/60 flex items-center text-[11px] text-rose-600 dark:text-rose-400 font-semibold">
               <Github className="w-3.5 h-3.5 mr-1" />
-              <span>Verifiable Git Proof</span>
+              <span>Tamper-proof verification</span>
             </div>
           </div>
 
@@ -246,14 +244,14 @@ export default function LandingPage() {
               <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-bold text-lg mb-4 border border-emerald-200 dark:border-emerald-500/30">
                 3
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Share LinkedIn Post</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Post Your Proof</h3>
               <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                Post your learnings using our 1-click AI draft helper. Recruiters reach out directly in your DMs.
+                One tap generates a polished LinkedIn post from your commit. Recruiters see it, your network sees it, your future employer sees it.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-dark-border/60 flex items-center text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
               <Linkedin className="w-3.5 h-3.5 mr-1" />
-              <span>Recruiter Visibility Boost</span>
+              <span>Visible to 420+ hiring partners</span>
             </div>
           </div>
 
@@ -263,9 +261,9 @@ export default function LandingPage() {
       {/* Interactive Track Explorer */}
       <section className="py-12 px-4 border-b border-slate-200 dark:border-dark-border/60 max-w-4xl mx-auto w-full">
         <div className="text-center mb-8">
-          <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Choose Your Track</span>
+          <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Pick Your Stack</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1 font-['Outfit']">
-            Curated 60-Day Engineering Tracks
+            Four Tracks. Sixty Days. Zero Fluff.
           </h2>
         </div>
 
@@ -308,13 +306,13 @@ export default function LandingPage() {
               href="/dashboard"
               className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-rose-600/30 transition-colors self-start sm:self-auto"
             >
-              <span>Enroll in Track</span>
+              <span>Start This Track</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           <div className="mb-6">
-            <p className="text-xs font-semibold text-slate-600 dark:text-gray-400 mb-2">Technologies You Master:</p>
+            <p className="text-xs font-semibold text-slate-600 dark:text-gray-400 mb-2">You'll work with:</p>
             <div className="flex flex-wrap gap-1.5">
               {activeTrackObj.skills.map((skill, i) => (
                 <span key={i} className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-dark-bg border border-slate-200 dark:border-dark-border text-xs font-semibold text-slate-800 dark:text-amber-300">
@@ -328,7 +326,7 @@ export default function LandingPage() {
           <div className="pt-4 border-t border-slate-200 dark:border-dark-border/60">
             <p className="text-xs font-bold text-slate-800 dark:text-gray-300 mb-3 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-              <span>Sample 60-Day Build Roadmap:</span>
+              <span>What you'll ship:</span>
             </p>
             <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-2">
               <div className="p-3 rounded-xl bg-slate-50 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border">
@@ -363,9 +361,9 @@ export default function LandingPage() {
       {/* Student Thoughtful Innovations Showcase */}
       <section className="py-12 px-4 border-b border-slate-200 dark:border-dark-border/60 max-w-4xl mx-auto w-full">
         <div className="text-center mb-10">
-          <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Engineered for Late-Night Coders</span>
+          <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Built for How You Actually Study</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1 font-['Outfit']">
-            Designed for Real College Life
+            Features That Get It
           </h2>
         </div>
 
@@ -374,9 +372,9 @@ export default function LandingPage() {
             <div className="w-9 h-9 rounded-xl bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 flex items-center justify-center mb-3 border border-indigo-200 dark:border-indigo-500/30">
               <Moon className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Midnight OLED & High-Contrast Light</h3>
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Dark Mode That Doesn't Fry Your Eyes</h3>
             <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-              Default true-black mode with eye-comfort tint for coding at 1 AM, and crisp high-contrast light mode for campus study.
+              Pitch-black OLED mode for 2 AM sessions, clean white for daytime focus, and a neon cyber mode because why not.
             </p>
           </div>
 
@@ -384,9 +382,9 @@ export default function LandingPage() {
             <div className="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 flex items-center justify-center mb-3 border border-amber-200 dark:border-amber-500/30">
               <Sparkles className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">1-Click Post Assistant</h3>
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">One-Tap LinkedIn Posts</h3>
             <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-              Tired at night? Our built-in assistant turns your raw git commit message into a polished LinkedIn post.
+              Too tired to write? Hit one button and your commit turns into a recruiter-ready LinkedIn post. Copy, paste, sleep.
             </p>
           </div>
 
@@ -394,9 +392,9 @@ export default function LandingPage() {
             <div className="w-9 h-9 rounded-xl bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-400 flex items-center justify-center mb-3 border border-rose-200 dark:border-rose-500/30">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Streak Recovery Quest</h3>
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Streak Shield</h3>
             <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-              Exams or sickness? Recover a missed day within 24 hours without losing your hard-earned streak.
+              Exams, fever, life happens. Miss a day? You get 24 hours to catch up before your streak resets. No guilt trips.
             </p>
           </div>
         </div>
@@ -405,8 +403,8 @@ export default function LandingPage() {
       {/* FAQ Accordion */}
       <section className="py-12 px-4 max-w-3xl mx-auto w-full">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">Frequently Asked Questions</h2>
-          <p className="text-xs text-slate-600 dark:text-gray-400 mt-1">Everything you need to know about starting your streak.</p>
+          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">Got Questions?</h2>
+          <p className="text-xs text-slate-600 dark:text-gray-400 mt-1">Here's everything you need before you start.</p>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -436,7 +434,7 @@ export default function LandingPage() {
           className="w-full py-3 rounded-xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-rose-600/40"
         >
           <Flame className="w-4 h-4 fill-white" />
-          <span>Start 60-Day Challenge (Free)</span>
+          <span>Start Building — It's Free</span>
         </Link>
       </div>
 

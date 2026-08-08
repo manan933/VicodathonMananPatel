@@ -16,10 +16,10 @@
     "recruiterScore": 88,
     "rankInCollege": 3,
     "achievements": [
-      { "id": "ach_1", "title": "Night Owl Builder", "desc": "Submitted 5 daily tasks after 11:00 PM", "icon": "Moon", "unlocked": true },
-      { "id": "ach_2", "title": "Git Titan", "desc": "Reached 10 consecutive GitHub commits", "icon": "GitCommit", "unlocked": true },
-      { "id": "ach_3", "title": "Recruiter Magnet", "desc": "LinkedIn post viewed by 5+ hiring managers", "icon": "Briefcase", "unlocked": true },
-      { "id": "ach_4", "title": "Halfway Hero", "desc": "Reach 30 consecutive challenge days", "icon": "Award", "unlocked": false }
+      { "id": "ach_1", "title": "Night Owl Builder", "desc": "5 builds shipped past 11 PM", "icon": "Moon", "unlocked": true },
+      { "id": "ach_2", "title": "Git Titan", "desc": "10 straight days of commits", "icon": "GitCommit", "unlocked": true },
+      { "id": "ach_3", "title": "Recruiter Magnet", "desc": "Post seen by 5+ hiring managers", "icon": "Briefcase", "unlocked": true },
+      { "id": "ach_4", "title": "Halfway Hero", "desc": "Hit the 30-day mark", "icon": "Award", "unlocked": false }
     ],
     "streakHistory": [
       { "day": 1, "completed": true, "date": "Jul 27" },
@@ -99,7 +99,7 @@
     {
       "id": "web-backend",
       "title": "Full-Stack Web & Backend Systems",
-      "tagline": "Build scalable APIs, microservices, and reactive web apps.",
+      "tagline": "APIs, microservices, and full-stack apps — built to scale.",
       "level": "Beginner to Advanced",
       "duration": "60 Days",
       "enrolled": 5420,
@@ -110,7 +110,7 @@
     {
       "id": "ai-ml",
       "title": "AI & Intelligent Agents",
-      "tagline": "Craft LLM pipelines, RAG systems, and AI-powered workflows.",
+      "tagline": "LLM pipelines, RAG systems, and AI agents — from scratch.",
       "level": "Intermediate",
       "duration": "60 Days",
       "enrolled": 3890,
@@ -121,7 +121,7 @@
     {
       "id": "cloud-devops",
       "title": "DevOps & Cloud Native Systems",
-      "tagline": "Master CI/CD pipelines, Kubernetes, Terraform, and AWS.",
+      "tagline": "CI/CD, containers, infrastructure as code — deploy with confidence.",
       "level": "Intermediate",
       "duration": "60 Days",
       "enrolled": 2150,
@@ -132,7 +132,7 @@
     {
       "id": "mobile-dev",
       "title": "Mobile App Engineering",
-      "tagline": "Ship cross-platform iOS & Android apps with smooth animations.",
+      "tagline": "Native-feeling iOS & Android apps — one codebase, zero compromise.",
       "level": "Beginner to Intermediate",
       "duration": "60 Days",
       "enrolled": 1820,
@@ -148,8 +148,8 @@
     "estimatedMinutes": 45,
     "difficulty": "Intermediate",
     "points": 100,
-    "audioBrief": "Today's challenge focuses on protection against API abuse. You will implement an Express.js middleware using Redis to limit request rates per client IP using the token bucket strategy. This is a favorite system design question in tech interviews!",
-    "overview": "Rate limiting is an essential defense mechanism for web APIs. Today you will build a production-ready Express rate-limiter middleware using Redis as an atomic key-value store. You'll enforce a policy of maximum 10 requests per minute per client IP address.",
+    "audioBrief": "Tonight you're building a rate limiter — the kind of thing interviewers love to ask about. You'll write Express middleware backed by Redis, using the token bucket algorithm to cap requests per IP. Let's go.",
+    "overview": "Every serious API needs a rate limiter. Tonight you'll build one from scratch — an Express middleware that uses Redis to enforce a hard cap of 10 requests per minute per client IP. Production-grade, interview-ready.",
     "learningObjectives": [
       "Master Redis atomic commands (INCR, EXPIRE, EVAL scripts)",
       "Implement the Token Bucket rate-limiting algorithm",
@@ -162,7 +162,7 @@
       "Store client IP keys in Redis with expiration TTL",
       "Add automated jest/supertest test cases verifying rate limiting behavior"
     ],
-    "bonusChallenge": "Implement a sliding window log counter in Redis Lua script for precise timestamp handling.",
+    "bonusChallenge": "Write a sliding-window counter in Redis Lua for sub-second precision.",
     "starterSnippet": "const express = require('express');\nconst Redis = require('ioredis');\nconst redis = new Redis(process.env.REDIS_URL);\n\n// TODO: Implement rateLimiter middleware here\nfunction rateLimiter(limit, windowSec) {\n  return async (req, res, next) => {\n    const ip = req.ip || req.headers['x-forwarded-for'];\n    const key = `ratelimit:${ip}`;\n    \n    // Write Redis atomic token check logic...\n    next();\n  };\n}\n\nmodule.exports = { rateLimiter };"
   },
   "peerSubmissions": [
@@ -212,20 +212,20 @@
   ],
   "faqs": [
     {
-      "q": "What if I have college exams or miss a day?",
-      "a": "We know college life gets intense! ABTalks includes a 'Streak Shield & Recovery Quest'. You can recover a missed day within 24 hours by completing a catch-up challenge without resetting your total streak count."
+      "q": "What if I miss a day?",
+      "a": "Life happens. You get a 24-hour window to complete a catch-up challenge and keep your streak alive. No penalty, no drama."
     },
     {
-      "q": "Do I need prior advanced experience to join?",
-      "a": "No! We have tracks starting from fundamentals to advanced systems. Each day provides clear instructions, starter templates, and community support."
+      "q": "Do I need experience?",
+      "a": "Nope. Tracks range from beginner to advanced, and every challenge comes with starter code, clear specs, and a community that's got your back."
     },
     {
-      "q": "How do recruiters see my proof of work?",
-      "a": "Every verified GitHub commit and LinkedIn post boosts your 'Recruiter Visibility Index'. Top consistent builders get highlighted in our weekly partner talent digest sent directly to tech leads at Razorpay, Postman, Cred, and more."
+      "q": "How do recruiters find me?",
+      "a": "Every verified commit and LinkedIn post bumps your Visibility Score. Top builders get featured in a weekly digest that goes straight to hiring leads at Razorpay, Cred, Postman, and more."
     },
     {
-      "q": "Is the challenge free for college students?",
-      "a": "Yes! The 60-day challenge is 100% free for college students across India."
+      "q": "Is it free?",
+      "a": "Completely free. No hidden tiers, no paywalls. Just show up and build."
     }
   ]
 }

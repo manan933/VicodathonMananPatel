@@ -445,6 +445,51 @@ footer not properly visible in android app.
 2. **Verification**:
    - Executed `npm run build` — compiled with **0 errors, 0 warnings**.
 
+### Prompt 22 — Complete Site-Wide English Copy Refinement
+> **Timestamp**: 2026-08-08 09:23 IST
+
+```
+Okay, from now on, your job is to completely refine the website's English—from catchy headings and cool one-liners to short descriptions, labels, buttons, and microcopy. Make everything sound natural, accurate, unique, modern, and genuinely cool, while keeping the wording clear and relevant to the context.
+```
+
+**Actions Taken** — Rewrote 100+ text strings across 7 files to replace generic/AI-sounding copy with natural, punchy, human language:
+
+1. **Landing Page ([`page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/page.tsx))** — 42 replacements:
+   - Hero: `"Build 1 Project Daily..."` → `"Code It. Ship It. Prove It. Land Your Dream Role."`
+   - Badge: `"60-Day Daily College Coding Challenge"` → `"Ship Code Every Day for 60 Days"`
+   - CTAs: `"Start 60-Day Challenge"` → `"Begin Your Streak"` / `"Start Building — It's Free"`
+   - How It Works: `"Read Today's Task"` → `"Pick Up Tonight's Brief"` / `"Ship It to GitHub"` / `"Post Your Proof"`
+   - Tracks: `"Curated 60-Day Engineering Tracks"` → `"Four Tracks. Sixty Days. Zero Fluff."`
+   - Features: `"Designed for Real College Life"` → `"Features That Get It"`
+   - FAQ: `"Frequently Asked Questions"` → `"Got Questions?"`
+
+2. **Dashboard ([`dashboard/page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/dashboard/page.tsx))** — 30 replacements:
+   - Welcome: `"Welcome to Day 1 of ABTalks!"` → `"Welcome Aboard — Day 1 Starts Now"`
+   - Streak alert: `"Streak Protection Activated!"` → `"Streak at Risk — Clock's Ticking"`
+   - Labels: `"Recruiter Index"` → `"Hire-Ready Score"` / `"Current Streak"` → `"Active Streak"`
+   - Status: `"Pending Submission"` → `"In progress"` / `"Not Started Yet"` → `"Waiting on you"`
+   - CTA: `"Execute Catch-Up Quest"` → `"Save My Streak"`
+
+3. **Day 12 Page ([`day/12/page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/day/12/page.tsx))** — 26 replacements:
+   - Header: `"Submit Daily Proof of Work"` → `"Submit Your Build"`
+   - Form labels: `"1. GitHub Repository / Commit URL *"` → `"GitHub repo or commit link *"`
+   - AI button: `"AI Post Assistant (1-Click)"` → `"Draft with AI ✨"`
+   - Submit CTA: `"Submit Proof of Work & Lock Streak"` → `"Submit & Lock Today's Streak"`
+   - Peers: `"Batchmate Submissions"` → `"What Others Built Today"`
+
+4. **Footer ([`Footer.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/Footer.tsx))** — 6 replacements:
+   - Links: `"Landing Page (/)"` → `"Home"` / `"Challenge Day (/day/12)"` → `"Today's Build"`
+   - Tagline: `"Built for Indian College Students / Late-Night Coders"` → `"Made for students who code after midnight"`
+
+5. **Edge State Toggle ([`EdgeStateToggle.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/EdgeStateToggle.tsx))** — 6 replacements:
+   - Title: `"Real-World Edge Case Simulator"` → `"Test Different States"`
+   - Buttons: `"12-Day Active Streak"` → `"Active Streak"` / `"Day 1 (0 Streak)"` → `"Fresh Start"`
+
+6. **Mock Data ([`mockData.json`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/data/mockData.json))** — achievements, track taglines, Day 12 briefs, and all 4 FAQ entries rewritten.
+
+7. **Verification**:
+   - Executed `npm run build` — compiled with **0 errors, 0 warnings** across all 6 routes.
+
 ---
 
 ## Required Routes & Route Map

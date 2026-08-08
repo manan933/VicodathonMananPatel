@@ -66,16 +66,16 @@ export default function DashboardPage() {
                 <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Welcome to Day 1 of ABTalks!</h3>
+                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Welcome Aboard — Day 1 Starts Now</h3>
                 <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
-                  You have a fresh 0-day streak. Complete today&apos;s 45-minute coding task to trigger your flame!
+                  Your streak counter is at zero. Finish tonight's challenge to light your first flame.
                 </p>
                 <div className="mt-3 flex items-center gap-3">
                   <Link
                     href="/day/12"
                     className="px-3.5 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center gap-1 hover:bg-amber-400 transition-colors shadow-sm"
                   >
-                    <span>Start Day 1 Challenge</span>
+                    <span>Let's Go</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -92,20 +92,20 @@ export default function DashboardPage() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-sm font-extrabold text-rose-700 dark:text-rose-400 font-['Outfit']">Streak Protection Activated!</h3>
+                  <h3 className="text-sm font-extrabold text-rose-700 dark:text-rose-400 font-['Outfit']">Streak at Risk — Clock's Ticking</h3>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-500/30">
                     11h 42m Left
                   </span>
                 </div>
                 <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
-                  You missed yesterday&apos;s commit. Don&apos;t worry! Complete today&apos;s Catch-Up Quest before midnight to restore your 8-day streak shield.
+                  Yesterday's commit didn't land. No stress — finish the catch-up challenge before midnight and your 8-day streak stays intact.
                 </p>
                 <div className="mt-3 flex items-center gap-2">
                   <Link
                     href="/day/12"
                     className="px-3.5 py-1.5 rounded-xl bg-rose-600 text-white font-bold text-xs flex items-center gap-1 shadow-md shadow-rose-600/40 hover:bg-rose-700 transition-colors"
                   >
-                    <span>Execute Catch-Up Quest</span>
+                    <span>Save My Streak</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -121,18 +121,18 @@ export default function DashboardPage() {
                 <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Connect Your Public Accounts</h3>
+                <h3 className="text-sm font-extrabold text-amber-800 dark:text-amber-300 font-['Outfit']">Link Your Profiles to Get Noticed</h3>
                 <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">
-                  Recruiters cannot verify your daily proof of work until you link your GitHub and LinkedIn profiles.
+                  Your builds won't show up on recruiter radars until GitHub and LinkedIn are connected.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <button className="px-3 py-1.5 rounded-xl bg-white dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs font-semibold text-slate-800 dark:text-gray-200 flex items-center gap-1.5 hover:border-rose-500 shadow-sm">
                     <Github className="w-3.5 h-3.5 text-slate-900 dark:text-white" />
-                    <span>Link GitHub</span>
+                    <span>Connect GitHub</span>
                   </button>
                   <button className="px-3 py-1.5 rounded-xl bg-white dark:bg-dark-bg border border-slate-300 dark:border-dark-border text-xs font-semibold text-slate-800 dark:text-gray-200 flex items-center gap-1.5 hover:border-rose-500 shadow-sm">
                     <Linkedin className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                    <span>Link LinkedIn</span>
+                    <span>Connect LinkedIn</span>
                   </button>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function DashboardPage() {
           {/* Quick Recruiter Index Pill */}
           <div className="w-full sm:w-auto p-3 rounded-2xl bg-slate-100 dark:bg-dark-bg/80 border border-slate-200 dark:border-dark-border flex items-center justify-between sm:justify-start gap-4">
             <div>
-              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">Recruiter Index</p>
+              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">Hire-Ready Score</p>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400 font-['Outfit']">{user.recruiterScore}/100</span>
                 <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -185,7 +185,7 @@ export default function DashboardPage() {
             </div>
             <div className="h-8 w-px bg-slate-200 dark:bg-dark-border" />
             <div>
-              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">College Rank</p>
+              <p className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">Campus Rank</p>
               <p className="text-lg font-extrabold text-amber-600 dark:text-amber-400 font-['Outfit']">
                 {user.rankInCollege > 0 ? `#${user.rankInCollege}` : 'Unranked'}
               </p>
@@ -206,29 +206,29 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider flex items-center gap-1">
                   <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400 animate-bounce" />
-                  <span>Current Streak</span>
+                  <span>Active Streak</span>
                 </span>
                 <span className="text-[10px] text-slate-600 dark:text-gray-400 bg-slate-100 dark:bg-dark-bg px-2 py-0.5 rounded-full border border-slate-200 dark:border-dark-border font-medium">
-                  Best: {user.longestStreak} Days
+                  Peak: {user.longestStreak} days
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mt-2">
                 <span className="text-4xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">{user.currentStreak}</span>
-                <span className="text-sm font-bold text-amber-700 dark:text-amber-400">Days Active</span>
+                <span className="text-sm font-bold text-amber-700 dark:text-amber-400">days strong</span>
               </div>
             </div>
 
             {/* Streak Status Bar */}
             <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60">
               <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className="text-slate-500 dark:text-gray-400 text-[11px] font-medium">Today&apos;s Status</span>
+                <span className="text-slate-500 dark:text-gray-400 text-[11px] font-medium">Today</span>
                 <span className={`font-bold text-[11px] ${user.streakHistory?.find(h => h.day === user.currentDay)?.completed ? 'text-emerald-600 dark:text-emerald-400' : edgeState === 'firstDay' ? 'text-slate-400 dark:text-gray-500' : 'text-amber-700 dark:text-amber-400'}`}>
                   {user.streakHistory?.find(h => h.day === user.currentDay)?.completed 
                     ? 'Submitted ✓' 
                     : edgeState === 'firstDay' 
-                    ? 'Not Started Yet' 
-                    : 'Pending Submission'}
+                    ? 'Waiting on you' 
+                    : 'In progress'}
                 </span>
               </div>
               <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-dark-bg overflow-hidden border border-slate-300 dark:border-dark-border">
@@ -246,7 +246,7 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider flex items-center gap-1">
                   <CalendarCheck className="w-4 h-4 text-rose-600 dark:text-rose-400" />
-                  <span>Challenge Progress</span>
+                  <span>60-Day Progress</span>
                 </span>
                 <span className="text-xs font-extrabold text-slate-900 dark:text-white font-['Outfit']">{progressPercent}%</span>
               </div>
@@ -259,8 +259,8 @@ export default function DashboardPage() {
 
             <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60">
               <div className="flex justify-between text-[11px] text-slate-500 dark:text-gray-400 mb-1 font-medium">
-                <span>Completed: {user.completedDays} days</span>
-                <span>Remaining: {user.totalDays - user.completedDays} days</span>
+                <span>Done: {user.completedDays} days</span>
+                <span>Left: {user.totalDays - user.completedDays} days</span>
               </div>
               <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-dark-bg overflow-hidden border border-slate-300 dark:border-dark-border">
                 <div 
@@ -277,24 +277,24 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1">
                   <Trophy className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                  <span>Recruiter Score</span>
+                  <span>Visibility Score</span>
                 </span>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
-                  {user.recruiterScore > 75 ? 'Top 10% Talent' : 'Building Status'}
+                  {user.recruiterScore > 75 ? 'Top 10%' : 'Rising'}
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mt-2">
                 <span className="text-3xl font-extrabold text-slate-900 dark:text-white font-['Outfit']">{user.recruiterScore}</span>
-                <span className="text-xs font-semibold text-slate-500 dark:text-gray-400">/ 100 Points</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-gray-400">/ 100</span>
               </div>
             </div>
 
             <div className="mt-4 pt-3 border-t border-slate-200 dark:border-dark-border/60 text-[11px] text-slate-600 dark:text-gray-300 flex items-center justify-between font-medium">
-              <span>Recruiter Digest Status:</span>
+              <span>Next feature:</span>
               <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                 <UserCheck className="w-3.5 h-3.5" />
-                <span>Featured Next Mon</span>
+                <span>Monday spotlight</span>
               </span>
             </div>
           </div>
@@ -331,7 +331,7 @@ export default function DashboardPage() {
               href="/day/12"
               className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-rose-600/30 hover:scale-[1.02] transition-all shrink-0 w-full md:w-auto"
             >
-              <span>{isMissedDay ? 'Solve Catch-Up Quest' : 'Open Day 12 Workspace'}</span>
+              <span>{isMissedDay ? 'Save My Streak' : "Start Today's Build"}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -342,7 +342,7 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400" />
-              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">60-Day Challenge Matrix</h3>
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">Your 60-Day Grid</h3>
             </div>
             <span className="text-xs text-slate-500 dark:text-gray-400 font-medium">Day 12 of 60</span>
           </div>
@@ -382,7 +382,7 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Award className="w-4 h-4 text-rose-600 dark:text-rose-400" />
-              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">Student Standing & Badges</h3>
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white font-['Outfit']">Badges & Milestones</h3>
             </div>
             <span className="text-xs text-slate-500 dark:text-gray-400 font-medium">
               {user.achievements?.filter(a => a.unlocked).length || 0} Unlocked

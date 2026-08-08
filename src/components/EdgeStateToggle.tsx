@@ -16,10 +16,10 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
       <div className="flex items-center justify-between gap-2 mb-2 px-1">
         <div className="flex items-center gap-1.5 text-xs font-bold text-rose-600 dark:text-rose-400">
           <Sliders className="w-3.5 h-3.5" />
-          <span>Real-World Edge Case Simulator</span>
+          <span>Test Different States</span>
         </div>
         <span className="text-[10px] text-slate-500 dark:text-gray-400 bg-slate-100 dark:bg-dark-bg px-2 py-0.5 rounded-full border border-slate-200 dark:border-dark-border font-medium">
-          Interactive Toggle
+          Simulator
         </span>
       </div>
 
@@ -34,7 +34,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
           }`}
         >
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-          <span>12-Day Active Streak</span>
+          <span>Active Streak</span>
         </button>
 
         <button
@@ -47,7 +47,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
           }`}
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-          <span>Day 1 (0 Streak)</span>
+          <span>Fresh Start</span>
         </button>
 
         <button
@@ -60,7 +60,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
           }`}
         >
           <ShieldAlert className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
-          <span>Missed Day / Recovery</span>
+          <span>Missed a Day</span>
         </button>
 
         <button
@@ -73,7 +73,7 @@ export default function EdgeStateToggle({ currentState, onStateChange }: EdgeSta
           }`}
         >
           <UserX className="w-3.5 h-3.5 text-orange-600 dark:text-orange-400" />
-          <span>Unlinked Profile</span>
+          <span>No Profile</span>
         </button>
       </div>
     </div>
