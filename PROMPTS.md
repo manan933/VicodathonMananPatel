@@ -620,4 +620,21 @@ when switching to no profile ,fresh start , miss a day - analytics shows the sam
 3. **Verification**:
    - Ran `npm run build` successfully with **0 compiler, compilation, linting, or type errors**.
 
+### Prompt 27 — AB Talks Creator & Channel Alignment
+> **Timestamp**: 2026-08-08 16:10 IST
+
+```
+use only AB talks videos on youtube part
+AB Talks
+@ABTalksOnAI this is the channel
+```
+
+**Actions Taken**:
+1. **AB Talks Branding Correction**:
+   - Replaced incorrect references to "Abhishek Bhatia" with "AB Talks" / "Anil Bajpai" inside [`LanguageProvider.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/LanguageProvider.tsx) and the YouTube Hub page [`page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/hub/page.tsx).
+   - This ensures description copy aligns cleanly with Anil Bajpai's official channel branding (`@ABTalksOnAI`).
+2. **Verification**:
+   - ran `npm run build` successfully with **0 compiler, compilation, linting, or type errors**.
+
+
 
