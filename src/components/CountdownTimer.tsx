@@ -1,39 +1,42 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Clock } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageProvider';
 
-interface CountdownTimerProps {
+export interface CountdownTimerProps {
   className?: string;
 }
 
+interface TimeRemaining {
+  hours: string;
+  minutes: string;
+  seconds: string;
+  totalSeconds: number;
+}
+
 export default function CountdownTimer({ className = '' }: CountdownTimerProps) {
-  const [timeLeft, setTimeLeft] = useState<{
-    hours: number;
-    minutes: number;
-    seconds: number;
-    totalSeconds: number;
-  } | null>(null);
+  const [timeLeft, setTimeLeft] = useState<TimeRemaining | null>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
-    const calculateTimeRemaining = () => {
+    // Calculates time remaining until 23:59:59 tonight
+    const calculateTimeRemaining = (): TimeRemaining => {
       const now = new Date();
-      const utcMs = now.getTime();
-      const istOffset = 5.5 * 60 * 60 * 1000;
-      const istDate = new Date(utcMs + istOffset);
+      const endOfDay = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        23,
+        59,
+        59,
+        999
+      );
 
-      const istYear = istDate.getUTCFullYear();
-      const istMonth = istDate.getUTCMonth();
-      const istDay = istDate.getUTCDate();
-
-      // Next day 00:00 Asia/Kolkata
-      const nextMidnightUtc = Date.UTC(istYear, istMonth, istDay + 1, 0, 0, 0);
-      const diffMs = nextMidnightUtc - (utcMs + istOffset);
-
-      const totalSeconds = Math.max(0, Math.floor(diffMs / 1000));
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
+      const totalSeconds = Math.max(0, Math.floor((endOfDay.getTime() - now.getTime()) / 1000));
+      const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const seconds = String(totalSeconds % 60).padStart(2, '0');
 
       return { hours, minutes, seconds, totalSeconds };
     };
@@ -51,10 +54,12 @@ export default function CountdownTimer({ className = '' }: CountdownTimerProps) 
   if (!timeLeft) {
     return (
       <div
-        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-xs font-bold text-amber-700 dark:text-amber-400 ${className}`}
+        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-500/20 border border-amber-300 dark:border-amber-500/30 text-xs font-extrabold text-slate-900 dark:text-amber-300 ${className}`}
       >
-        <Clock className="w-3.5 h-3.5 animate-spin" />
-        <span>Next challenge drops in ...</span>
+        <Clock className="w-3.5 h-3.5 animate-spin text-amber-600 dark:text-amber-400 shrink-0" />
+        <span className="whitespace-nowrap">
+          {language === 'english' ? "Next challenge drops in ..." : "Agla challenge aayega ..."}
+        </span>
       </div>
     );
   }
@@ -63,15 +68,17 @@ export default function CountdownTimer({ className = '' }: CountdownTimerProps) 
 
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-extrabold transition-all ${
         isUnderOneHour
-          ? 'bg-rose-50 dark:bg-rose-500/10 border-rose-200 dark:border-rose-500/30 text-rose-600 dark:text-rose-400 animate-pulse'
-          : 'bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/30 text-amber-700 dark:text-amber-400'
+          ? 'bg-rose-100 dark:bg-rose-500/20 border-rose-400 dark:border-rose-500/40 text-slate-900 dark:text-rose-300 animate-pulse'
+          : 'bg-amber-100 dark:bg-amber-500/20 border-amber-300 dark:border-amber-500/40 text-slate-900 dark:text-amber-300'
       } ${className}`}
     >
-      <Clock className={`w-3.5 h-3.5 ${isUnderOneHour ? 'text-rose-600 dark:text-rose-400' : 'text-amber-700 dark:text-amber-400'}`} />
-      <span>
-        Next challenge drops in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+      <Clock className={`w-3.5 h-3.5 shrink-0 ${isUnderOneHour ? 'text-rose-600 dark:text-rose-400' : 'text-amber-600 dark:text-amber-400'}`} />
+      <span className="whitespace-nowrap">
+        {language === 'english'
+          ? `Next challenge drops in ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`
+          : `Agla challenge aayega ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s me`}
       </span>
     </div>
   );

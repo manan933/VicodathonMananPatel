@@ -276,7 +276,8 @@ html.brutal button:active {
 
 /* Badges & Pills Pop Color Fill */
 html.brutal .bg-rose-100,
-html.brutal .bg-rose-500\/15 { background-color: #FF758F !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
+html.brutal .bg-rose-500\/15,
+html.brutal .bg-rose-500\/20 { background-color: #FF758F !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
 
 html.brutal .bg-violet-100,
 html.brutal .bg-violet-500\/15 { background-color: #D8B4FE !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
@@ -285,7 +286,11 @@ html.brutal .bg-emerald-100,
 html.brutal .bg-emerald-500\/15 { background-color: #86EFAC !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
 
 html.brutal .bg-amber-100,
-html.brutal .bg-amber-500\/15 { background-color: #FDE047 !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
+html.brutal .bg-amber-500\/15,
+html.brutal .bg-amber-500\/20 { background-color: #FDE047 !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
+
+html.brutal .bg-amber-100 span,
+html.brutal .bg-rose-100 span { color: #000000 !important; font-weight: 800 !important; }
 
 html.brutal .bg-indigo-100,
 html.brutal .bg-indigo-500\/15 { background-color: #A5B4FC !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 800 !important; }
