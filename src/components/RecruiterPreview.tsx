@@ -222,39 +222,39 @@ export default function RecruiterPreview({ user }: RecruiterPreviewProps) {
           </div>
         </div>
 
-        {/* Streak Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <div className="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0">
-              <Flame className="w-5 h-5 text-amber-400" />
+        {/* 3 Key Stats Cards */}
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
+          <div className="p-2 sm:p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-2 min-w-0">
+            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0">
+              <Flame className="w-4 h-4 text-amber-400 fill-amber-400" />
             </div>
-            <div>
-              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Current Streak" : "Current Streak"}</p>
-              <p className="text-base font-bold text-white">
+            <div className="min-w-0">
+              <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">{language === 'english' ? "Current Streak" : "Current Streak"}</p>
+              <p className="text-xs sm:text-base font-bold text-white truncate">
                 {currentStreak} {language === 'english' ? "Days" : "Din"}
               </p>
             </div>
           </div>
 
-          <div className="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center shrink-0">
-              <Trophy className="w-5 h-5 text-purple-400" />
+          <div className="p-2 sm:p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-2 min-w-0">
+            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center shrink-0">
+              <Trophy className="w-4 h-4 text-purple-400" />
             </div>
-            <div>
-              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Longest Streak" : "Sabse Bada Streak"}</p>
-              <p className="text-base font-bold text-white">
+            <div className="min-w-0">
+              <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">{language === 'english' ? "Max Streak" : "Max Streak"}</p>
+              <p className="text-xs sm:text-base font-bold text-white truncate">
                 {longestStreak} {language === 'english' ? "Days" : "Din"}
               </p>
             </div>
           </div>
 
-          <div className="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-3 col-span-2 sm:col-span-1">
-            <div className="w-9 h-9 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center shrink-0">
-              <Sparkles className="w-5 h-5 text-rose-400" />
+          <div className="p-2 sm:p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-2 min-w-0">
+            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center shrink-0">
+              <Sparkles className="w-4 h-4 text-rose-400" />
             </div>
-            <div>
-              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{language === 'english' ? "Recruiter Score" : "Recruiter Score"}</p>
-              <p className="text-base font-bold text-white">{recruiterScore}/100</p>
+            <div className="min-w-0">
+              <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">{language === 'english' ? "Recruiter Score" : "Recruiter Score"}</p>
+              <p className="text-xs sm:text-base font-bold text-white truncate">{recruiterScore}/100</p>
             </div>
           </div>
         </div>

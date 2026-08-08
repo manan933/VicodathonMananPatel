@@ -88,31 +88,60 @@ html.brutal .rounded-3xl,
 html.brutal .rounded-2xl,
 html.brutal .rounded-xl,
 html.brutal .rounded-lg {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   border: 3px solid #000000 !important;
   box-shadow: 4px 4px 0px 0px #000000 !important;
-  background-color: #FFFFFF !important;
-  color: #000000 !important;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Preserve dark card contrast in Brutalist mode */
+html.brutal .bg-slate-900,
+html.brutal .from-slate-900,
+html.brutal .bg-slate-950,
+html.brutal .bg-dark-card,
+html.brutal [data-dark-card="true"] {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px 0px #000000 !important;
+}
+
+html.brutal .bg-slate-900 *,
+html.brutal .from-slate-900 *,
+html.brutal .bg-slate-950 *,
+html.brutal [data-dark-card="true"] * {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Navbar item compact styling in Brutalist mode */
+html.brutal header nav a,
+html.brutal header button {
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+  border: 2px solid #000000 !important;
+  border-radius: 6px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
 }
 
 html.brutal button,
 html.brutal select,
 html.brutal input,
 html.brutal textarea {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   border: 3px solid #000000 !important;
   color: #000000 !important;
   transition: all 0.15s ease !important;
 }
 
 html.brutal button:hover {
-  background-color: #FFE600 !important;
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 6px 6px 0px 0px #000000 !important;
+  background-color: #F2C94C !important;
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 5px 5px 0px 0px #000000 !important;
 }
 
 html.brutal button:active {
-  transform: translate(2px, 2px) !important;
+  transform: translate(1px, 1px) !important;
   box-shadow: 2px 2px 0px 0px #000000 !important;
 }
 
@@ -121,7 +150,7 @@ html.brutal a {
 }
 
 html.brutal a:hover {
-  color: #FFE600 !important;
+  color: #000000 !important;
   text-decoration: underline !important;
 }
 

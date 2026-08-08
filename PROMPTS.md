@@ -675,6 +675,34 @@ use this background color for neo brutal theme and fix some things as they are n
 3. **Verification**:
    - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
 
+### Prompt 30 — Navbar Layout Optimization & 6 Exact YouTube Embeds Integration
+> **Timestamp**: 2026-08-08 16:28 IST
+
+```
+navbar is messing up and the student profile caard is here and there . optimize it properly and
+add only the following youtube video links that i gave no other videos , remove old ones
+[6 YouTube Embed Iframes]
+```
+
+**Actions Taken**:
+1. **Navbar Layout & Button Wrapping Optimization ([`Navbar.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/Navbar.tsx) & [`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Prevented text line-breaks and button bulging in Neo Brutalist mode by adding `whitespace-nowrap flex-nowrap` to header navigation links.
+   - Refined `html.brutal header button` CSS rules to use compact 2px borders and clean 2px offset shadows so navbar links never overlap or wrap messily onto multi-lines.
+2. **Recruiter Dossier Card Overflow Resolution ([`RecruiterPreview.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/RecruiterPreview.tsx) & [`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Added `html.brutal [data-dark-card="true"]` rules so dark cards maintain high-contrast `#0F172A` dark backgrounds with crisp white text instead of being overridden by global white background styling.
+   - Refactored the key stats cards inside `RecruiterPreview.tsx` to use responsive 3-column layouts with `min-w-0` and truncation protection, preventing text clipping for the *Recruiter Score* card.
+3. **Exact 6 YouTube Video Embed Links Integration ([`hub/page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/hub/page.tsx))**:
+   - Replaced all previous video items with ONLY the 6 exact YouTube video embed links provided by the user:
+     - 1. `https://www.youtube.com/embed/qs4YkGZKAuM?si=vCTmY8djVOcrqw2J` (`qs4YkGZKAuM`)
+     - 2. `https://www.youtube.com/embed/ru5mM1ihdRE?si=YbmsXh76PLftgE_H` (`ru5mM1ihdRE`)
+     - 3. `https://www.youtube.com/embed/bt_qiMY3zvs?si=C55p2LyIjuLMW8a0` (`bt_qiMY3zvs`)
+     - 4. `https://www.youtube.com/embed/CoOffCrI_dU?si=fS-CP4g_B3QeExi9` (`CoOffCrI_dU`)
+     - 5. `https://www.youtube.com/embed/D84DbQVZjtY?si=ngeQEvRTBI_WNDdV` (`D84DbQVZjtY`)
+     - 6. `https://www.youtube.com/embed/Tr4GdaRenCA?si=kMZxR7K9TQZln4dO` (`Tr4GdaRenCA`)
+4. **Verification**:
+   - Executed `npm run build` — compiled successfully with **0 compiler, compilation, linting, or type errors**.
+
+
 
 
 

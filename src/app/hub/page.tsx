@@ -40,8 +40,8 @@ const VIDEOS: VideoItem[] = [
       english: 'The Biggest AI Trends of 2026 | Claude AI, AI Agents & Physical AI',
       hinglish: '2026 Ke Sabse Bade AI Trends | Claude AI, AI Agents & Physical AI'
     },
-    embedUrl: 'https://www.youtube.com/embed/SqcY0GlETPk',
-    youtubeId: 'SqcY0GlETPk',
+    embedUrl: 'https://www.youtube.com/embed/qs4YkGZKAuM?si=vCTmY8djVOcrqw2J',
+    youtubeId: 'qs4YkGZKAuM',
     category: 'AI & ML',
     duration: '31:31',
     description: {
@@ -54,18 +54,18 @@ const VIDEOS: VideoItem[] = [
   {
     id: '2',
     title: {
-      english: 'Day 60/60: Build Your Portfolio & Release v1.0 | Claude AI Coding Challenge',
-      hinglish: 'Din 60/60: Apna Portfolio Banao & v1.0 Release Karo | Claude AI Challenge'
+      english: 'Claude AI Coding Challenge — Masterclass & Full Roadmap',
+      hinglish: 'Claude AI Coding Challenge — Full Guide & Roadmap'
     },
-    embedUrl: 'https://www.youtube.com/embed/rfscVS0vtbw',
-    youtubeId: 'rfscVS0vtbw',
+    embedUrl: 'https://www.youtube.com/embed/ru5mM1ihdRE?si=YbmsXh76PLftgE_H',
+    youtubeId: 'ru5mM1ihdRE',
     category: 'Coding Projects',
-    duration: '0:45',
+    duration: '24:15',
     description: {
-      english: 'Final milestone of the 60-day challenge! Learn how to bundle your daily builds into a recruiter-ready portfolio site and launch your v1.0.',
-      hinglish: '60-din challenge ka grand finale! Apne saare daily projects ko recruiter-ready portfolio me package karo aur v1.0 release karo.'
+      english: 'Learn how to build real-world AI applications, configure Claude API pipelines, and ship verified proof of work.',
+      hinglish: 'Claude AI se real-world applications banana seekho, API pipelines configure karo aur daily verified code push karo.'
     },
-    tags: ['60DayChallenge', 'Claude AI', 'Portfolio', 'Release v1.0'],
+    tags: ['Claude AI', 'Coding Challenge', 'AI Apps', 'Proof of Work'],
   },
   {
     id: '3',
@@ -73,8 +73,8 @@ const VIDEOS: VideoItem[] = [
       english: 'Best AI Tools for Productivity in 2026 | ChatGPT vs Claude vs NotebookLM vs Gamma',
       hinglish: '2026 Ke Best AI Tools Productivity Ke Liye | ChatGPT vs Claude vs NotebookLM vs Gamma'
     },
-    embedUrl: 'https://www.youtube.com/embed/zJsQxY5spEA',
-    youtubeId: 'zJsQxY5spEA',
+    embedUrl: 'https://www.youtube.com/embed/bt_qiMY3zvs?si=C55p2LyIjuLMW8a0',
+    youtubeId: 'bt_qiMY3zvs',
     category: 'AI & ML',
     duration: '15:36',
     description: {
@@ -86,11 +86,27 @@ const VIDEOS: VideoItem[] = [
   {
     id: '4',
     title: {
+      english: 'Build & Deploy AI Agents from Scratch — Complete Engineering Strategy',
+      hinglish: 'AI Agents Shuru Se Banao & Deploy Karo — Complete Strategy'
+    },
+    embedUrl: 'https://www.youtube.com/embed/CoOffCrI_dU?si=fS-CP4g_B3QeExi9',
+    youtubeId: 'CoOffCrI_dU',
+    category: 'Coding Projects',
+    duration: '28:40',
+    description: {
+      english: 'Step-by-step breakdown on building multi-agent AI systems, tool-calling functions, and deploying autonomous workflows to production.',
+      hinglish: 'Multi-agent AI systems aur tool-calling functions shuru se build karke production par deploy karna seekho.'
+    },
+    tags: ['AI Agents', 'Autonomous Workflows', 'Tool Calling', 'Deployment'],
+  },
+  {
+    id: '5',
+    title: {
       english: '90% of AI Projects FAIL! | ChatGPT, Claude, LLMs & AI Startups',
       hinglish: '90% AI Projects FAIL Ho Jaate Hain! | ChatGPT, Claude, LLMs & Startups'
     },
-    embedUrl: 'https://www.youtube.com/embed/Ke90Tje7VS0',
-    youtubeId: 'Ke90Tje7VS0',
+    embedUrl: 'https://www.youtube.com/embed/D84DbQVZjtY?si=ngeQEvRTBI_WNDdV',
+    youtubeId: 'D84DbQVZjtY',
     category: 'Career & Streak',
     duration: '18:45',
     description: {
@@ -98,6 +114,22 @@ const VIDEOS: VideoItem[] = [
       hinglish: 'Janiye kyun 90% AI pilots production me fail ho jate hain, enterprise scaling pitfalls, aur ek successful AI builder kaise banein.'
     },
     tags: ['AI Engineering', 'LLM Pitfalls', 'AI Startups', 'Career Advice'],
+  },
+  {
+    id: '6',
+    title: {
+      english: 'How Top Tech Companies Hire SDEs in the AI Era',
+      hinglish: 'AI Era Me Top Tech Companies SDEs Ko Kaise Hire Karti Hain'
+    },
+    embedUrl: 'https://www.youtube.com/embed/Tr4GdaRenCA?si=kMZxR7K9TQZln4dO',
+    youtubeId: 'Tr4GdaRenCA',
+    category: 'Career & Streak',
+    duration: '21:10',
+    description: {
+      english: 'Exclusive breakdown on tech recruiter secrets, standing out with public proof-of-work, and landing top developer roles.',
+      hinglish: 'Sikhein tech recruiters coders ko kaise scout karte hain, aur public proof-of-work se top offers kaise paayein.'
+    },
+    tags: ['Tech Hiring', 'Proof Of Work', 'SDE Career', 'Recruiter Secrets'],
   },
 ];
 
