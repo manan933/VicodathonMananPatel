@@ -791,6 +791,43 @@ some text also not visible in neo brutal mode
 5. **Verification**:
    - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
 
+### Prompt 36 — Headline Text 'Apni Dream Job Paao' High-Contrast Fix
+> **Timestamp**: 2026-08-08 16:58 IST
+
+```
+Apni Dream Job Paao.
+
+this line not visible properly in neo brutal
+```
+
+**Actions Taken**:
+1. **Background Clip & Transparent Text Override ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Added `html.brutal .bg-clip-text, html.brutal .text-transparent` overrides to reset transparent gradient text to solid `#000000` text in Neo Brutalist mode, so hero headlines are 100% sharp and high-contrast against the 3-color linear gradient background.
+   - Styled dark container headlines (`[data-dark-card="true"] .bg-clip-text`) with electric lime (`#CCFF00`) text fill.
+2. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+### Prompt 37 — Dark Card White-on-Cream Text Fix & Dashboard Peak Badge Alignment
+> **Timestamp**: 2026-08-08 17:02 IST
+
+```
+this images are not well optimized , fix
+[2 attached screenshots showing dashboard stats peak badge oval overflow and Recruiter Dossier white-on-cream invisible text]
+```
+
+**Actions Taken**:
+1. **Dark Card Inner Container Dark Background Lock ([`globals.css`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/globals.css))**:
+   - Added `html.brutal [data-dark-card="true"] .rounded-2xl, html.brutal [data-dark-card="true"] .rounded-xl` rules to force inner cards, stats boxes, tech pills, and achievement containers inside dark cards to maintain dark obsidian backgrounds (`#1E2235`) with bright white text (`#F8FAFC`).
+   - Completely eliminated white-on-cream text collisions across Recruiter Dossier stats cards (`Streak`, `Max Streak`, `Score`), Tech Stack pills (`TypeScript`, `Next.js`, etc.), and Top Achievements.
+2. **Dashboard Peak Streak Badge Overflow Fix ([`dashboard/page.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/dashboard/page.tsx))**:
+   - Replaced `.rounded-full` with `.rounded-md` and `whitespace-nowrap shrink-0` on the `"Sabse Bada: 12 din"` peak badge in `dashboard/page.tsx`, eliminating oval bubble warping over `"DHAMAKA STREAK"`.
+3. **StreakPredictor Footer Text Contrast ([`StreakPredictor.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/components/StreakPredictor.tsx))**:
+   - High-contrast text color update for `"Aapki consistency ke aadhar par"` footer line (`text-slate-700 dark:text-gray-300 font-semibold`).
+4. **Verification**:
+   - Executed `npm run build` — compiled cleanly with **0 lints, type safety, or build errors**.
+
+
+
 
 
 

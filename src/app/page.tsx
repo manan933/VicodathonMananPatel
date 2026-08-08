@@ -88,7 +88,7 @@ export default function LandingPage() {
           {/* Main Headline */}
           <h1 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight font-['Outfit'] mb-4 max-w-3xl">
             {language === 'english' ? "Code It. Ship It. Prove It." : "Code Karo. Push Karo. Proof Dikhao."} <br />
-            <span className="bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 dark:from-rose-400 dark:via-amber-400 dark:to-rose-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 dark:from-rose-400 dark:via-amber-400 dark:to-rose-500 bg-clip-text text-transparent font-black">
               {language === 'english' ? "Land Your Dream Role." : "Apni Dream Job Paao."}
             </span>
           </h1>

@@ -79,7 +79,7 @@ export default function StreakPredictor({
             {probability}%
           </span>
         </div>
-        <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5 font-medium">
+        <p className="text-xs text-slate-700 dark:text-gray-300 mt-0.5 font-semibold">
           {language === 'english'
             ? `chance of finishing the ${challengeDays}-day challenge`
             : `${challengeDays}-din challenge poora karne ka chance`}
@@ -95,8 +95,8 @@ export default function StreakPredictor({
       </div>
 
       {/* Footer Trend Line */}
-      <div className="flex items-center gap-1.5 text-[11px] text-slate-400 dark:text-gray-400 pt-1 border-t border-slate-100 dark:border-slate-800/60">
-        <TrendingUp className="w-3 h-3 shrink-0 text-slate-400 dark:text-gray-400" />
+      <div className="flex items-center gap-1.5 text-[11px] text-slate-700 dark:text-gray-300 pt-1 border-t border-slate-200 dark:border-slate-800/60">
+        <TrendingUp className="w-3.5 h-3.5 shrink-0 text-slate-700 dark:text-gray-300" />
         <span className="font-semibold">
           {language === 'english'
             ? "Based on your current consistency"

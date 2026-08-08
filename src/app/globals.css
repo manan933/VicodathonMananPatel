@@ -192,6 +192,24 @@ html.brutal [data-dark-card="true"] {
   box-shadow: 5px 5px 0px 0px #000000 !important;
 }
 
+/* Ensure inner cards, pills, and boxes inside dark containers stay dark with crisp white text */
+html.brutal [data-dark-card="true"] .rounded-3xl,
+html.brutal [data-dark-card="true"] .rounded-2xl,
+html.brutal [data-dark-card="true"] .rounded-xl,
+html.brutal [data-dark-card="true"] .rounded-lg,
+html.brutal [data-dark-card="true"] .bg-slate-800,
+html.brutal [data-dark-card="true"] .bg-slate-800\/60,
+html.brutal [data-dark-card="true"] .bg-slate-800\/80,
+html.brutal [data-dark-card="true"] .bg-slate-800\/90,
+html.brutal .bg-slate-900 .rounded-2xl,
+html.brutal .bg-slate-900 .rounded-xl,
+html.brutal .bg-slate-900 .rounded-lg {
+  background-color: #1E2235 !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+}
+
 html.brutal .bg-slate-900 h1,
 html.brutal .bg-slate-900 h2,
 html.brutal .bg-slate-900 h3,
@@ -206,18 +224,30 @@ html.brutal [data-dark-card="true"] h3 {
 
 html.brutal .bg-slate-900 p,
 html.brutal .bg-slate-900 span,
+html.brutal .bg-slate-900 div,
 html.brutal .from-slate-900 p,
 html.brutal .from-slate-900 span,
 html.brutal [data-dark-card="true"] p,
-html.brutal [data-dark-card="true"] span {
+html.brutal [data-dark-card="true"] span,
+html.brutal [data-dark-card="true"] div {
   color: #F1F5F9 !important;
 }
 
-html.brutal .bg-slate-900 *,
-html.brutal .from-slate-900 *,
-html.brutal .bg-slate-950 *,
-html.brutal [data-dark-card="true"] * {
-  border-color: rgba(255, 255, 255, 0.2);
+/* Fix gradient text transparency in Neo Brutalist mode */
+html.brutal .bg-clip-text,
+html.brutal .text-transparent {
+  background: none !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+html.brutal .bg-slate-900 .bg-clip-text,
+html.brutal .from-slate-900 .bg-clip-text,
+html.brutal [data-dark-card="true"] .bg-clip-text {
+  color: #CCFF00 !important;
+  -webkit-text-fill-color: #CCFF00 !important;
 }
 
 /* Vibrant Colorful Controls & Buttons */

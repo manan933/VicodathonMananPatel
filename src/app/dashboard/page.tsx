@@ -240,7 +240,7 @@ export default function DashboardPage() {
                   <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500 dark:fill-amber-400 animate-bounce" />
                   <span>{language === 'english' ? "Active Streak" : "Dhamaka Streak"}</span>
                 </span>
-                <span className="text-[10px] text-slate-600 dark:text-gray-400 bg-slate-100 dark:bg-dark-bg px-2 py-0.5 rounded-full border border-slate-200 dark:border-dark-border font-medium">
+                <span className="text-[10px] text-slate-800 dark:text-gray-200 bg-amber-100 dark:bg-amber-500/20 px-2 py-0.5 rounded-md border border-amber-300 dark:border-amber-500/30 font-bold whitespace-nowrap shrink-0">
                   {language === 'english' ? `Peak: ${user.longestStreak} days` : `Sabse Bada: ${user.longestStreak} din`}
                 </span>
               </div>
