@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 import AmbientBackground from '@/components/AmbientBackground';
@@ -82,6 +83,7 @@ export default function RootLayout({
               {children}
             </div>
             <CommandPalette />
+            <Analytics />
           </LanguageProvider>
         </ToastProvider>
       </body>

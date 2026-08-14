@@ -954,6 +954,27 @@ update the readme file add all the new features we added.
 2. **Verification**:
    - Executed `npm run build` — compiled all pages cleanly with **0 compiler, compilation, linting, or type safety errors**.
 
+### Prompt 46 — Vercel Analytics Integration
+> **Timestamp**: 2026-08-15 01:36 IST
+
+```
+npm i @vercel/analytics
+
+import { Analytics } from "@vercel/analytics/next"
+
+add thius
+```
+
+**Actions Taken**:
+1. **Installed `@vercel/analytics` Package**:
+   - Executed `npm i @vercel/analytics` and added dependency to `package.json`.
+2. **Added `<Analytics />` Component to Root Layout ([`layout.tsx`](file:///d:/ABtalks%20Vicodathon%20Manan%20Patel/src/app/layout.tsx))**:
+   - Imported `Analytics` from `@vercel/analytics/next`.
+   - Placed `<Analytics />` element inside `<RootLayout>` body within `LanguageProvider` context.
+3. **Verification**:
+   - Executed `npm run build` — compiled all static and dynamic pages with **0 compiler, compilation, linting, or type safety errors**.
+
+
 
 
 
